@@ -1,5 +1,7 @@
 package com.aim.xmlhandler.main;
 
+import java.io.File;
+
 import org.jdom2.Element;
 
 import com.aim.xmlhandler.parser.JdomParser;
@@ -9,7 +11,7 @@ public class DemoApplication {
 	private static final String FILENAME = "./file/Array-DryEtch.xml";
 
 	public static void main(String[] args) {
-		
+
 		JdomParser parser = new JdomParser(FILENAME);
 		
 		//xml을 객체화
@@ -33,8 +35,7 @@ public class DemoApplication {
 		
 		//xml 다른 이름으로 저장
 		String newFileName = "./file/rename.xml";
-		
-		parser.renameFile(FILENAME, newFileName);
+		parser.saveAsNewName(newFileName);
 		
 	}
 

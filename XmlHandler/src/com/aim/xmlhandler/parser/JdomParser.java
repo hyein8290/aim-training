@@ -114,23 +114,29 @@ public class JdomParser {
 	
 	/**
 	 * 파일을 다른 이름으로 저장하는 메소드
-	 * @param path			파일의 원래 경로
 	 * @param newPath	새로운 파일 경로
 	 */
-	public void renameFile(String path, String newPath) {
-		
-		File file = new File(path);
-		File newFile = new File(newPath);
-		
-		file.renameTo(newFile);
-		
-		XMLOutputter xmlOutputter = new XMLOutputter(Format.getPrettyFormat());
-		
+	public void saveAsNewName(String newPath) {
+								
 		try {
-			xmlOutputter.output(document, new FileOutputStream(file));
+			xmlOutputter.output(document, new FileOutputStream(new File(newPath)));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+
+	/**
+	 * 파일 이름을 변경하는 메소드
+	 * @param path		파일의 원래 경로
+	 * @param newPath	새로운 파일 경로
+	 */
+	public void renameFile(String path, String newPath) {
+
+		File file = new File(path);
+		File newFile = new File(newPath);
+
+		file.renameTo(newFile);
 	}
 }
 
