@@ -1,12 +1,10 @@
-package com.aim.xmlhandler.main;
-
-import java.io.File;
+package co.kr.aim.xmlhandler.main;
 
 import org.jdom2.Element;
 
-import com.aim.xmlhandler.parser.JdomParser;
+import co.kr.aim.xmlhandler.parser.JdomParser;
 
-public class DemoApplication {
+public class ParserApplication {
 	
 	private static final String FILENAME = "./file/Array-DryEtch.xml";
 

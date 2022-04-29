@@ -1,4 +1,4 @@
-package com.aim.xmlhandler.parser;
+package co.kr.aim.xmlhandler.parser;
 
 import java.io.File;
 import java.io.FileOutputStream;
