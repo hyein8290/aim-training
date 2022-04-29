@@ -19,7 +19,10 @@ public class JdomParser {
 	private Document document;
 	private XMLOutputter xmlOutputter;
 	
-	//파일 경로로 불러올지 파일로 불러올지 모르겠다
+	/**
+	 * JdomParser 생성자
+	 * @param filename		xml파일의 위치
+	 */
 	public JdomParser(String filename) {
 		this.file = new File(filename);
 		this.xmlOutputter = new XMLOutputter(Format.getPrettyFormat());
@@ -28,7 +31,6 @@ public class JdomParser {
 	
 	/**
 	 * xml 파일을 로드하는 메소드
-	 * JdomParser가 호출되면 실행되어야 함 -> 생성자에 집어넣어야 되겠다.-> 파일 이름이 없을 경우엔? 기본 생성자 어떻게 하지?? 해결완. 기본생성자 노해결
 	 * @param file 파일 이름
 	 */
 	public void load() {
@@ -66,17 +68,28 @@ public class JdomParser {
 	}
 	
 	/**
-	 * element 추가
+	 * 태그 이름, 속성 이름, 속성값을 가진 element 추가
 	 * @param parentNode	추가할 element의 부모 element
 	 * @param tag 			추가할 element의 태그 이름 
 	 * @param attrname		추가할 element의 속성 이름
-	 * @param value			추가할 element 속성의 값
+	 * @param value			추가할 element의 속성값
+	 * @return				추가한 element Element 형태로 반환
 	 */
-	public void addElement(Element parentNode, String tag, String attrname, String value) {
+	public Element addElement(Element parentNode, String tag, String attrname, String value) {
 		Element element = new Element(tag).setAttribute(new Attribute(attrname, value));
 		parentNode.addContent(element);
+		return element;
 	}
 	
+	/**
+	 * 태그 이름, 속성 이름, 속성값, PCDATA를 가진 element 추가
+	 * @param parentNode	추가할 element의 부모 element
+	 * @param tag			추가할 element의 태그 이름 
+	 * @param attrname		추가할 element의 속성 이름
+	 * @param value			추가할 element의 속성값
+	 * @param content		추가할 element의 PCDATA 값
+	 * @return				추가한 element Element 형태로 반환 
+	 */
 	public Element addElement(Element parentNode, String tag, String attrname, String value, String content) {
 		Attribute attr = new Attribute(attrname, value);
 		Element element = new Element(tag).setAttribute(attr).setText(content);
@@ -124,7 +137,6 @@ public class JdomParser {
 			e.printStackTrace();
 		}
 	}
-	
 
 	/**
 	 * 파일 이름을 변경하는 메소드
