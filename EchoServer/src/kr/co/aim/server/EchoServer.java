@@ -3,14 +3,16 @@ package kr.co.aim.server;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.List;
 import java.util.Scanner;
 
 public class EchoServer {
 
-	private ServerSocket serverSocket; // 서버 소켓
-	private Socket clientSocket; // 클라이언트 소켓
-
+	private ServerSocket serverSocket;
+	private Socket clientSocket;
 	private Scanner scanner;
+//	private List<Thread> list;
+	
 	private int port;
 
 	public static void main(String[] args) {
@@ -22,7 +24,6 @@ public class EchoServer {
 	}
 
 	public void init() {
-		
 		System.out.println("================서버================");
 		
 		setServerPort();

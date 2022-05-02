@@ -76,13 +76,18 @@ public class EchoClient {
 	private void connectServer() {
 		scanner = new Scanner(System.in);
 		
-		System.out.println("=============클라이언트===========");
+		System.out.println("=============클라이언트============");
 		
 		System.out.print("IP주소를 입력해주세요: ");
-		ip = scanner.next();
+		ip = scanner.nextLine();
 
 		System.out.print("Port번호를 입력해주세요: ");
-		port = scanner.nextInt();
+		
+		try {
+			port = scanner.nextInt();			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		
 		//TODO 숫자가 맞는지 먼저 유효성 검사하자, nextInt에서 오류나겠네,, try catch로 묶어야 하나
 		if (port < 0 || port > 65535) {
