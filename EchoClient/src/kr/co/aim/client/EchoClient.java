@@ -6,8 +6,12 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ *	Server와 통신하기 위한 client 클래스
+ */
 public class EchoClient {
 
 	private Socket clientSocket;
@@ -18,36 +22,74 @@ public class EchoClient {
 	private String ip;
 	private int port;
 
+	/**
+	 * EchoClient 생성자 메소드
+	 * init으로 client소켓을 생성하고 stream 초기화
+	 */
 	public EchoClient() {
 		init();
 	}
 	
+	/**
+	 * connectServer()와 setStream() 호출
+	 */
+	public void init() {
+		setSocket();
+		setStream();
+	}
+	
+	/**
+	 * chat() 실행 후 close() 실행
+	 */
 	public void run() {
 		chat();
 		close();
 	}
 
-	public void init() {
+	/**
+	 * 서버와 통신하기 위한 socket을 설정하고 서버에 연결하는 메소드
+	 */
+	private void setSocket() {		
 		try {
-			connectServer();
-			setStream();
+			scanner = new Scanner(System.in);
+			
+			System.out.println("=============클라이언트============");
+			
+			System.out.print("IP주소를 입력해주세요: ");
+			ip = scanner.nextLine();
+			
+			System.out.print("Port번호를 입력해주세요: ");
+			port = scanner.nextInt();
+
+			clientSocket = new Socket(ip, port);
+			System.out.println("서버와 연결되었습니다.");
+			
+		} catch (IllegalArgumentException e) {
+			System.out.println("0~65535 사이의 값을 입력해주세요.");
+			System.out.println("시스템을 종료합니다.");
+			System.exit(0);
+		} catch (UnknownHostException e) {
+			System.out.println("IP주소를 확인할 수 없습니다.");
+		} catch (IOException e) {
+			e.printStackTrace();
+		} 	
+	}
+	
+	/**
+	 * 데이터를 주고 받기 위한 stream을 설정하는 메소드
+	 */
+	private void setStream() {
+		try {
+			in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+			out = new PrintWriter(clientSocket.getOutputStream());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-
-	private void close(){		
-		try {
-			scanner.close();
-			in.close();
-			out.close();
-			clientSocket.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
-	//여기 좀 찝찝.. 메소드 이름도 찝찝
+	
+	/**
+	 * 서버에 메시지를 보내고 서버에서 echo 받는 메소드
+	 */
 	private void chat() {
 		try {
 			String inputData = "";
@@ -61,52 +103,24 @@ public class EchoClient {
 			}
 			
 			System.out.println("접속을 종료합니다.");
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 
-	private void setStream() throws IOException {
-		in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-		out = new PrintWriter(clientSocket.getOutputStream());
-	}
-
-	//ip입력, port입력, socket 생성 다 같은 메소드에서???
-	private void connectServer() {
-		scanner = new Scanner(System.in);
-		
-		System.out.println("=============클라이언트============");
-		
-		System.out.print("IP주소를 입력해주세요: ");
-		ip = scanner.nextLine();
-
-		System.out.print("Port번호를 입력해주세요: ");
-		
+	/**
+	 * 자원 해제를 위한 메소드
+	 */
+	private void close(){		
 		try {
-			port = scanner.nextInt();			
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		
-		//TODO 숫자가 맞는지 먼저 유효성 검사하자, nextInt에서 오류나겠네,, try catch로 묶어야 하나
-		if (port < 0 || port > 65535) {
-			System.out.println();
-			System.out.println("0~65535 사이의 값을 입력해주세요.");
-			System.out.println("시스템을 종료합니다.");
-			System.exit(0);
-		}
-
-		try {
-			clientSocket = new Socket(ip, port);
-			System.out.println("서버와 연결되었습니다.");
-		} catch (UnknownHostException e) {
-			System.out.println("Host를 찾을 수 없습니다.");
-			e.printStackTrace();
+			scanner.close();
+			in.close();
+			out.close();
+			clientSocket.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 }
