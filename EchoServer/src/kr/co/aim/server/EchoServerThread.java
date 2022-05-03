@@ -15,28 +15,36 @@ public class EchoServerThread extends Thread {
 	
 	private String clientIP;
 	
+	/**
+	 * EchoServerThread 생성자
+	 * @param clientSocket	통신할 clientSocket
+	 */
 	public EchoServerThread(Socket clientSocket) {
 		this.clientSocket = clientSocket;
-		setThread();
+		setStream();
 	}
 	
-	private void setThread() {
+	/**
+	 * stream 설정을 위한 메소드
+	 */
+	private void setStream() {
 		try {
 			in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-			out = new PrintWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
-			
-			clientIP = clientSocket.getInetAddress().toString();
-			System.out.println("[클라이언트 접속] " + clientIP);	//TODO clientIP 맞나 확인
-			
+			out = new PrintWriter(new OutputStreamWriter(clientSocket.getOutputStream()));	
 		} catch (IOException e) {
 			e.printStackTrace();
 		}	
 	}
 	
+	/**
+	 * 클라이언트와 통신하는 메소드
+	 */
 	@Override
 	public void run() {
+		clientIP = clientSocket.getInetAddress().toString();
+		System.out.println("[클라이언트 접속] " + clientIP);
 		
-		String receiveData = ""; //초기화 하는 게 낫나?
+		String receiveData = "";
 		
 		try {
 			while((receiveData = in.readLine()) != null) {
@@ -44,6 +52,22 @@ public class EchoServerThread extends Thread {
 				out.println(receiveData);
 				out.flush();
 			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		close();
+		System.out.println("[클라이언트 퇴장] " + clientIP);
+	}
+	
+	/**
+	 * 자원 해제 메소드
+	 */
+	private void close() {
+		try {
+			in.close();
+			out.close();
+			clientSocket.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
