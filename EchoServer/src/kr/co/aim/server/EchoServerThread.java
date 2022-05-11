@@ -1,18 +1,21 @@
 package kr.co.aim.server;
 
-import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
+import java.io.OutputStream;
 import java.net.Socket;
+import java.net.SocketException;
+import java.util.Scanner;
 
 public class EchoServerThread extends Thread {
 	
+	private final int MAX_BUFFER_SIZE = 1024;
 	private Socket clientSocket;
-	private BufferedReader in;
-	private PrintWriter out;
-	
+	private InputStream is;
+	private Scanner in;
+	private OutputStream out;
 	private String clientIP;
 	
 	/**
@@ -21,19 +24,6 @@ public class EchoServerThread extends Thread {
 	 */
 	public EchoServerThread(Socket clientSocket) {
 		this.clientSocket = clientSocket;
-		setStream();
-	}
-	
-	/**
-	 * stream 설정을 위한 메소드
-	 */
-	private void setStream() {
-		try {
-			in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-			out = new PrintWriter(new OutputStreamWriter(clientSocket.getOutputStream()));	
-		} catch (IOException e) {
-			e.printStackTrace();
-		}	
 	}
 	
 	/**
@@ -41,23 +31,46 @@ public class EchoServerThread extends Thread {
 	 */
 	@Override
 	public void run() {
-		clientIP = clientSocket.getInetAddress().toString();
-		System.out.println("[클라이언트 접속] " + clientIP);
-		
-		String receiveData = "";
-		
 		try {
-			while((receiveData = in.readLine()) != null) {
-				System.out.println("[메시지 수신] " + clientIP + ": " + receiveData);
-				out.println(receiveData);
-				out.flush();
+			clientIP = clientSocket.getInetAddress().toString();
+			System.out.println("[클라이언트 접속] " + clientIP);
+
+			while(true) {
+				byte[] bytes = new byte[MAX_BUFFER_SIZE];
+				String message = receiveMessage(bytes);
+				System.out.println("[메시지 수신] " + clientIP + ": " + message);
+				sendMessage(bytes);
 			}
+		} catch (SocketException e) {
+			System.out.println("[클라이언트 퇴장] " + clientIP);
 		} catch (IOException e) {
 			e.printStackTrace();
+		} finally {
+			close();
 		}
-		
-		close();
-		System.out.println("[클라이언트 퇴장] " + clientIP);
+	}
+
+	/*
+	 * 바이트어레이 형식의 메시지를 보내는 메소드
+	 */
+	private void sendMessage(byte[] bytes) throws SocketException, IOException {
+		out = clientSocket.getOutputStream();
+		out.write(bytes);
+		out.flush();
+	}
+	
+	/*
+	 * byte[] 형식의 메시지를 받아서 String으로 반환하는 메소드
+	 */
+	private String receiveMessage(byte[] bytes) throws SocketException, IOException {
+		String output = "";		
+
+		is = clientSocket.getInputStream();
+		is.read(bytes);
+		in = new Scanner(new InputStreamReader(new ByteArrayInputStream(bytes)));
+		output = in.nextLine();	
+
+		return output;
 	}
 	
 	/**
@@ -65,6 +78,7 @@ public class EchoServerThread extends Thread {
 	 */
 	private void close() {
 		try {
+			is.close();
 			in.close();
 			out.close();
 			clientSocket.close();
