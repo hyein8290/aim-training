@@ -20,7 +20,7 @@ namespace ChatClient
             this.mainForm = mainForm;
         }
 
-        private void connectFormBtn_Click(object sender, EventArgs e)
+        private void btnConnectForm_Click(object sender, EventArgs e)
         {
             if (Client.getInstance() != null)
             {
@@ -40,7 +40,12 @@ namespace ChatClient
         {
             if(Client.getInstance() != null)
             {
-                connectState.Text = Client.getInstance().Name;
+                connectState.Text = "연결";
+
+            }
+            else
+            {
+                connectState.Text = "해제";
             }
         }
 

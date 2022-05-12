@@ -23,8 +23,7 @@ namespace ChatClient
             this.mainForm = mainForm;
 
             // TODO 임시. 나중에 삭제
-            client = Client.getInstance("127.0.0.1", 9000);
-            client.Name = "temp";
+            
         }
 
         private void sendBtn_Click(object sender, EventArgs e)

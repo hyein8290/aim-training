@@ -70,6 +70,7 @@
             // 
             // txtMessage
             // 
+            this.txtMessage.Enabled = false;
             this.txtMessage.Location = new System.Drawing.Point(6, 31);
             this.txtMessage.Multiline = true;
             this.txtMessage.Name = "txtMessage";

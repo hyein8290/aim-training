@@ -49,6 +49,7 @@ namespace ChatClient
 
             if (TYPE_PAGE.INIT_PAGE == eIndex)
             {
+                initForm.LoadConnectState();
                 initForm.Visible = true;
                 this.mainPanel.Controls.Add(initForm);
             }

@@ -29,13 +29,12 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.connectFormBtn = new System.Windows.Forms.Button();
+            this.btnConnectForm = new System.Windows.Forms.Button();
             this.setNameBtn = new System.Windows.Forms.Button();
             this.chatBtn = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.connectState = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
@@ -47,11 +46,10 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.connectFormBtn, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.btnConnectForm, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.setNameBtn, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.chatBtn, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.panel3, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -67,16 +65,16 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(450, 500);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // connectFormBtn
+            // btnConnectForm
             // 
-            this.connectFormBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.connectFormBtn.Location = new System.Drawing.Point(150, 217);
-            this.connectFormBtn.Name = "connectFormBtn";
-            this.connectFormBtn.Size = new System.Drawing.Size(150, 30);
-            this.connectFormBtn.TabIndex = 1;
-            this.connectFormBtn.Text = "서버 접속";
-            this.connectFormBtn.UseVisualStyleBackColor = true;
-            this.connectFormBtn.Click += new System.EventHandler(this.connectFormBtn_Click);
+            this.btnConnectForm.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnConnectForm.Location = new System.Drawing.Point(150, 217);
+            this.btnConnectForm.Name = "btnConnectForm";
+            this.btnConnectForm.Size = new System.Drawing.Size(150, 30);
+            this.btnConnectForm.TabIndex = 1;
+            this.btnConnectForm.Text = "서버 연결";
+            this.btnConnectForm.UseVisualStyleBackColor = true;
+            this.btnConnectForm.Click += new System.EventHandler(this.btnConnectForm_Click);
             // 
             // setNameBtn
             // 
@@ -131,13 +129,6 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "서버 연결 상태:";
             // 
-            // panel2
-            // 
-            this.panel2.Location = new System.Drawing.Point(3, 483);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(200, 14);
-            this.panel2.TabIndex = 5;
-            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.label1);
@@ -154,7 +145,7 @@
             this.label1.Font = new System.Drawing.Font("굴림", 48F);
             this.label1.Location = new System.Drawing.Point(84, 40);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(277, 64);
+            this.label1.Size = new System.Drawing.Size(278, 64);
             this.label1.TabIndex = 1;
             this.label1.Text = "Chatting";
             // 
@@ -165,26 +156,25 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "InitForm";
             this.Size = new System.Drawing.Size(450, 500);
+            this.Load += new System.EventHandler(this.InitForm_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.ResumeLayout(false);
-            this.Load += new System.EventHandler(this.InitForm_Load);
 
         }
 
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Button connectFormBtn;
+        private System.Windows.Forms.Button btnConnectForm;
         private System.Windows.Forms.Button setNameBtn;
         private System.Windows.Forms.Button chatBtn;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox connectState;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label1;
     }
