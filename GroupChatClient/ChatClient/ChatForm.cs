@@ -16,6 +16,7 @@ namespace ChatClient
         public MainForm mainForm;
         private Client client;
         private int MAX_MESSAGE_LINES = int.MaxValue;
+        private const int HEADER_BYTE_COUNTS = 4;
 
         public ChatForm(MainForm mainForm)
         {
@@ -42,7 +43,7 @@ namespace ChatClient
 
             int messageByteCounts = Encoding.UTF8.GetByteCount(message);
 
-            byte[] headerBytes = new byte[4];
+            byte[] headerBytes = new byte[HEADER_BYTE_COUNTS];
             byte[] bodyBytes = new byte[messageByteCounts];
             byte[] messageBytes = new byte[headerBytes.Length + bodyBytes.Length];
 

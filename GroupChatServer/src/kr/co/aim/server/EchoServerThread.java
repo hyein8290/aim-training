@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class EchoServerThread extends Thread {
 	
 	private final int MAX_BUFFER_SIZE = 1024;
-	private final int HEADER_BYTE_NUM = 4;
+	private final int HEADER_BYTE_COUNTS = 4;
 	private Socket clientSocket;
 	private InputStream is;
 	private Scanner in;
@@ -83,7 +83,7 @@ public class EchoServerThread extends Thread {
 	 * byte[] 형식의 메시지를 받아서 String으로 반환하는 메소드
 	 */
 	private int receiveMessageByteCounts(byte[] bytes) throws SocketException, IOException {
-		byte[] headerBytes = new byte[HEADER_BYTE_NUM];
+		byte[] headerBytes = new byte[HEADER_BYTE_COUNTS];
 		is = clientSocket.getInputStream();
 		is.read(headerBytes);
 		return byteArrayToInt(headerBytes);
