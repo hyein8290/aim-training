@@ -81,7 +81,7 @@ public class EchoServerThread extends Thread {
 	private void close() {
 		try {
 			is.close();
-			out.close();
+			//out.close();
 			clientSocket.close();
 		} catch (IOException e) {
 			e.printStackTrace();
