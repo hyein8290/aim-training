@@ -69,6 +69,8 @@ public class EchoServerThread extends Thread {
 		is.read(bytes);
 		in = new Scanner(new InputStreamReader(new ByteArrayInputStream(bytes)));
 		output = in.nextLine();	
+		
+		in.close();
 
 		return output;
 	}
@@ -79,7 +81,6 @@ public class EchoServerThread extends Thread {
 	private void close() {
 		try {
 			is.close();
-			in.close();
 			out.close();
 			clientSocket.close();
 		} catch (IOException e) {
