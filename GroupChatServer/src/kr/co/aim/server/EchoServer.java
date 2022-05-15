@@ -3,15 +3,14 @@ package kr.co.aim.server;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.HashMap;
 import java.util.InputMismatchException;
-import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class EchoServer {
 
 	// TODO 주석으로 설명달기
-	private static HashMap<Long, HashMap<Long, User>> groups;
+	private static ConcurrentHashMap<Long, ConcurrentHashMap<Long, User>> groups;
 	private static long groupSequence = 0L;	// 방번호
 	private static long userSequence = 0L; // 유저번호
 	private final int GROUP_NUM = 2; // 방  개수
@@ -40,7 +39,7 @@ public class EchoServer {
 			while(true) {
 				// 지역변수로?
 				clientSocket = serverSocket.accept();
-				HashMap<Long, User> group = joinGroup(clientSocket);
+				ConcurrentHashMap<Long, User> group = joinGroup(clientSocket);
 				EchoServerThread thread = new EchoServerThread(clientSocket, group);
 				thread.start();
 			}
@@ -76,7 +75,7 @@ public class EchoServer {
 	/*
 	 * 클라이언트가 접속하면 그룹을 정해주도록 하자
 	 */
-	private HashMap<Long, User> joinGroup(Socket client) {
+	private ConcurrentHashMap<Long, User> joinGroup(Socket client) {
 		Long userId = ++userSequence;
 		Long groudId = userId % GROUP_NUM + 1;
 		
@@ -95,9 +94,9 @@ public class EchoServer {
 	 * 서버가 만들어지면 그룹들이 생성되도록 하자
 	 */
 	private void setGroups(int groupNums) {
-		groups = new HashMap<Long, HashMap<Long, User>>();
+		groups = new ConcurrentHashMap<Long, ConcurrentHashMap<Long, User>>();
 		while(groupNums-- > 0) {
-			groups.put(++groupSequence, new HashMap<Long, User>());
+			groups.put(++groupSequence, new ConcurrentHashMap<Long, User>());
 		}
 	}
 

@@ -7,9 +7,9 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.net.SocketException;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Scanner;
+import java.util.concurrent.ConcurrentHashMap;
 
 // TODO 인터페이스로 구현
 public class EchoServerThread extends Thread {
@@ -27,14 +27,14 @@ public class EchoServerThread extends Thread {
 	// 동기화 문제 생각해보기
 	// ConcurrentMap<K,V> 속도, 동기화 문제 둘 다 해결
 	// HashTable
-	private HashMap<Long, User> myGroup;
+	private ConcurrentHashMap<Long, User> myGroup;
 	
 	
 	/**
 	 * EchoServerThread 생성자
 	 * @param clientSocket	통신할 clientSocket
 	 */
-	public EchoServerThread(Socket clientSocket, HashMap<Long, User> group) {
+	public EchoServerThread(Socket clientSocket, ConcurrentHashMap<Long, User> group) {
 		this.clientSocket = clientSocket;
 		this.myGroup = group;
 	}
@@ -101,7 +101,7 @@ public class EchoServerThread extends Thread {
 	
 	// 여기서는 sync 해봤자.. 자료구조를 바꿔주자
 	private void sendToGroup(int messageByteCounts) throws SocketException, IOException {
-		Iterator iterator = myGroup.keySet().iterator();
+		Iterator<Long> iterator = myGroup.keySet().iterator();
 		
 		while(iterator.hasNext()) {
 			out = myGroup.get(iterator.next()).getSocket().getOutputStream();
