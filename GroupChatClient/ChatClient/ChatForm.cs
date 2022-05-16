@@ -58,6 +58,7 @@ namespace ChatClient
             client.Writer.Flush();
         }
 
+        /*
         private void ReceiveMessage()
         {
             client = Client.getInstance();
@@ -66,8 +67,27 @@ namespace ChatClient
             {
                 byte[] outbuf = new byte[1024];
                 int size = client.Reader.Read(outbuf, 0, outbuf.Length);
-                string output = Encoding.UTF8.GetString(outbuf, 0, size);
+                string output = Encoding.UTF8.GetString(outbuf, 4, size);
 
+                AddMessage(output);
+            }
+        }
+        */
+
+        private void ReceiveMessage()
+        {
+            client = Client.getInstance();
+
+            while (true)
+            {
+                byte[] headerBytes = new byte[HEADER_BYTE_COUNTS];
+                client.Reader.Read(headerBytes, 0, headerBytes.Length);
+                int messageByteCounts = BitConverter.ToInt32(headerBytes, 0);
+
+                byte[] bodyBytes = new byte[messageByteCounts];
+                client.Reader.Read(bodyBytes, 0, messageByteCounts);
+                string output = Encoding.UTF8.GetString(bodyBytes, 0, messageByteCounts);
+                
                 AddMessage(output);
             }
         }
