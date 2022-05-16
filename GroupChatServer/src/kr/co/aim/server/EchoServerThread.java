@@ -13,11 +13,9 @@ import java.util.Iterator;
 import java.util.Scanner;
 import java.util.concurrent.ConcurrentHashMap;
 
-// TODO 인터페이스로 구현
-public class EchoServerThread extends Thread {
+public class EchoServerThread implements Runnable {
 	
-	private final int MAX_BUFFER_SIZE = 1024;
-	private final int HEADER_BYTE_COUNTS = 4;
+	private final int HEADER_BYTE_COUNTS = 4;	// 헤더 바이트 수
 	
 	private Socket clientSocket;
 	private InputStream is;
@@ -25,9 +23,6 @@ public class EchoServerThread extends Thread {
 	private OutputStream out;
 	private String clientIP;
 	
-	// 동기화 문제 생각해보기
-	// ConcurrentMap<K,V> 속도, 동기화 문제 둘 다 해결
-	// HashTable
 	private ConcurrentHashMap<Long, User> myGroup;
 	
 	/**
@@ -46,7 +41,7 @@ public class EchoServerThread extends Thread {
 	public void run() {
 		try {
 			clientIP = clientSocket.getInetAddress().toString();
-			System.out.printf("[클라이언트 접속] IP: %s\n",clientIP);
+			System.out.printf("[클라이언트 접속] IP: %s\n", clientIP);	
 
 			while(true) {
 				int messageByteCounts = readMessageByteCounts();
@@ -83,7 +78,6 @@ public class EchoServerThread extends Thread {
 	 * @param messageByteCounts
 	 */
 	private void sendToGroup(byte[] bodyBytes, int messageByteCounts) throws SocketException, IOException {
-                
         ByteBuffer buff = ByteBuffer.allocate(HEADER_BYTE_COUNTS + messageByteCounts);
         buff.putInt(messageByteCounts);
         buff.put(bodyBytes);
