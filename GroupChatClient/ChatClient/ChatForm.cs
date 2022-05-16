@@ -22,10 +22,6 @@ namespace ChatClient
         {
             InitializeComponent();
             this.mainForm = mainForm;
-
-            // TODO 임시. 나중에 삭제
-            client = Client.getInstance("127.0.0.1", 9000);
-            client.Name = "test";
         }
 
         private void ChatForm_Load(object sender, EventArgs e)
