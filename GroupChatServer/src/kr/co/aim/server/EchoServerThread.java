@@ -16,7 +16,6 @@ public class EchoServerThread extends Thread {
 	
 	private final int MAX_BUFFER_SIZE = 1024;
 	private final int HEADER_BYTE_COUNTS = 4;
-	byte[] bytes = new byte[MAX_BUFFER_SIZE];
 	
 	private Socket clientSocket;
 	private InputStream is;
@@ -46,16 +45,14 @@ public class EchoServerThread extends Thread {
 	public void run() {
 		try {
 			clientIP = clientSocket.getInetAddress().toString();
-			System.out.println("[클라이언트 접속] " + clientIP);
+			System.out.printf("[클라이언트 접속] IP: %s\n",clientIP);
 
 			while(true) {
 				int messageByteCounts = readMessageByteCounts();
-				//String message = receiveMessage(messageByteCounts);
-				bytes = receiveByteArray(messageByteCounts);
+				byte[] inputBytes = receiveByteArray(messageByteCounts);
 				String message = in.nextLine();
 				System.out.println("[메시지 수신] " + clientIP + ": " + message);
-				//sendMessage(bytes, messageByteCounts);
-				sendToGroup(messageByteCounts);
+				sendToGroup(inputBytes, messageByteCounts);
 			}
 		} catch (SocketException e) {
 			System.out.println("[클라이언트 퇴장] " + clientIP);
@@ -100,14 +97,16 @@ public class EchoServerThread extends Thread {
 	
 	
 	// 여기서는 sync 해봤자.. 자료구조를 바꿔주자
-	private void sendToGroup(int messageByteCounts) throws SocketException, IOException {
+	private void sendToGroup(byte[] bodyBytes, int messageByteCounts) throws SocketException, IOException {
+		byte[] messageBytes = new byte[HEADER_BYTE_COUNTS + messageByteCounts];
+		
 		Iterator<Long> iterator = myGroup.keySet().iterator();
 		
 		while(iterator.hasNext()) {
 			out = myGroup.get(iterator.next()).getSocket().getOutputStream();
 			
 			// TODO 아직 메시지만, 클라이언트에서 헤더 구분 하는 거 안함
-			out.write(bytes, 0, messageByteCounts);
+			out.write(bodyBytes, 0, messageByteCounts);
 			out.flush();
 		}
 	}
