@@ -5,8 +5,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.lang.reflect.Array;
 import java.net.Socket;
 import java.net.SocketException;
+import java.nio.ByteBuffer;
 import java.util.Iterator;
 import java.util.Scanner;
 import java.util.concurrent.ConcurrentHashMap;
@@ -27,7 +29,6 @@ public class EchoServerThread extends Thread {
 	// ConcurrentMap<K,V> 속도, 동기화 문제 둘 다 해결
 	// HashTable
 	private ConcurrentHashMap<Long, User> myGroup;
-	
 	
 	/**
 	 * EchoServerThread 생성자
@@ -63,6 +64,11 @@ public class EchoServerThread extends Thread {
 		}
 	}
 	
+	/**
+	 * byte[] 형식의 메시지를 받는 메소드
+	 * @param messageByteCounts		메시지 byte의 길이
+	 * @return 						byte[] 형식의 메시지
+	 */
 	private byte[] receiveByteArray(int messageByteCounts) throws SocketException, IOException {
 		byte[] messageBytes = new byte[messageByteCounts];
 		is = clientSocket.getInputStream();
@@ -71,23 +77,28 @@ public class EchoServerThread extends Thread {
 		return messageBytes;
 	}
 
-	// 여기서는 sync 해봤자.. 자료구조를 바꿔주자
+	/**
+	 * 클라이언트가 속한 그룹에 메시지를 보내는 메소드
+	 * @param bodyBytes
+	 * @param messageByteCounts
+	 */
 	private void sendToGroup(byte[] bodyBytes, int messageByteCounts) throws SocketException, IOException {
-		byte[] messageBytes = new byte[HEADER_BYTE_COUNTS + messageByteCounts];
-		
+                
+        ByteBuffer buff = ByteBuffer.allocate(HEADER_BYTE_COUNTS + messageByteCounts);
+        buff.putInt(messageByteCounts);
+        buff.put(bodyBytes);
+        
 		Iterator<Long> iterator = myGroup.keySet().iterator();
 		
 		while(iterator.hasNext()) {
 			out = myGroup.get(iterator.next()).getSocket().getOutputStream();
-			
-			// TODO 아직 메시지만, 클라이언트에서 헤더 구분 하는 거 안함
-			out.write(bodyBytes, 0, messageByteCounts);
+			out.write(buff.array(), 0, HEADER_BYTE_COUNTS + messageByteCounts);
 			out.flush();
 		}
 	}
 	
 	/**
-	 * byte[] 형식의 메시지를 받아서 String으로 반환하는 메소드
+	 * header안에 적힌 body 길이를 읽는 메소드
 	 */
 	private int readMessageByteCounts() throws SocketException, IOException {
 		byte[] headerBytes = new byte[HEADER_BYTE_COUNTS];
@@ -96,6 +107,9 @@ public class EchoServerThread extends Thread {
 		return byteArrayToInt(headerBytes);
 	}
 	
+	/**
+	 * byte[]를 int형으로 바꾸는 메소드
+	 */
 	private int byteArrayToInt(byte[] bytes) {
 		return (bytes[3] & 0xFF << 24) + ((bytes[2] & 0xFF) << 16) + ((bytes[1] & 0xFF) << 8) + (bytes[0] & 0xFF);
 	}
