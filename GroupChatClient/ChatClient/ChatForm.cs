@@ -28,6 +28,11 @@ namespace ChatClient
             client.Name = "test";
         }
 
+        private void ChatForm_Load(object sender, EventArgs e)
+        {
+            Task.Run(() => ReceiveMessage());
+        }
+
         private void sendBtn_Click(object sender, EventArgs e)
         {
             // TODO 메시지 유효성 검사
@@ -57,22 +62,6 @@ namespace ChatClient
 
             client.Writer.Flush();
         }
-
-        /*
-        private void ReceiveMessage()
-        {
-            client = Client.getInstance();
-
-            while (true)
-            {
-                byte[] outbuf = new byte[1024];
-                int size = client.Reader.Read(outbuf, 0, outbuf.Length);
-                string output = Encoding.UTF8.GetString(outbuf, 4, size);
-
-                AddMessage(output);
-            }
-        }
-        */
 
         private void ReceiveMessage()
         {
@@ -119,11 +108,6 @@ namespace ChatClient
                 }
                 txtMessage.Lines = tempLines.ToArray();
             }
-        }
-
-        private void ChatForm_Load(object sender, EventArgs e)
-        {
-            Task.Run(() => ReceiveMessage());
         }
 
         private void cboMessageNum_SelectedIndexChanged(object sender, EventArgs e)
