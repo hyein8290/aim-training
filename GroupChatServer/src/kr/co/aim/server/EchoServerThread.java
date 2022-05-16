@@ -71,31 +71,6 @@ public class EchoServerThread extends Thread {
 		return messageBytes;
 	}
 
-	private String receiveMessage(int messageByteCounts) throws SocketException, IOException {
-		byte[] messageBytes = new byte[messageByteCounts];
-
-		is = clientSocket.getInputStream();
-		is.read(messageBytes);
-		
-		// 왜  header는 안 읽어올까? 이미 읽어서 그런가보다.
-		in = new Scanner(new InputStreamReader(new ByteArrayInputStream(messageBytes, 0, messageByteCounts)));
-		// in = new Scanner(new InputStreamReader(new ByteArrayInputStream(bytes, HEADER_BYTE_NUM, messageByteCounts)));
-		
-		String output = in.nextLine();	
-		//in.close();
-		return output;
-	}
-
-	/**
-	 * byte[] 형식의 메시지를 보내는 메소드
-	 */
-	private void sendMessage(byte[] bytes ,int messageByteCounts) throws SocketException, IOException {
-		out = clientSocket.getOutputStream();
-		out.write(bytes, 0, messageByteCounts);
-		out.flush();
-	}
-	
-	
 	// 여기서는 sync 해봤자.. 자료구조를 바꿔주자
 	private void sendToGroup(byte[] bodyBytes, int messageByteCounts) throws SocketException, IOException {
 		byte[] messageBytes = new byte[HEADER_BYTE_COUNTS + messageByteCounts];
