@@ -107,6 +107,7 @@ public class EchoServerThread implements Runnable {
 	private void close() {
 		try {
 			is.close();
+			out.close();
 			clientSocket.close();
 		} catch (IOException e) {
 			e.printStackTrace();
