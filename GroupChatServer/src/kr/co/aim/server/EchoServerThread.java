@@ -1,16 +1,12 @@
 package kr.co.aim.server;
 
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.lang.reflect.Array;
 import java.net.Socket;
 import java.net.SocketException;
 import java.nio.ByteBuffer;
 import java.util.Iterator;
-import java.util.Scanner;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class EchoServerThread implements Runnable {
@@ -19,7 +15,6 @@ public class EchoServerThread implements Runnable {
 	
 	private Socket clientSocket;
 	private InputStream is;
-	private Scanner in;
 	private OutputStream out;
 	private String clientIP;
 	
@@ -42,11 +37,12 @@ public class EchoServerThread implements Runnable {
 		try {
 			clientIP = clientSocket.getInetAddress().toString();
 			System.out.printf("[클라이언트 접속] IP: %s\n", clientIP);	
+			is = clientSocket.getInputStream();	// 언제 초기화하는게 좋을까
 
 			while(true) {
 				int messageByteCounts = readMessageByteCounts();
 				byte[] inputBytes = receiveByteArray(messageByteCounts);
-				String message = in.nextLine();
+				String message = new String(inputBytes);
 				System.out.println("[메시지 수신] " + clientIP + ": " + message);
 				sendToGroup(inputBytes, messageByteCounts);
 			}
@@ -60,15 +56,22 @@ public class EchoServerThread implements Runnable {
 	}
 	
 	/**
+	 * header안에 적힌 body 길이를 읽는 메소드
+	 */
+	private int readMessageByteCounts() throws SocketException, IOException {
+		byte[] headerBytes = new byte[HEADER_BYTE_COUNTS];
+		is.read(headerBytes);
+		return byteArrayToInt(headerBytes);
+	}
+	
+	/**
 	 * byte[] 형식의 메시지를 받는 메소드
 	 * @param messageByteCounts		메시지 byte의 길이
 	 * @return 						byte[] 형식의 메시지
 	 */
 	private byte[] receiveByteArray(int messageByteCounts) throws SocketException, IOException {
 		byte[] messageBytes = new byte[messageByteCounts];
-		is = clientSocket.getInputStream();
 		is.read(messageBytes);
-		in = new Scanner(new InputStreamReader(new ByteArrayInputStream(messageBytes, 0, messageByteCounts)));
 		return messageBytes;
 	}
 
@@ -89,16 +92,6 @@ public class EchoServerThread implements Runnable {
 			out.write(buff.array(), 0, HEADER_BYTE_COUNTS + messageByteCounts);
 			out.flush();
 		}
-	}
-	
-	/**
-	 * header안에 적힌 body 길이를 읽는 메소드
-	 */
-	private int readMessageByteCounts() throws SocketException, IOException {
-		byte[] headerBytes = new byte[HEADER_BYTE_COUNTS];
-		is = clientSocket.getInputStream();
-		is.read(headerBytes);
-		return byteArrayToInt(headerBytes);
 	}
 	
 	/**
