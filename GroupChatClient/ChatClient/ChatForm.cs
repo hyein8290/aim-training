@@ -67,6 +67,7 @@ namespace ChatClient
             {
                 byte[] headerBytes = new byte[HEADER_BYTE_COUNTS];
                 client.Reader.Read(headerBytes, 0, headerBytes.Length);
+                Array.Reverse(headerBytes);
                 int messageByteCounts = BitConverter.ToInt32(headerBytes, 0);
 
                 byte[] bodyBytes = new byte[messageByteCounts];
