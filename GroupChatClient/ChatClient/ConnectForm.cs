@@ -20,8 +20,6 @@ namespace ChatClient
             this.mainForm = mainForm;
         }
 
-        // TODO 취소 버튼
-
         private void connectBtn_Click(object sender, EventArgs e)
         {
             string ip = ipTextBox.Text;
@@ -32,6 +30,11 @@ namespace ChatClient
             Client.getInstance(ip, port);
             mainForm.ShowPage(MainForm.TYPE_PAGE.INIT_PAGE);
             
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            mainForm.ShowPage(MainForm.TYPE_PAGE.INIT_PAGE);
         }
     }
 }
