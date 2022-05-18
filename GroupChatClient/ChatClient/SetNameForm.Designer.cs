@@ -34,8 +34,8 @@
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.setNameBtn = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.btnSetName = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -104,24 +104,12 @@
             // panel2
             // 
             this.panel2.Controls.Add(this.btnCancel);
-            this.panel2.Controls.Add(this.setNameBtn);
+            this.panel2.Controls.Add(this.btnSetName);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 496);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(508, 126);
             this.panel2.TabIndex = 3;
-            // 
-            // setNameBtn
-            // 
-            this.setNameBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.setNameBtn.Location = new System.Drawing.Point(82, 44);
-            this.setNameBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.setNameBtn.Name = "setNameBtn";
-            this.setNameBtn.Size = new System.Drawing.Size(171, 38);
-            this.setNameBtn.TabIndex = 5;
-            this.setNameBtn.Text = "설정";
-            this.setNameBtn.UseVisualStyleBackColor = true;
-            this.setNameBtn.Click += new System.EventHandler(this.setNameBtn_Click);
             // 
             // btnCancel
             // 
@@ -134,6 +122,18 @@
             this.btnCancel.Text = "취소";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnSetName
+            // 
+            this.btnSetName.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnSetName.Location = new System.Drawing.Point(82, 44);
+            this.btnSetName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnSetName.Name = "btnSetName";
+            this.btnSetName.Size = new System.Drawing.Size(171, 38);
+            this.btnSetName.TabIndex = 5;
+            this.btnSetName.Text = "설정";
+            this.btnSetName.UseVisualStyleBackColor = true;
+            this.btnSetName.Click += new System.EventHandler(this.btnSetName_Click);
             // 
             // SetNameForm
             // 
@@ -161,6 +161,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button setNameBtn;
+        private System.Windows.Forms.Button btnSetName;
     }
 }

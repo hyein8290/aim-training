@@ -21,7 +21,7 @@ namespace ChatClient
 
         // TODO 취소 버튼
 
-        private void setNameBtn_Click(object sender, EventArgs e)
+        private void btnSetName_Click(object sender, EventArgs e)
         {
             Client client = Client.getInstance();
             client.Name = nameTextBox.Text;
