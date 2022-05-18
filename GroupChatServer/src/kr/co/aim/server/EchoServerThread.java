@@ -14,7 +14,7 @@ public class EchoServerThread implements Runnable {
 	private final int HEADER_BYTE_COUNTS = 4;	// 헤더 바이트 수
 	
 	private Socket clientSocket;
-	private InputStream is;
+	private InputStream in;
 	private OutputStream out;
 	private String clientIP;
 	
@@ -37,7 +37,7 @@ public class EchoServerThread implements Runnable {
 		try {
 			clientIP = clientSocket.getInetAddress().toString();
 			System.out.printf("[클라이언트 접속] IP: %s\n", clientIP);	
-			is = clientSocket.getInputStream();	// 언제 초기화하는게 좋을까
+			in = clientSocket.getInputStream();	// 언제 초기화하는게 좋을까
 
 			while(true) {
 				int messageByteCounts = readMessageByteCounts();
@@ -60,7 +60,7 @@ public class EchoServerThread implements Runnable {
 	 */
 	private int readMessageByteCounts() throws SocketException, IOException {
 		byte[] headerBytes = new byte[HEADER_BYTE_COUNTS];
-		is.read(headerBytes);
+		in.read(headerBytes);
 		return byteArrayToInt(headerBytes);
 	}
 	
@@ -71,7 +71,7 @@ public class EchoServerThread implements Runnable {
 	 */
 	private byte[] receiveByteArray(int messageByteCounts) throws SocketException, IOException {
 		byte[] messageBytes = new byte[messageByteCounts];
-		is.read(messageBytes);
+		in.read(messageBytes);
 		return messageBytes;
 	}
 
@@ -106,7 +106,7 @@ public class EchoServerThread implements Runnable {
 	 */
 	private void close() {
 		try {
-			is.close();
+			in.close();
 			clientSocket.close();
 		} catch (IOException e) {
 			e.printStackTrace();
