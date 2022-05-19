@@ -34,8 +34,8 @@
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnCancel = new System.Windows.Forms.Button();
             this.btnSetName = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -111,18 +111,6 @@
             this.panel2.Size = new System.Drawing.Size(508, 126);
             this.panel2.TabIndex = 3;
             // 
-            // btnCancel
-            // 
-            this.btnCancel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnCancel.Location = new System.Drawing.Point(275, 44);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(171, 38);
-            this.btnCancel.TabIndex = 6;
-            this.btnCancel.Text = "취소";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
             // btnSetName
             // 
             this.btnSetName.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -134,6 +122,18 @@
             this.btnSetName.Text = "설정";
             this.btnSetName.UseVisualStyleBackColor = true;
             this.btnSetName.Click += new System.EventHandler(this.btnSetName_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnCancel.Location = new System.Drawing.Point(275, 44);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(171, 38);
+            this.btnCancel.TabIndex = 6;
+            this.btnCancel.Text = "취소";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // SetNameForm
             // 
@@ -160,7 +160,7 @@
         private System.Windows.Forms.TextBox nameTextBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnSetName;
+        private System.Windows.Forms.Button btnCancel;
     }
 }
