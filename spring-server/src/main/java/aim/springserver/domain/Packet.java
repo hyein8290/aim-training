@@ -1,10 +1,10 @@
 package aim.springserver.domain;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter @Setter
 public class Packet {
-
 	private final int HEADER_LENGTH = 4;
 	
 	private byte[] header;

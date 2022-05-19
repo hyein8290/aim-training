@@ -2,11 +2,20 @@ package aim.springserver.domain;
 
 import java.util.concurrent.ConcurrentHashMap;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter @Setter
 public class Group {
-
-	private Long id;
-	private ConcurrentHashMap<Long, User> map;
+	private ConcurrentHashMap<Long, User> userMap;
+	private int maxSize;
+	
+	public Group() {
+		userMap = new ConcurrentHashMap<>();
+	}
+	
+	public Group(int maxSize) {
+		this.maxSize = maxSize;
+		userMap = new ConcurrentHashMap<>(maxSize);
+	}
 }
