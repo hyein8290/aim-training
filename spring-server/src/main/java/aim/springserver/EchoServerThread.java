@@ -1,4 +1,4 @@
-package aim.springserver.manager;
+package aim.springserver;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -7,36 +7,26 @@ import java.net.Socket;
 import java.net.SocketException;
 import java.nio.ByteBuffer;
 import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
 
-import aim.springserver.domain.Group;
-import aim.springserver.domain.User;
-
-public class MessageManager implements Runnable {
+public class EchoServerThread implements Runnable {
 	
 	private final int HEADER_BYTE_COUNTS = 4;	// 헤더 바이트 수
 	
-	private Socket userSocket;
+	private Socket clientSocket;
 	private InputStream in;
 	private OutputStream out;
-
-	private User user;
-	private Group myGroup;
 	private String clientIP;
+	
+	private ConcurrentHashMap<Long, User> myGroup;
 	
 	/**
 	 * EchoServerThread 생성자
 	 * @param clientSocket	통신할 clientSocket
 	 */
-	public MessageManager(User user, Group group) {
-		try {
-			this.user = user;
-			this.myGroup = group;			
-			this.userSocket = user.getSocket();
-			this.clientIP = userSocket.getInetAddress().toString();
-			this.in = userSocket.getInputStream();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	public EchoServerThread(Socket clientSocket, ConcurrentHashMap<Long, User> group) {
+		this.clientSocket = clientSocket;
+		this.myGroup = group;
 	}
 	
 	/**
@@ -45,7 +35,9 @@ public class MessageManager implements Runnable {
 	@Override
 	public void run() {
 		try {
-			System.out.printf("[클라이언트 접속] %s(%s)\n", user.getName(), clientIP);
+			clientIP = clientSocket.getInetAddress().toString();
+			System.out.printf("[클라이언트 접속] IP: %s\n", clientIP);	
+			in = clientSocket.getInputStream();	// 언제 초기화하는게 좋을까
 
 			while(true) {
 				int messageByteCounts = readMessageByteCounts();
@@ -93,10 +85,10 @@ public class MessageManager implements Runnable {
         buff.putInt(messageByteCounts);
         buff.put(bodyBytes);
         
-		Iterator<Long> iterator = myGroup.getUserMap().keySet().iterator();
+		Iterator<Long> iterator = myGroup.keySet().iterator();
 		
 		while(iterator.hasNext()) {
-			out = myGroup.getUserMap().get(iterator.next()).getSocket().getOutputStream();
+			out = myGroup.get(iterator.next()).getSocket().getOutputStream();
 			out.write(buff.array(), 0, HEADER_BYTE_COUNTS + messageByteCounts);
 			out.flush();
 		}
@@ -115,7 +107,7 @@ public class MessageManager implements Runnable {
 	private void close() {
 		try {
 			in.close();
-			userSocket.close();
+			clientSocket.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
