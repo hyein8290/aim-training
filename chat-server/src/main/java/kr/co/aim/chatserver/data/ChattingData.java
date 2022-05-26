@@ -2,19 +2,12 @@ package kr.co.aim.chatserver.data;
 
 import java.time.LocalDateTime;
 
-public class Message {
-	private int id;
+public class ChattingData {
+	
 	private int roomId;
 	private int memberId;
 	private LocalDateTime sendTime;
-	
-	public int getId() {
-		return id;
-	}
-	
-	public void setId(int id) {
-		this.id = id;
-	}
+	private String content;
 	
 	public int getRoomId() {
 		return roomId;
@@ -38,6 +31,14 @@ public class Message {
 
 	public void setSendTime(LocalDateTime sendTime) {
 		this.sendTime = sendTime;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
 	}
 	
 }
