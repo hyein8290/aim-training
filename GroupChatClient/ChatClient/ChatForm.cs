@@ -49,6 +49,7 @@ namespace ChatClient
             byte[] messageBytes = new byte[headerBytes.Length + bodyBytes.Length];
 
             headerBytes = BitConverter.GetBytes(messageByteCounts);
+            Array.Reverse(headerBytes);
             bodyBytes = Encoding.UTF8.GetBytes(message);
 
             Array.Copy(headerBytes, 0, messageBytes, 0, headerBytes.Length);
