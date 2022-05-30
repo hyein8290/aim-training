@@ -19,8 +19,6 @@ namespace ChatClient
             this.mainForm = mainForm;
         }
 
-        // TODO 취소 버튼
-
         private void btnSetName_Click(object sender, EventArgs e)
         {
             Client client = Client.getInstance();
