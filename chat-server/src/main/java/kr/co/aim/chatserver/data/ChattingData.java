@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 
 public class ChattingData {
 
-	private String messageName;
 	private String messageContent;
 	private int clientId;
 	private int roomId;
@@ -16,14 +15,6 @@ public class ChattingData {
 
 	public void setMessageContent(String messageContent) {
 		this.messageContent = messageContent;
-	}
-
-	public String getMessageName() {
-		return messageName;
-	}
-
-	public void setMessageName(String messageName) {
-		this.messageName = messageName;
 	}
 
 	public int getRoomId() {
