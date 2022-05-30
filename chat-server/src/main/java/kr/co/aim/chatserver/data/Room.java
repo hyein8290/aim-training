@@ -7,28 +7,28 @@ import com.google.common.collect.Lists;
 
 public class Room {
 	private int id;
-	private List<Member> userList;
+	private List<Member> memberList;
 
 	public Room(int roomid) {
 		this.setId(roomid);
-		this.userList = Lists.newArrayList();
+		this.memberList = Lists.newArrayList();
 	}
 
-	public void enterUser(Member user) {
-		// 우선 유저 enterRoom 주석처리하자
-		//user.enterRoom(this);
-		//this.userList.add(user);
-		userList.add(user);
+	public void enterMember(Member member) {
+		// 우선 멤버 enterRoom 주석처리하자
+		//member.enterRoom(this);
+		//this.memberList.add(member);
+		memberList.add(member);
 	}
 
-	public void exitUser(Member user) throws IOException {
-		user.exitRoom(this);
-		this.userList.remove(user);
+	public void exitMember(Member member) throws IOException {
+		member.exitRoom(this);
+		this.memberList.remove(member);
 	}
 
 	public void broadcast(Object message) throws IOException {
-		for (Member user : userList) {
-			user.sendMessage(message);
+		for (Member member : memberList) {
+			member.sendMessage(message);
 		}
 	}
 
@@ -42,10 +42,10 @@ public class Room {
 
 	public void close() throws IOException {
 
-		for (Member user : this.userList) {
-			user.exitRoom(this);
+		for (Member member : this.memberList) {
+			member.exitRoom(this);
 		}
 
-		this.userList.clear();
+		this.memberList.clear();
 	}
 }

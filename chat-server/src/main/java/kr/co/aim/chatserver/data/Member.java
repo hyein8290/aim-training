@@ -22,7 +22,7 @@ public class Member {
 	}
 
 	public void enterRoom(Room room) {
-		room.enterUser(this);
+		room.enterMember(this);
 		this.room = room;
 	}
 
