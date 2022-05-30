@@ -22,6 +22,7 @@ public class ChattingService {
 
 	public void echo(ChattingData data) throws IOException {
 		User user = this.userManager.getUser(data.getClientId());
+		
 		if (user == null) {
 			return;
 		}

@@ -22,8 +22,7 @@ public class ClientHandler implements Runnable {
 
 	private User user;
 
-	public ClientHandler(final Socket clientSock, final MessageParser messageParser, final MessageCallBack callBack)
-			throws IOException {
+	public ClientHandler(final Socket clientSock, final MessageParser messageParser, final MessageCallBack callBack) throws IOException {
 		this.clientSock = clientSock;
 		this.messageParser = messageParser;
 		this.callBack = callBack;
@@ -48,7 +47,7 @@ public class ClientHandler implements Runnable {
 				ChattingData chattingData = new ChattingData();
 				chattingData.setClientId(this.user.getId());
 				chattingData.setRoomId(this.user.getRoomId());
-				chattingData.setMessageName("CHATTING");
+				// chattingData.setMessageName("CHATTING");
 				chattingData.setMessageContent(message);
 
 				this.callBack.onMessage(chattingData);

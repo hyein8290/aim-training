@@ -23,9 +23,6 @@ public class TCPProxy implements MessageCallBack {
 	
 	@Autowired
 	private RoomManager roomManager;
-		
-	// @Autowired
-	// private BpelExecuter bpelExecuter;
 	
 	@Autowired
 	private ChattingService chattingService;
@@ -48,12 +45,11 @@ public class TCPProxy implements MessageCallBack {
 			return;
 		}
 		
-		ChattingData chattingData = (ChattingData)msg;
 		try {
+			ChattingData chattingData = (ChattingData)msg;
 			chattingService.echo(chattingData);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		// this.bpelExecuter.SyncExcuteWF(chattingData, chattingData.getMessageName());
 	}
 }
