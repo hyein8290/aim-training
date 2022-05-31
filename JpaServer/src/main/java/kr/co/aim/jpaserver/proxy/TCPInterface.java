@@ -26,6 +26,7 @@ public class TCPInterface extends Thread {
 	private boolean running = false;
 	private ServerSocket listenSocket;
 
+	// 2. TCPProxy가 TCPInterface 부름
 	public TCPInterface(final int portNo, final MemberManager memberManager, final RoomManager roomManager, final MessageCallBack callBack) {
 		this.memberManager = memberManager;
 		this.roomManager = roomManager;
@@ -40,6 +41,7 @@ public class TCPInterface extends Thread {
 		}
 	}
 
+	// 3. 스레드 스타트 호출
 	public void Open() {
 
 		this.running = true;
@@ -58,9 +60,20 @@ public class TCPInterface extends Thread {
 		}
 	}
 
+	// 4. 스레드 실행
 	@Override
 	public void run() {
 
+		/*
+		 * 4.1 클라이언트 접속
+		 * 4.2 ClientHandler 생성
+		 * 4.3 MemberManager가 member 생성
+		 * 		-> DB에 넣어줘야겠다.(Member)
+		 * 4.4 RoomManager가 member를 room에 넣어줌.(member가 채팅방에 접속)
+		 * 		-> DB에 넣기(InRoom)
+		 * 4.5 member에 handler set
+		 * 4.6 handler 스레드 실행
+		 */
 		while (this.running) {
 			try {
 				final Socket clientSock = this.listenSocket.accept();

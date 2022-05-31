@@ -31,6 +31,17 @@ public class ClientHandler implements Runnable {
 		memberOutput = new DataOutputStream(this.clientSock.getOutputStream());
 	}
 
+	// 5. 클라이언트가 보낸 메시지 받기
+	/*
+	 * 5.1 헤더 읽기
+	 * 5.2 읽어온 int형 만큼 body배열 만들고
+	 * 5.3 body 읽어오기
+	 * 5.4 body를 String으로 변환
+	 * 5.5 ChattingData에 뭘 넣어줘야겠어
+	 * 		-> 누가 보냈는지, 어떤 방에서 보냈는지, 몇시에 보냈는지, 보낸 내용은 뭔지
+	 * 		-> member, room, sendTime, content
+	 * 
+	 */
 	@Override
 	public void run() {
 
