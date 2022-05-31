@@ -26,7 +26,7 @@ public class RoomManager {
 	}
 
 	// 1. 방 만들기
-	//		-> DB에 넣어줘야겠네
+	//		-> DB에 넣어줘야겠네(Room)
 	// @PostConstruct
 	private void init() {
 
