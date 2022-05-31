@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -19,11 +21,13 @@ public class ChattingData {
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	
-	@Column(name="roomId")
-	private int roomId;
+	@ManyToOne
+	@JoinColumn(name = "memberId")
+	private Member member;
 	
-	@Column(name="memberId")
-	private int clientId;
+	@ManyToOne
+	@JoinColumn(name = "roomId")
+	private Room room;
 	
 	@Column(name="content")
 	private String content;
@@ -39,28 +43,29 @@ public class ChattingData {
 		this.id = id;
 	}
 	
+	public Member getMember() {
+		return member;
+	}
+
+	public void setMember(Member member) {
+		this.member = member;
+	}
+
+	public Room getRoom() {
+		return room;
+	}
+
+	public void setRoom(Room room) {
+		this.room = room;
+	}
+
+	
 	public String getContent() {
 		return content;
 	}
 
 	public void setContent(String content) {
 		this.content = content;
-	}
-
-	public int getRoomId() {
-		return roomId;
-	}
-
-	public void setRoomId(int roomId) {
-		this.roomId = roomId;
-	}
-
-	public int getClientId() {
-		return clientId;
-	}
-
-	public void setClientId(int clientId) {
-		this.clientId = clientId;
 	}
 
 	public Date getSendTime() {
