@@ -31,22 +31,16 @@ public class TestManager {
 			int memberId = IDGenerator.getId();
 			int roomId = roomManager.getRoomId(memberId);
 			
-			// jpa에서는 optional로 반환하는데, 새로운 객체를 생성하려면 그냥 member타입으로 해야 하고
-			// return문을 두 번 써야 하나?
-			// TODO 우선 주석처리. validation 문제 고민?
-			// Optional<Member> member = memberRepository.findById(memberId);
+			Member member = memberRepository.findById(memberId).orElse(null);
 			
-			//if(!member.isPresent()) {
-			Member member = new Member();
-			member.setId(memberId);
-			member.setRoomId(roomId);
+			if(member == null) {
+				member = new Member();
+				member.setId(memberId);
+				member.setRoomId(roomId);
+			}
 			
+			// pk 중복되겠는디?
 			return memberRepository.save(member);
-			
-			//} else {
-			//	return member;	
-			//}
-			
 			
 		} finally {
 			this.lock.unlock();
