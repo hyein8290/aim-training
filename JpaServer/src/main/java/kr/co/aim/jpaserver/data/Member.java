@@ -1,12 +1,14 @@
 package kr.co.aim.jpaserver.data;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
 import kr.co.aim.jpaserver.proxy.ClientHandler;
@@ -19,6 +21,9 @@ public class Member {
 	
 	@Column(name="name")
 	private String name;
+	
+	@OneToMany(mappedBy = "member")
+	private List<InRoom> inRoomList;
 
 	@Transient
 	private Room room;
