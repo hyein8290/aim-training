@@ -25,7 +25,8 @@ public class RoomManager {
 	public RoomManager() {
 	}
 
-	//@PostConstruct
+	// 1. 방 만들기
+	// @PostConstruct
 	private void init() {
 
 		for (int i = 0; i < this.capa; i++) {

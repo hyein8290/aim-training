@@ -27,6 +27,7 @@ public class TCPProxy implements MessageCallBack {
 	@Autowired
 	private ChattingService chattingService;
 
+	// 1. 서버 포트 열기
 	//@PostConstruct
 	private void Open() {
 		this.tcpInterface = new TCPInterface(PORT, memberManager, roomManager, this);

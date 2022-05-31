@@ -45,8 +45,8 @@ public class ClientHandler implements Runnable {
 				System.out.println(String.format("%s %s", this.member.getId(), message));
 
 				ChattingData chattingData = new ChattingData();
-				chattingData.setClientId(this.member.getId());
-				chattingData.setRoomId(this.member.getRoomId());
+				chattingData.setMember(this.member);
+				// chattingData.setRoom();
 				// chattingData.setMessageName("CHATTING");
 				chattingData.setContent(message);
 

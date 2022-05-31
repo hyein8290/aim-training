@@ -16,7 +16,7 @@ import kr.co.aim.jpaserver.proxy.ClientHandler;
 @Entity
 public class Member {
 	
-	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	@Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int id;
 	
 	@Column(name="name")
