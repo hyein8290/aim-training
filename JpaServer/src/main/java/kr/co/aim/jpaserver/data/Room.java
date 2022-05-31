@@ -3,10 +3,25 @@ package kr.co.aim.jpaserver.data;
 import java.io.IOException;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Transient;
+
 import com.google.common.collect.Lists;
 
+@Entity
 public class Room {
+	
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
+	
+	@OneToMany(mappedBy = "room")
+	private List<InRoom> inRoomList;
+	
+	@Transient
 	private List<Member> memberList;
 
 	public Room(int roomid) {
