@@ -13,6 +13,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+// 왜 롬복이 안 될까
 @Entity
 @Table(name="CHATTINGDATA")
 public class ChattingData {
