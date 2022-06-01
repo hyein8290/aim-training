@@ -1,82 +1,49 @@
 package kr.co.aim.jpaserver.manager;
 
 import java.io.IOException;
-import java.util.Map;
-import java.util.concurrent.locks.ReentrantLock;
 
 import javax.annotation.PostConstruct;
 
 import org.springframework.stereotype.Component;
 
-import com.google.common.collect.Maps;
-
 import kr.co.aim.jpaserver.data.Room;
+import kr.co.aim.jpaserver.repository.RoomRepository;
 
 @Component
+// @RequiredArgsConstructor -> 왜 에러가 날까나
 public class RoomManager {
-	private final Map<Integer, Room> roomMap = Maps.newHashMap();
-	// 아토믹 안 쓴 이유가 락 걸어서 그런건가...?
-//	private AtomicInteger atomicInteger;
-	private final ReentrantLock lock = new ReentrantLock();
+	
+	private final RoomRepository roomRepository;
 	private final int capa = 2;
-
-	private int intGenerator = 0;
-
-	public RoomManager() {
+	
+	public RoomManager(RoomRepository roomRepository) {
+		this.roomRepository = roomRepository;
 	}
 
 	// 1. 방 만들기
 	//		-> DB에 넣어줘야겠네(Room)
-	// @PostConstruct
+	@PostConstruct
 	private void init() {
-
 		for (int i = 0; i < this.capa; i++) {
 			this.createRoom();
 		}
 	}
 
 	private Room createRoom() {
-
-		this.lock.lock();
-		try {
-			int roomId = ++intGenerator;
-
-			Room room = this.roomMap.get(roomId);
-			if (room == null) {
-				room = new Room(roomId);
-				this.roomMap.put(room.getId(), room);
-			}
-
-			return room;
-		} finally {
-			this.lock.unlock();
-		}
+		Room room = new Room();
+		return roomRepository.save(room);
 	}
 
-	public Room getRoom(int roomid) {
-
-		this.lock.lock();
-		try {
-			return this.roomMap.get(roomid);
-		} finally {
-			this.lock.unlock();
-		}
+	// TODO findById vs getById
+	// id값이 항상 존재?
+	public Room getRoom(int roomId) {
+		return roomRepository.getById(roomId);
 	}
 
-	public void removeRoom(int roomid) throws IOException {
-
-		this.lock.lock();
-		try {
-			Room room = this.roomMap.remove(roomid);
-			if (room != null) {
-				room.close();
-			}
-		} finally {
-			this.lock.unlock();
-		}
-	}
-
-	public int getRoomId(int clientId) {
-		return (clientId % this.capa) + 1;
+	// room을 참조하고 있는 inroom, message 먼저 삭제
+	// TODO 구현
+	public void removeRoom(int roomId) throws IOException {
+		roomRepository.deleteById(roomId);
+		// room.close();
 	}
 }
