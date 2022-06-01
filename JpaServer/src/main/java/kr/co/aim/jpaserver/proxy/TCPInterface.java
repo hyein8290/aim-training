@@ -27,6 +27,7 @@ public class TCPInterface extends Thread {
 	private ServerSocket listenSocket;
 
 	// 2. TCPProxy가 TCPInterface 부름
+	//		-> 서버소켓 생성
 	public TCPInterface(final int portNo, final MemberManager memberManager, final RoomManager roomManager, final MessageCallBack callBack) {
 		this.memberManager = memberManager;
 		this.roomManager = roomManager;

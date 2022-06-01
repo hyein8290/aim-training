@@ -21,30 +21,30 @@ public class Room {
 	@OneToMany(mappedBy = "room")
 	private List<InRoom> inRoomList;
 	
-	@Transient
-	private List<Member> memberList;
+//	@Transient
+//	private List<Member> memberList;
 
-	public Room(int roomid) {
-		this.setId(roomid);
-		this.memberList = Lists.newArrayList();
-	}
+//	public Room(int roomid) {
+//		this.setId(roomid);
+////		this.memberList = Lists.newArrayList();
+//	}
 
 	public void enterMember(Member member) {
 		// 우선 멤버 enterRoom 주석처리하자
 		//member.enterRoom(this);
 		//this.memberList.add(member);
-		memberList.add(member);
+//		memberList.add(member);
 	}
 
 	public void exitMember(Member member) throws IOException {
 		member.exitRoom(this);
-		this.memberList.remove(member);
+//		this.memberList.remove(member);
 	}
 
 	public void broadcast(Object message) throws IOException {
-		for (Member member : memberList) {
-			member.sendMessage(message);
-		}
+//		for (Member member : memberList) {
+//			member.sendMessage(message);
+//		}
 	}
 
 	public int getId() {
@@ -57,10 +57,10 @@ public class Room {
 
 	public void close() throws IOException {
 
-		for (Member member : this.memberList) {
-			member.exitRoom(this);
-		}
-
-		this.memberList.clear();
+//		for (Member member : this.memberList) {
+//			member.exitRoom(this);
+//		}
+//
+//		this.memberList.clear();
 	}
 }

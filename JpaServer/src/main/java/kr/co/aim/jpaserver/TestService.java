@@ -18,8 +18,8 @@ public class TestService {
 
     @PostConstruct
 	public void test() {
-		Member member = new Member();
-		member.setName("sadasd");
-		memberRepository.save(member);
+//		Member member = new Member();
+//		member.setName("sadasd");
+//		memberRepository.save(member);
 	}
 }

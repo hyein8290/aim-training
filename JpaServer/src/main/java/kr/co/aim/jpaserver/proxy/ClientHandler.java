@@ -5,14 +5,22 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.google.common.primitives.Ints;
 
 import kr.co.aim.jpaserver.data.ChattingData;
 import kr.co.aim.jpaserver.data.Member;
+import kr.co.aim.jpaserver.manager.ChattingDataManager;
 import kr.co.aim.jpaserver.proxy.parser.MessageParser;
 
+@Component
 public class ClientHandler implements Runnable {
 
+	@Autowired
+	private ChattingDataManager chattingDataManager;
+	
 	private final Socket clientSock;
 	private final MessageParser messageParser;
 	private final MessageCallBack callBack;
@@ -55,11 +63,7 @@ public class ClientHandler implements Runnable {
 				String message = (String) this.messageParser.byteArrayToObject(bodyArray);
 				System.out.println(String.format("%s %s", this.member.getId(), message));
 
-				ChattingData chattingData = new ChattingData();
-				chattingData.setMember(this.member);
-				// chattingData.setRoom();
-				// chattingData.setMessageName("CHATTING");
-				chattingData.setContent(message);
+				ChattingData chattingData = chattingDataManager.create(this.member, null, message);
 
 				this.callBack.onMessage(chattingData);
 			}
