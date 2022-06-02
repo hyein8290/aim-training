@@ -12,7 +12,9 @@ import com.google.common.primitives.Ints;
 
 import kr.co.aim.jpaserver.data.ChattingData;
 import kr.co.aim.jpaserver.data.Member;
+import kr.co.aim.jpaserver.data.Room;
 import kr.co.aim.jpaserver.manager.ChattingDataManager;
+import kr.co.aim.jpaserver.manager.RoomManager;
 import kr.co.aim.jpaserver.proxy.parser.MessageParser;
 
 @Component
@@ -20,6 +22,9 @@ public class ClientHandler implements Runnable {
 
 	@Autowired
 	private ChattingDataManager chattingDataManager;
+	
+	@Autowired
+	private RoomManager roomManager;
 	
 	private final Socket clientSock;
 	private final MessageParser messageParser;
@@ -29,7 +34,15 @@ public class ClientHandler implements Runnable {
 	private final DataOutputStream memberOutput;
 
 	private Member member;
-
+	
+	// 얘를 어디다가 둬야 하나,,
+	private enum Type {
+		MAKE_ROOM,
+		SELECT_ROOM,
+		SET_NAME,
+		SEND_MESSAGE;
+	}
+	
 	public ClientHandler(final Socket clientSock, final MessageParser messageParser, final MessageCallBack callBack) throws IOException {
 		this.clientSock = clientSock;
 		this.messageParser = messageParser;
@@ -54,8 +67,7 @@ public class ClientHandler implements Runnable {
 	public void run() {
 
 		try {
-			while (true) {
-				
+			while (true) {	
 				int payload = memberInput.readInt();
 				byte[] bodyArray = new byte[payload];
 				memberInput.readFully(bodyArray);
@@ -71,6 +83,35 @@ public class ClientHandler implements Runnable {
 
 			// TODO Logout event
 			System.out.println("disconnection from " + clientSock.getRemoteSocketAddress());
+		}
+	}
+	
+	public void receive(Object object) throws IOException{
+		int type = memberInput.readInt();
+		byte[] bodyArray;
+		
+		// switch로 바꾸고 싶음,,
+		if(Type.MAKE_ROOM.equals(type)) {
+			
+		} else if(Type.SELECT_ROOM.equals(type)) {
+			
+		} else if(Type.SET_NAME.equals(type)) {
+			
+		} else if(Type.SEND_MESSAGE.equals(type)) {
+			// TODO 메소드 추출하기
+			int roomId = memberInput.readInt();
+			Room room = roomManager.getRoom(roomId);
+			
+			int payload = memberInput.readInt();
+			bodyArray = new byte[payload];
+			memberInput.readFully(bodyArray);
+			
+			String message = (String) this.messageParser.byteArrayToObject(bodyArray);
+			System.out.printf("%s: %s\n", this.member.getName(), message);
+			
+			ChattingData chattingData = chattingDataManager.create(this.member, room, message);
+			
+			this.callBack.onMessage(chattingData);
 		}
 	}
 

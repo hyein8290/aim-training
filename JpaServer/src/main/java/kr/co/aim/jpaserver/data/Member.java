@@ -26,7 +26,7 @@ public class Member {
 	private List<InRoom> inRoomList;
 
 	@Transient
-	private Room room;
+	private Room cuurentRoom;
 	
 	@Transient
 	private ClientHandler clientHandler;
@@ -40,13 +40,14 @@ public class Member {
 		this.clientHandler.setMember(this);
 	}
 
+	// 이 메소드 있어야 할까?
 	public void enterRoom(Room room) {
 		room.enterMember(this);
-		this.room = room;
+		this.cuurentRoom = room;
 	}
 
 	public void exitRoom(Room room) throws IOException {
-		this.room = null;
+		this.cuurentRoom = null;
 		this.clientHandler.send("kicked out of the room");
 	}
 

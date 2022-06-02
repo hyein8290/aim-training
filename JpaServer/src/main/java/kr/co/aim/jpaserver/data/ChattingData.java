@@ -13,6 +13,10 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+
 // 왜 롬복이 안 될까
 @Entity
 @Table(name="CHATTINGDATA")
@@ -60,7 +64,6 @@ public class ChattingData {
 		this.room = room;
 	}
 
-	
 	public String getContent() {
 		return content;
 	}

@@ -24,6 +24,10 @@ public class InRoomManager {
 		inRoom.setRoom(room);
 		inRoom.setMember(member);
 		inRoom.setInTime(new Date());
+		
+		// member.enterRoom(room);
+		room.enterMember(member);
+		
 		return inRoomRepository.save(inRoom);
 	}
 	

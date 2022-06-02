@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import kr.co.aim.jpaserver.data.ChattingData;
+import kr.co.aim.jpaserver.manager.InRoomManager;
 import kr.co.aim.jpaserver.manager.MemberManager;
 import kr.co.aim.jpaserver.manager.RoomManager;
 import kr.co.aim.jpaserver.service.ChattingService;
@@ -25,12 +26,15 @@ public class TCPProxy implements MessageCallBack {
 	private RoomManager roomManager;
 	
 	@Autowired
+	private InRoomManager inRoomManager;
+	
+	@Autowired
 	private ChattingService chattingService;
 
 	// 1. 서버 포트 열기
 	//@PostConstruct
 	private void Open() {
-		this.tcpInterface = new TCPInterface(PORT, memberManager, roomManager, this);
+		this.tcpInterface = new TCPInterface(PORT, memberManager, roomManager, inRoomManager, this);
 		this.tcpInterface.Open();
 
 		System.out.println(String.format("Start Server Port=%s", PORT));
