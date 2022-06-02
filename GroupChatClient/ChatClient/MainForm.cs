@@ -18,13 +18,15 @@ namespace ChatClient
             INIT_PAGE = 0,          // 시작 페이지
             CONNECT_SERVER = 1,     // 서버 접속 페이지 
             SET_NAME = 2,           // 이름 설정 페이지 
-            CHAT_PAGE = 3,          // 채팅 페이지 
+            ROOM_LIST = 3,          // 방 목록 페이지
+            CHAT_PAGE = 4,          // 채팅 페이지 
             __MAX__                 // TODO max가 정확히 뭘까
         };
 
         public InitForm initForm = null;
         public ConnectForm connectServerForm = null;
         public SetNameForm setNameForm = null;
+        public RoomListForm roomListForm = null;
         public ChatForm chatForm = null;
 
         public MainForm()
@@ -34,6 +36,7 @@ namespace ChatClient
             initForm = new InitForm(this);
             connectServerForm = new ConnectForm(this);
             setNameForm = new SetNameForm(this);
+            roomListForm = new RoomListForm(this);
             chatForm = new ChatForm(this);
             
             ShowPage(TYPE_PAGE.INIT_PAGE);
@@ -62,6 +65,11 @@ namespace ChatClient
             {
                 setNameForm.Visible = true;
                 this.mainPanel.Controls.Add(setNameForm);
+            }
+            else if (TYPE_PAGE.ROOM_LIST == eIndex)
+            {
+                roomListForm.Visible = true;
+                this.mainPanel.Controls.Add(roomListForm);
             }
             else if (TYPE_PAGE.CHAT_PAGE == eIndex)
             {

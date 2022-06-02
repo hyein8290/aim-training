@@ -16,6 +16,8 @@ namespace ChatClient
         public MainForm mainForm;
         private Client client;
         private int MAX_MESSAGE_LINES = int.MaxValue;
+
+        // TODO 클래스로 뺄까..?
         private const int HEADER_BYTE_COUNTS = 4;
 
         public ChatForm(MainForm mainForm)

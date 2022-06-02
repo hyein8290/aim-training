@@ -63,7 +63,8 @@ namespace ChatClient
                 return;
             }
 
-            mainForm.ShowPage(MainForm.TYPE_PAGE.CHAT_PAGE);
+            // mainForm.ShowPage(MainForm.TYPE_PAGE.CHAT_PAGE);
+            mainForm.ShowPage(MainForm.TYPE_PAGE.ROOM_LIST);
         }
 
         private void InitForm_Load(object sender, EventArgs e)
