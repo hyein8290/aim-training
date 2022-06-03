@@ -16,6 +16,7 @@ namespace ChatClient
         public MainForm mainForm;
         private Client client;
         private int MAX_MESSAGE_LINES = int.MaxValue;
+        private int roomId;
 
         // TODO 클래스로 뺄까..?
         private const int HEADER_BYTE_COUNTS = 4;
@@ -24,6 +25,13 @@ namespace ChatClient
         {
             InitializeComponent();
             this.mainForm = mainForm;
+        }
+
+        public ChatForm(MainForm mainForm, int roomId)
+        {
+            InitializeComponent();
+            this.mainForm = mainForm;
+            this.roomId = roomId;
         }
 
         private void ChatForm_Load(object sender, EventArgs e)
@@ -40,27 +48,53 @@ namespace ChatClient
 
         // TODO 뒤로가기 버튼
 
+        //private void SendMessage(string message)
+        //{
+        //    client = Client.getInstance();
+
+        //    int messageByteCounts = Encoding.UTF8.GetByteCount(message);
+
+        //    byte[] headerBytes = new byte[HEADER_BYTE_COUNTS];
+        //    byte[] bodyBytes = new byte[messageByteCounts];
+        //    byte[] messageBytes = new byte[headerBytes.Length + bodyBytes.Length];
+
+        //    headerBytes = BitConverter.GetBytes(messageByteCounts);
+        //    Array.Reverse(headerBytes);
+        //    bodyBytes = Encoding.UTF8.GetBytes(message);
+
+        //    Array.Copy(headerBytes, 0, messageBytes, 0, headerBytes.Length);
+        //    Array.Copy(bodyBytes, 0, messageBytes, headerBytes.Length, bodyBytes.Length);
+
+        //    client.Writer.Write(messageBytes, 0, messageBytes.Length);
+
+        //    client.Writer.Flush();
+        //}
+
         private void SendMessage(string message)
         {
             client = Client.getInstance();
 
-            int messageByteCounts = Encoding.UTF8.GetByteCount(message);
-
-            byte[] headerBytes = new byte[HEADER_BYTE_COUNTS];
-            byte[] bodyBytes = new byte[messageByteCounts];
-            byte[] messageBytes = new byte[headerBytes.Length + bodyBytes.Length];
-
-            headerBytes = BitConverter.GetBytes(messageByteCounts);
-            Array.Reverse(headerBytes);
-            bodyBytes = Encoding.UTF8.GetBytes(message);
-
-            Array.Copy(headerBytes, 0, messageBytes, 0, headerBytes.Length);
-            Array.Copy(bodyBytes, 0, messageBytes, headerBytes.Length, bodyBytes.Length);
-
-            client.Writer.Write(messageBytes, 0, messageBytes.Length);
-
-            client.Writer.Flush();
+            Packet sendPacket = new Packet();
         }
+
+        //private void ReceiveMessage()
+        //{
+        //    client = Client.getInstance();
+
+        //    while (true)
+        //    {
+        //        byte[] headerBytes = new byte[HEADER_BYTE_COUNTS];
+        //        client.Reader.Read(headerBytes, 0, headerBytes.Length);
+        //        Array.Reverse(headerBytes);
+        //        int messageByteCounts = BitConverter.ToInt32(headerBytes, 0);
+
+        //        byte[] bodyBytes = new byte[messageByteCounts];
+        //        client.Reader.Read(bodyBytes, 0, messageByteCounts);
+        //        string output = Encoding.UTF8.GetString(bodyBytes, 0, messageByteCounts);
+
+        //        AddMessage(output);
+        //    }
+        //}
 
         private void ReceiveMessage()
         {
@@ -68,16 +102,11 @@ namespace ChatClient
 
             while (true)
             {
-                byte[] headerBytes = new byte[HEADER_BYTE_COUNTS];
-                client.Reader.Read(headerBytes, 0, headerBytes.Length);
-                Array.Reverse(headerBytes);
-                int messageByteCounts = BitConverter.ToInt32(headerBytes, 0);
+                Packet receivePacket = new Packet(client.Reader);
+                receivePacket.Read();
+                string message = Encoding.UTF8.GetString(receivePacket.BodyBytes, 0, receivePacket.BodyBytes.Length);
 
-                byte[] bodyBytes = new byte[messageByteCounts];
-                client.Reader.Read(bodyBytes, 0, messageByteCounts);
-                string output = Encoding.UTF8.GetString(bodyBytes, 0, messageByteCounts);
-                
-                AddMessage(output);
+                AddMessage(message);
             }
         }
 

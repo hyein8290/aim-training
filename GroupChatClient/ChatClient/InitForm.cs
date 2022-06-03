@@ -51,17 +51,17 @@ namespace ChatClient
 
         private void chatBtn_Click(object sender, EventArgs e)
         {
-            if(Client.getInstance() == null)
-            {
-                MessageBox.Show("먼저 서버와 연결해주세요.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
+            //if(Client.getInstance() == null)
+            //{
+            //    MessageBox.Show("먼저 서버와 연결해주세요.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    return;
+            //}
             
-            if(Client.getInstance().Name == null)
-            {
-                MessageBox.Show("먼저 이름을 설정해주세요.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
+            //if(Client.getInstance().Name == null)
+            //{
+            //    MessageBox.Show("먼저 이름을 설정해주세요.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    return;
+            //}
 
             // mainForm.ShowPage(MainForm.TYPE_PAGE.CHAT_PAGE);
             mainForm.ShowPage(MainForm.TYPE_PAGE.ROOM_LIST);

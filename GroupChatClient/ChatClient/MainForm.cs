@@ -37,7 +37,7 @@ namespace ChatClient
             connectServerForm = new ConnectForm(this);
             setNameForm = new SetNameForm(this);
             roomListForm = new RoomListForm(this);
-            chatForm = new ChatForm(this);
+            // chatForm = new ChatForm(this);
             
             ShowPage(TYPE_PAGE.INIT_PAGE);
 
@@ -48,7 +48,7 @@ namespace ChatClient
             initForm.Visible = false;
             connectServerForm.Visible = false;
             setNameForm.Visible = false;
-            chatForm.Visible = false;
+            // chatForm.Visible = false;
 
             if (TYPE_PAGE.INIT_PAGE == eIndex)
             {
