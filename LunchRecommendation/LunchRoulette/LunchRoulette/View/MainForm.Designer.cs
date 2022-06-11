@@ -35,20 +35,22 @@
             // 
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMain.Location = new System.Drawing.Point(0, 0);
+            this.pnlMain.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(600, 700);
+            this.pnlMain.Size = new System.Drawing.Size(686, 749);
             this.pnlMain.TabIndex = 0;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(600, 700);
+            this.ClientSize = new System.Drawing.Size(686, 749);
             this.Controls.Add(this.pnlMain);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "MainForm";
             this.ShowIcon = false;
-            this.Text = "MenuForm";
+            this.Text = "오늘 뭐 먹지?";
             this.ResumeLayout(false);
 
         }

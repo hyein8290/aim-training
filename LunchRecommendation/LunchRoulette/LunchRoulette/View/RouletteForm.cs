@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace LunchRoulette.View
 {
-    public partial class Roulette : UserControl
+    public partial class RouletteForm : UserControl
     {
-        public Roulette()
+        public RouletteForm()
         {
             InitializeComponent();
         }

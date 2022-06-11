@@ -52,8 +52,12 @@
     <Reference Include="UIAutomationTypes" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\DbUtil.cs" />
+    <Compile Include="Common\TYPE_PAGE.cs" />
     <Compile Include="Data\Restaurant.cs" />
     <Compile Include="Data\User.cs" />
+    <Compile Include="Manager\DatabaseQuery.cs" />
+    <Compile Include="Manager\UserManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\JoinForm.cs">
@@ -74,6 +78,18 @@
     <Compile Include="View\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\MenuForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\MenuForm.Designer.cs">
+      <DependentUpon>MenuForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\PickForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\PickForm.Designer.cs">
+      <DependentUpon>PickForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\RestAddForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -92,11 +108,11 @@
     <Compile Include="View\RestListForm.Designer.cs">
       <DependentUpon>RestListForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Roulette.cs">
+    <Compile Include="View\RouletteForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\Roulette.Designer.cs">
-      <DependentUpon>Roulette.cs</DependentUpon>
+    <Compile Include="View\RouletteForm.Designer.cs">
+      <DependentUpon>RouletteForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="View\JoinForm.resx">
       <DependentUpon>JoinForm.cs</DependentUpon>
@@ -127,8 +143,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Manager\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
