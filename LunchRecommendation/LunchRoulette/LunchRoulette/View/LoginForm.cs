@@ -24,16 +24,49 @@ namespace LunchRoulette.View
         {
             string userId = txtId.Text;
 
+            if (ValidateId(userId))
+            {
+                LoginById(userId);
+            }
+            
+        }
+
+        private void LoginById(string userId)
+        {
             UserManager userManager = new UserManager();
             if (userManager.ExistsUser(userId))
             {
-                
+                mainForm.ShowPage(TYPE_PAGE.MENU_PAGE);
+            }
+            else
+            {
+                MessageBox.Show("존재하지 않는 회원입니다.");
             }
         }
 
         private void btnJoin_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private Boolean ValidateId(string txtId)
+        {
+            if (txtId == null)
+            {
+                MessageBox.Show("사번을 입력해주세요");
+                return false;
+            }
+
+            try
+            {
+                int id = Convert.ToInt32(txtId);
+                return true;
+            }
+            catch (FormatException e)
+            {
+                MessageBox.Show("숫자만 입력해주세요");
+                return false;
+            }
         }
 
 

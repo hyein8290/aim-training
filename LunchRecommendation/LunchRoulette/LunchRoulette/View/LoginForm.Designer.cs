@@ -47,6 +47,7 @@
             // txtId
             // 
             this.txtId.Font = new System.Drawing.Font("나눔고딕", 20F);
+            this.txtId.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.txtId.Location = new System.Drawing.Point(200, 375);
             this.txtId.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtId.Name = "txtId";
@@ -87,6 +88,7 @@
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.label1);
+            this.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "LoginForm";
             this.Size = new System.Drawing.Size(686, 875);

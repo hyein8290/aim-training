@@ -36,7 +36,7 @@ namespace LunchRoulette.View
 
         public void InitForm()
         {
-            loginForm = new LoginForm();
+            loginForm = new LoginForm(this);
             joinForm = new JoinForm();
             menuForm = new MenuForm();
             restListForm = new RestListForm();

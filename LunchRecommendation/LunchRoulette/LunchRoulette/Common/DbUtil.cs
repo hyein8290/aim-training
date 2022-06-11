@@ -24,7 +24,7 @@ namespace LunchRoulette.Common
             {
                 connection.Open();
             }
-            catch (Exception ex)
+            catch
             {
                 //Console.WriteLine(ex.Message);
                 //MessageBox.Show(ex.Message);
