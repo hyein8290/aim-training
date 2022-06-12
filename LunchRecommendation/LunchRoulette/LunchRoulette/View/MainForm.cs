@@ -38,7 +38,7 @@ namespace LunchRoulette.View
         {
             loginForm = new LoginForm(this);
             joinForm = new JoinForm();
-            menuForm = new MenuForm();
+            menuForm = new MenuForm(this);
             restListForm = new RestListForm();
             restAddForm = new RestAddForm();
             restEditForm = new RestEditForm();
@@ -54,6 +54,41 @@ namespace LunchRoulette.View
             {
                 loginForm.Visible = true;
                 this.pnlMain.Controls.Add(loginForm);
+            }
+            else if(type == TYPE_PAGE.JOIN_PAGE)
+            {
+                joinForm.Visible = true;
+                this.pnlMain.Controls.Add(joinForm);
+            }
+            else if(type == TYPE_PAGE.MENU_PAGE)
+            {
+                menuForm.Visible = true;
+                this.pnlMain.Controls.Add(menuForm);
+            }
+            else if(type == TYPE_PAGE.REST_LIST_PAGE)
+            {
+                restListForm.Visible = true;
+                this.pnlMain.Controls.Add(restListForm);
+            }
+            else if(type == TYPE_PAGE.REST_ADD_PAGE)
+            {
+                restAddForm.Visible = true;
+                this.pnlMain.Controls.Add(restAddForm);
+            }
+            else if(type == TYPE_PAGE.REST_EDIT_PAGE)
+            {
+                restEditForm.Visible = true;
+                this.pnlMain.Controls.Add(restEditForm);
+            }
+            else if(type == TYPE_PAGE.ROULETTE_PAGE)
+            {
+                rouletteForm.Visible = true;
+                this.pnlMain.Controls.Add(rouletteForm);
+            }
+            else if(type == TYPE_PAGE.PICK_PAGE)
+            {
+                pickForm.Visible = true;
+                this.pnlMain.Controls.Add(pickForm);
             }
         }
 

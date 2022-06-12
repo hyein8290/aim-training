@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LunchRoulette.Common;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,9 +12,16 @@ namespace LunchRoulette.View
 {
     public partial class MenuForm : UserControl
     {
-        public MenuForm()
+        private MainForm mainForm;
+        public MenuForm(MainForm mainForm)
         {
             InitializeComponent();
+            this.mainForm = mainForm;
+        }
+
+        private void picRoulette_Click(object sender, EventArgs e)
+        {
+            mainForm.ShowPage(TYPE_PAGE.ROULETTE_PAGE);
         }
     }
 }

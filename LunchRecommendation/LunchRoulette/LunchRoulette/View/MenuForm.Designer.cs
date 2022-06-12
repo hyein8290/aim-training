@@ -28,18 +28,50 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.picRoulette = new System.Windows.Forms.PictureBox();
+            this.picRestList = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.picRoulette)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picRestList)).BeginInit();
             this.SuspendLayout();
+            // 
+            // picRoulette
+            // 
+            this.picRoulette.Image = global::LunchRoulette.Properties.Resources.roulette;
+            this.picRoulette.Location = new System.Drawing.Point(410, 275);
+            this.picRoulette.Name = "picRoulette";
+            this.picRoulette.Size = new System.Drawing.Size(150, 150);
+            this.picRoulette.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picRoulette.TabIndex = 3;
+            this.picRoulette.TabStop = false;
+            this.picRoulette.Click += new System.EventHandler(this.picRoulette_Click);
+            // 
+            // picRestList
+            // 
+            this.picRestList.Image = global::LunchRoulette.Properties.Resources.restaurant;
+            this.picRestList.Location = new System.Drawing.Point(180, 275);
+            this.picRestList.Name = "picRestList";
+            this.picRestList.Size = new System.Drawing.Size(150, 150);
+            this.picRestList.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picRestList.TabIndex = 2;
+            this.picRestList.TabStop = false;
             // 
             // MenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.picRoulette);
+            this.Controls.Add(this.picRestList);
             this.Name = "MenuForm";
             this.Size = new System.Drawing.Size(686, 875);
+            ((System.ComponentModel.ISupportInitialize)(this.picRoulette)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picRestList)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.PictureBox picRestList;
+        private System.Windows.Forms.PictureBox picRoulette;
     }
 }

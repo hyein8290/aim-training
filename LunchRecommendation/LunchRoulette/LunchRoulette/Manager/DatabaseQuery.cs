@@ -49,5 +49,29 @@ namespace LunchRoulette.Manager
         {
             return string.Format("SELECT * FROM " + tableName + " WHERE {0} = '{1}'", column, value);
         }
+
+        public string InsertQuery(string tableName, string[] columns, string[] values)
+        {
+            StringBuilder query = new StringBuilder();
+            query.Append("INSERT INTO " + tableName + "(");
+            int length;
+            for (length = 0; length < columns.Length; length++)
+            {
+                if (length < columns.Length - 1)
+                    query.Append(columns[length] + ", ");
+                else
+                    query.Append(columns[length] + ") VALUES (");
+            }
+
+            for (length = 0; length < values.Length; length++)
+            {
+                if (length < values.Length - 1)
+                    query.Append(values[length] + ", ");
+                else
+                    query.Append(values[length] + ")");
+            }
+
+            return query.ToString();
+        }
     }
 }
