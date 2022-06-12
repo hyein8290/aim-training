@@ -33,7 +33,7 @@ namespace LunchRoulette.View
         private void LoginById(string userId)
         {
             UserManager userManager = new UserManager();
-            if (userManager.ExistsUser(userId))
+            if (userManager.ExistsUserId(userId))
             {
                 userManager.AddConnLog(userId);
                 mainForm.ShowPage(TYPE_PAGE.MENU_PAGE);
@@ -68,8 +68,6 @@ namespace LunchRoulette.View
                 return false;
             }
         }
-
-
 
     }
 }

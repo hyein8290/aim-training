@@ -10,11 +10,22 @@ namespace LunchRoulette.Manager
 {
     internal class UserManager
     {
-        public Boolean ExistsUser(string id)
+        public Boolean ExistsUserId(string id)
         {
             DatabaseQuery query = new DatabaseQuery();
             OleDbCommand command = DbUtil.connection.CreateCommand();
             command.CommandText = query.FindQuery("tblUser", "id", id);
+            OleDbDataReader reader = command.ExecuteReader();
+            if (reader.Read())
+                return true;
+            else
+                return false;
+        }
+        public Boolean ExistsUserName(string name)
+        {
+            DatabaseQuery query = new DatabaseQuery();
+            OleDbCommand command = DbUtil.connection.CreateCommand();
+            command.CommandText = query.FindQuery("tblUser", "name", name);
             OleDbDataReader reader = command.ExecuteReader();
             if (reader.Read())
                 return true;

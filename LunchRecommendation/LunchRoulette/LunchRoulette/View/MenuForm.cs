@@ -23,5 +23,10 @@ namespace LunchRoulette.View
         {
             mainForm.ShowPage(TYPE_PAGE.ROULETTE_PAGE);
         }
+
+        private void picRestList_Click(object sender, EventArgs e)
+        {
+            mainForm.ShowPage(TYPE_PAGE.REST_LIST_PAGE);
+        }
     }
 }

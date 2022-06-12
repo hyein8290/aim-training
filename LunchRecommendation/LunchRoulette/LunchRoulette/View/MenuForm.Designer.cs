@@ -54,6 +54,7 @@
             this.picRestList.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picRestList.TabIndex = 2;
             this.picRestList.TabStop = false;
+            this.picRestList.Click += new System.EventHandler(this.picRestList_Click);
             // 
             // MenuForm
             // 
