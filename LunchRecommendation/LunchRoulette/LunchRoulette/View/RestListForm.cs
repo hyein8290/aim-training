@@ -21,6 +21,7 @@ namespace LunchRoulette.View
         private void RestListForm_Load(object sender, EventArgs e)
         {
             LoadRestList();
+            CheckAll(cblCategory);
         }
 
         private void LoadRestList()
@@ -56,7 +57,22 @@ namespace LunchRoulette.View
         private void btnSearch_Click(object sender, EventArgs e)
         {
             //ValidateCondition();
-            
+
+            List<string> categories = new List<string>();
+            for(int i = 0; i < cblCategory.Items.Count; i++)
+            {
+                categories.Add(cblCategory.Items[i].ToString());
+            }
+
+            string userName = txtUserName.Text;
+
+            string startDate = dtpStart.Value.ToString("yyyy/MM/dd").Replace('-', '/');
+            string endDate = dtpEnd.Value.ToString("yyyy/MM/dd").Replace('-', '/');
+
+            RestManager restManager = new RestManager();
+            DataSet ds = restManager.GetRestDataSet(categories, userName, startDate, endDate);
+            dgvRestList.DataSource = ds.Tables[0].DefaultView;
+
         }
 
         private void ValidateCondition()
@@ -113,8 +129,13 @@ namespace LunchRoulette.View
         {
             if (e.Button == MouseButtons.Right)
             {
-                MessageBox.Show("hi");
+                //dgvRestList;
             }
+        }
+
+        private void btnAddRest_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

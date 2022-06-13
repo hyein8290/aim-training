@@ -32,8 +32,9 @@
             // 
             // JoinForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "JoinForm";
             this.Size = new System.Drawing.Size(600, 700);
             this.ResumeLayout(false);

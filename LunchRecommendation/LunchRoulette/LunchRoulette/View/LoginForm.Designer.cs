@@ -37,9 +37,9 @@
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("나눔고딕", 50F);
-            this.label1.Location = new System.Drawing.Point(0, 165);
+            this.label1.Location = new System.Drawing.Point(0, 100);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(686, 176);
+            this.label1.Size = new System.Drawing.Size(600, 176);
             this.label1.TabIndex = 0;
             this.label1.Text = "오늘 뭐 먹지?";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -48,7 +48,7 @@
             // 
             this.txtId.Font = new System.Drawing.Font("나눔고딕", 20F);
             this.txtId.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.txtId.Location = new System.Drawing.Point(200, 375);
+            this.txtId.Location = new System.Drawing.Point(155, 293);
             this.txtId.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(285, 38);
@@ -58,7 +58,7 @@
             // 
             this.btnLogin.Font = new System.Drawing.Font("나눔고딕", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnLogin.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnLogin.Location = new System.Drawing.Point(200, 429);
+            this.btnLogin.Location = new System.Drawing.Point(155, 341);
             this.btnLogin.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(286, 48);
@@ -70,7 +70,7 @@
             // btnJoin
             // 
             this.btnJoin.Font = new System.Drawing.Font("나눔고딕", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnJoin.Location = new System.Drawing.Point(200, 482);
+            this.btnJoin.Location = new System.Drawing.Point(155, 394);
             this.btnJoin.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnJoin.Name = "btnJoin";
             this.btnJoin.Size = new System.Drawing.Size(286, 48);
@@ -91,7 +91,7 @@
             this.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "LoginForm";
-            this.Size = new System.Drawing.Size(686, 875);
+            this.Size = new System.Drawing.Size(600, 700);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -30,6 +30,9 @@
         {
             this.picRoulette = new System.Windows.Forms.PictureBox();
             this.picRestList = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picRoulette)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRestList)).BeginInit();
             this.SuspendLayout();
@@ -37,7 +40,7 @@
             // picRoulette
             // 
             this.picRoulette.Image = global::LunchRoulette.Properties.Resources.roulette;
-            this.picRoulette.Location = new System.Drawing.Point(410, 275);
+            this.picRoulette.Location = new System.Drawing.Point(330, 300);
             this.picRoulette.Name = "picRoulette";
             this.picRoulette.Size = new System.Drawing.Size(150, 150);
             this.picRoulette.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -48,7 +51,7 @@
             // picRestList
             // 
             this.picRestList.Image = global::LunchRoulette.Properties.Resources.restaurant;
-            this.picRestList.Location = new System.Drawing.Point(180, 275);
+            this.picRestList.Location = new System.Drawing.Point(120, 300);
             this.picRestList.Name = "picRestList";
             this.picRestList.Size = new System.Drawing.Size(150, 150);
             this.picRestList.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -56,17 +59,50 @@
             this.picRestList.TabStop = false;
             this.picRestList.Click += new System.EventHandler(this.picRestList_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(165, 455);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(67, 15);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "식당목록";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(372, 455);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(67, 15);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "식당추천";
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("나눔고딕", 50F);
+            this.label1.Location = new System.Drawing.Point(0, 100);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(600, 176);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "오늘 뭐 먹지?";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // MenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Window;
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.picRoulette);
             this.Controls.Add(this.picRestList);
             this.Name = "MenuForm";
-            this.Size = new System.Drawing.Size(686, 875);
+            this.Size = new System.Drawing.Size(600, 700);
             ((System.ComponentModel.ISupportInitialize)(this.picRoulette)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRestList)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -74,5 +110,8 @@
 
         private System.Windows.Forms.PictureBox picRestList;
         private System.Windows.Forms.PictureBox picRoulette;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -188,7 +188,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cblPrefer);
             this.Name = "RouletteForm";
-            this.Size = new System.Drawing.Size(686, 875);
+            this.Size = new System.Drawing.Size(600, 700);
             this.Load += new System.EventHandler(this.RouletteForm_Load);
             this.pnlRoulette.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picQuestion)).EndInit();
