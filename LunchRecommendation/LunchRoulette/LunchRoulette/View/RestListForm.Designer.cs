@@ -44,16 +44,16 @@
             this.dtpStart = new System.Windows.Forms.DateTimePicker();
             this.btnSearch = new System.Windows.Forms.Button();
             this.dgvRestList = new System.Windows.Forms.DataGridView();
+            this.vWRESTLISTBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataSet2 = new LunchRoulette.DataSet2();
+            this.btnAddRest = new System.Windows.Forms.Button();
+            this.vWRESTLISTTableAdapter = new LunchRoulette.DataSet2TableAdapters.VWRESTLISTTableAdapter();
             this.식당이름DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.시그니처DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.카테고리DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.추천사용자DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.선정시간DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.추천수DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vWRESTLISTBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataSet2 = new LunchRoulette.DataSet2();
-            this.btnAddRest = new System.Windows.Forms.Button();
-            this.vWRESTLISTTableAdapter = new LunchRoulette.DataSet2TableAdapters.VWRESTLISTTableAdapter();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -238,6 +238,8 @@
             // 
             this.dgvRestList.AutoGenerateColumns = false;
             this.dgvRestList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvRestList.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dgvRestList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvRestList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.식당이름DataGridViewTextBoxColumn,
             this.시그니처DataGridViewTextBoxColumn,
@@ -249,46 +251,11 @@
             this.dgvRestList.Location = new System.Drawing.Point(51, 251);
             this.dgvRestList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvRestList.Name = "dgvRestList";
+            this.dgvRestList.ReadOnly = true;
             this.dgvRestList.RowTemplate.Height = 27;
             this.dgvRestList.Size = new System.Drawing.Size(494, 299);
             this.dgvRestList.TabIndex = 2;
             this.dgvRestList.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvRestList_CellMouseClick);
-            // 
-            // 식당이름DataGridViewTextBoxColumn
-            // 
-            this.식당이름DataGridViewTextBoxColumn.DataPropertyName = "식당이름";
-            this.식당이름DataGridViewTextBoxColumn.HeaderText = "식당이름";
-            this.식당이름DataGridViewTextBoxColumn.Name = "식당이름DataGridViewTextBoxColumn";
-            // 
-            // 시그니처DataGridViewTextBoxColumn
-            // 
-            this.시그니처DataGridViewTextBoxColumn.DataPropertyName = "시그니처";
-            this.시그니처DataGridViewTextBoxColumn.HeaderText = "시그니처";
-            this.시그니처DataGridViewTextBoxColumn.Name = "시그니처DataGridViewTextBoxColumn";
-            // 
-            // 카테고리DataGridViewTextBoxColumn
-            // 
-            this.카테고리DataGridViewTextBoxColumn.DataPropertyName = "카테고리";
-            this.카테고리DataGridViewTextBoxColumn.HeaderText = "카테고리";
-            this.카테고리DataGridViewTextBoxColumn.Name = "카테고리DataGridViewTextBoxColumn";
-            // 
-            // 추천사용자DataGridViewTextBoxColumn
-            // 
-            this.추천사용자DataGridViewTextBoxColumn.DataPropertyName = "추천사용자";
-            this.추천사용자DataGridViewTextBoxColumn.HeaderText = "추천사용자";
-            this.추천사용자DataGridViewTextBoxColumn.Name = "추천사용자DataGridViewTextBoxColumn";
-            // 
-            // 선정시간DataGridViewTextBoxColumn
-            // 
-            this.선정시간DataGridViewTextBoxColumn.DataPropertyName = "선정시간";
-            this.선정시간DataGridViewTextBoxColumn.HeaderText = "선정시간";
-            this.선정시간DataGridViewTextBoxColumn.Name = "선정시간DataGridViewTextBoxColumn";
-            // 
-            // 추천수DataGridViewTextBoxColumn
-            // 
-            this.추천수DataGridViewTextBoxColumn.DataPropertyName = "추천수";
-            this.추천수DataGridViewTextBoxColumn.HeaderText = "추천수";
-            this.추천수DataGridViewTextBoxColumn.Name = "추천수DataGridViewTextBoxColumn";
             // 
             // vWRESTLISTBindingSource
             // 
@@ -314,6 +281,48 @@
             // vWRESTLISTTableAdapter
             // 
             this.vWRESTLISTTableAdapter.ClearBeforeFill = true;
+            // 
+            // 식당이름DataGridViewTextBoxColumn
+            // 
+            this.식당이름DataGridViewTextBoxColumn.DataPropertyName = "식당이름";
+            this.식당이름DataGridViewTextBoxColumn.HeaderText = "식당이름";
+            this.식당이름DataGridViewTextBoxColumn.Name = "식당이름DataGridViewTextBoxColumn";
+            this.식당이름DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // 시그니처DataGridViewTextBoxColumn
+            // 
+            this.시그니처DataGridViewTextBoxColumn.DataPropertyName = "시그니처";
+            this.시그니처DataGridViewTextBoxColumn.HeaderText = "시그니처";
+            this.시그니처DataGridViewTextBoxColumn.Name = "시그니처DataGridViewTextBoxColumn";
+            this.시그니처DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // 카테고리DataGridViewTextBoxColumn
+            // 
+            this.카테고리DataGridViewTextBoxColumn.DataPropertyName = "카테고리";
+            this.카테고리DataGridViewTextBoxColumn.HeaderText = "카테고리";
+            this.카테고리DataGridViewTextBoxColumn.Name = "카테고리DataGridViewTextBoxColumn";
+            this.카테고리DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // 추천사용자DataGridViewTextBoxColumn
+            // 
+            this.추천사용자DataGridViewTextBoxColumn.DataPropertyName = "추천사용자";
+            this.추천사용자DataGridViewTextBoxColumn.HeaderText = "추천사용자";
+            this.추천사용자DataGridViewTextBoxColumn.Name = "추천사용자DataGridViewTextBoxColumn";
+            this.추천사용자DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // 선정시간DataGridViewTextBoxColumn
+            // 
+            this.선정시간DataGridViewTextBoxColumn.DataPropertyName = "선정시간";
+            this.선정시간DataGridViewTextBoxColumn.HeaderText = "선정시간";
+            this.선정시간DataGridViewTextBoxColumn.Name = "선정시간DataGridViewTextBoxColumn";
+            this.선정시간DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // 추천수DataGridViewTextBoxColumn
+            // 
+            this.추천수DataGridViewTextBoxColumn.DataPropertyName = "추천수";
+            this.추천수DataGridViewTextBoxColumn.HeaderText = "추천수";
+            this.추천수DataGridViewTextBoxColumn.Name = "추천수DataGridViewTextBoxColumn";
+            this.추천수DataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // RestListForm
             // 
@@ -361,14 +370,14 @@
         private System.Windows.Forms.CheckedListBox cblCategory;
         private System.Windows.Forms.DataGridView dgvRestList;
         private System.Windows.Forms.Button btnAddRest;
+        private System.Windows.Forms.BindingSource vWRESTLISTBindingSource;
+        private DataSet2 dataSet2;
+        private DataSet2TableAdapters.VWRESTLISTTableAdapter vWRESTLISTTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn 식당이름DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn 시그니처DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn 카테고리DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn 추천사용자DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn 선정시간DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn 추천수DataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource vWRESTLISTBindingSource;
-        private DataSet2 dataSet2;
-        private DataSet2TableAdapters.VWRESTLISTTableAdapter vWRESTLISTTableAdapter;
     }
 }

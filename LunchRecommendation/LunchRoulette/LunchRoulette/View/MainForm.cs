@@ -42,7 +42,7 @@ namespace LunchRoulette.View
             joinForm = new JoinForm(this);
             menuForm = new MenuForm(this);
             restListForm = new RestListForm(this);
-            restAddForm = new RestAddForm();
+            restAddForm = new RestAddForm(this);
             restEditForm = new RestEditForm();
             rouletteForm = new RouletteForm();
             pickForm = new PickForm();

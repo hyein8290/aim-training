@@ -139,6 +139,7 @@ namespace LunchRoulette.View
 
         private void btnAddRest_Click(object sender, EventArgs e)
         {
+            mainForm.ShowPage(TYPE_PAGE.REST_ADD_PAGE);
         }
 
     }
