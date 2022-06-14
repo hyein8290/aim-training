@@ -34,13 +34,15 @@ namespace LunchRoulette.Manager
         }
 
         // TODO 다른 클래스로 빼야 되나?
-        public void AddConnLog(string id)
+        public void AddConnLog(string id, char type)
         {
             DatabaseQuery query = new DatabaseQuery();
             OleDbCommand command = DbUtil.connection.CreateCommand();
 
+            string stype = "'" + type + "'"; 
+
             string[] columns = {"id", "userId", "type", "connDate"};
-            string[] values = { "seqConnLog.nextVal", id, "'I'", "sysdate" };
+            string[] values = { "seqConnLog.nextVal", id, stype, "sysdate" };
 
             command.CommandText = query.InsertQuery("tblConnLog", columns, values);
             command.ExecuteNonQuery();

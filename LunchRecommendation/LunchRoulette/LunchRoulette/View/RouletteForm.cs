@@ -55,14 +55,19 @@ namespace LunchRoulette.View
             //3. 추천 버튼 이름 재추천으로 변경
             //4. 선택 버튼 추가
             picQuestion.Hide();
-            Label lblRouletteRest = new Label();
-            lblRouletteRest.Text = "hi";
-            pnlRoulette.Controls.Add(lblRouletteRest);
+            //Label lblRouletteRest = new Label();
+            //lblRouletteRest.Text = "사카나";
+            //pnlRoulette.Controls.Add(lblRouletteRest);
+            lblRestName.Text = "사카나";
+            lblSignature.Text = "만천원초밥";
+            lblRestName.Visible = true;
+            lblSignature.Visible = true;
+
         }
 
         private void PlayRoulette()
         {
-
+            
         }
 
         private void cblExcept_SelectedIndexChanged(object sender, EventArgs e)

@@ -16,7 +16,7 @@ namespace LunchRoulette.Common
 
         public static OleDbConnection connection;
 
-        public static void ConnectDatabase()
+        public static void Connect()
         {
             string connectionString = String.Format("Provider={0}; DataSource={1}; User Id={2};Password={3};", provider, dataSource, userId, password);
             connection = new OleDbConnection(connectionString);
@@ -26,11 +26,14 @@ namespace LunchRoulette.Common
             }
             catch
             {
-                //Console.WriteLine(ex.Message);
-                //MessageBox.Show(ex.Message);
                 MessageBox.Show("[에러] DB에 연결할 수 없습니다.");
                 Environment.Exit(0);
             }
+        }
+
+        public static void Close()
+        {
+            connection.Close();
         }
     }
 }

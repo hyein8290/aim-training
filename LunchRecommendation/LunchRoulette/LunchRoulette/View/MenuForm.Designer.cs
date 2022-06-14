@@ -40,7 +40,8 @@
             // picRoulette
             // 
             this.picRoulette.Image = global::LunchRoulette.Properties.Resources.roulette;
-            this.picRoulette.Location = new System.Drawing.Point(330, 300);
+            this.picRoulette.Location = new System.Drawing.Point(330, 240);
+            this.picRoulette.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.picRoulette.Name = "picRoulette";
             this.picRoulette.Size = new System.Drawing.Size(150, 150);
             this.picRoulette.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -51,7 +52,8 @@
             // picRestList
             // 
             this.picRestList.Image = global::LunchRoulette.Properties.Resources.restaurant;
-            this.picRestList.Location = new System.Drawing.Point(120, 300);
+            this.picRestList.Location = new System.Drawing.Point(120, 240);
+            this.picRestList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.picRestList.Name = "picRestList";
             this.picRestList.Size = new System.Drawing.Size(150, 150);
             this.picRestList.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -62,34 +64,34 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(165, 455);
+            this.label2.Location = new System.Drawing.Point(168, 392);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 15);
+            this.label2.Size = new System.Drawing.Size(53, 12);
             this.label2.TabIndex = 5;
             this.label2.Text = "식당목록";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(372, 455);
+            this.label3.Location = new System.Drawing.Point(376, 392);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 15);
+            this.label3.Size = new System.Drawing.Size(53, 12);
             this.label3.TabIndex = 6;
             this.label3.Text = "식당추천";
             // 
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("나눔고딕", 50F);
-            this.label1.Location = new System.Drawing.Point(0, 100);
+            this.label1.Location = new System.Drawing.Point(0, 80);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(600, 176);
+            this.label1.Size = new System.Drawing.Size(600, 141);
             this.label1.TabIndex = 7;
             this.label1.Text = "오늘 뭐 먹지?";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // MenuForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.Controls.Add(this.label1);
@@ -97,6 +99,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.picRoulette);
             this.Controls.Add(this.picRestList);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MenuForm";
             this.Size = new System.Drawing.Size(600, 700);
             ((System.ComponentModel.ISupportInitialize)(this.picRoulette)).EndInit();

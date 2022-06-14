@@ -1,4 +1,5 @@
-﻿using LunchRoulette.Manager;
+﻿using LunchRoulette.Common;
+using LunchRoulette.Manager;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,10 +14,11 @@ namespace LunchRoulette.View
 {
     public partial class RestListForm : UserControl
     {
-        public RestListForm()
+        private MainForm mainForm;
+        public RestListForm(MainForm mainForm)
         {
             InitializeComponent();
-            
+            this.mainForm = mainForm;   
         }
         private void RestListForm_Load(object sender, EventArgs e)
         {
@@ -29,7 +31,7 @@ namespace LunchRoulette.View
             RestManager restManager = new RestManager();
             DataSet ds = restManager.GetRestDataSet();
             //DsRestList ds = (DsRestList)restManager.GetRestDataSet();
-            dgvRestList.DataSource = ds.Tables[0].DefaultView;
+            dgvRestList.DataSource = ds.Tables[0];
         }
 
         private void chkAll_CheckedChanged(object sender, EventArgs e)
@@ -61,7 +63,10 @@ namespace LunchRoulette.View
             List<string> categories = new List<string>();
             for(int i = 0; i < cblCategory.Items.Count; i++)
             {
-                categories.Add(cblCategory.Items[i].ToString());
+                if(cblCategory.GetItemChecked(i) == true)
+                {
+                    categories.Add(cblCategory.Items[i].ToString());
+                }
             }
 
             string userName = txtUserName.Text;
@@ -135,7 +140,7 @@ namespace LunchRoulette.View
 
         private void btnAddRest_Click(object sender, EventArgs e)
         {
-
         }
+
     }
 }

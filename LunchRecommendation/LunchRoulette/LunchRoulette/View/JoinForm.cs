@@ -14,6 +14,19 @@ namespace LunchRoulette.View
         public JoinForm()
         {
             InitializeComponent();
+
+            // 이 녀석 자꾸 디자이너에서 사라져서 열로 옮김
+            this.cboRank.SelectedIndex = 0;
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnJoin_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

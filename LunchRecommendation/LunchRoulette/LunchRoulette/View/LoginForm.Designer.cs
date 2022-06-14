@@ -37,9 +37,9 @@
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("나눔고딕", 50F);
-            this.label1.Location = new System.Drawing.Point(0, 100);
+            this.label1.Location = new System.Drawing.Point(0, 80);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(600, 176);
+            this.label1.Size = new System.Drawing.Size(600, 141);
             this.label1.TabIndex = 0;
             this.label1.Text = "오늘 뭐 먹지?";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -48,20 +48,18 @@
             // 
             this.txtId.Font = new System.Drawing.Font("나눔고딕", 20F);
             this.txtId.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.txtId.Location = new System.Drawing.Point(155, 293);
-            this.txtId.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtId.Location = new System.Drawing.Point(175, 264);
             this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(285, 38);
+            this.txtId.Size = new System.Drawing.Size(250, 38);
             this.txtId.TabIndex = 1;
             // 
             // btnLogin
             // 
             this.btnLogin.Font = new System.Drawing.Font("나눔고딕", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnLogin.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnLogin.Location = new System.Drawing.Point(155, 341);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnLogin.Location = new System.Drawing.Point(175, 305);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(286, 48);
+            this.btnLogin.Size = new System.Drawing.Size(250, 38);
             this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "로그인";
             this.btnLogin.UseVisualStyleBackColor = true;
@@ -70,10 +68,9 @@
             // btnJoin
             // 
             this.btnJoin.Font = new System.Drawing.Font("나눔고딕", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnJoin.Location = new System.Drawing.Point(155, 394);
-            this.btnJoin.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnJoin.Location = new System.Drawing.Point(175, 345);
             this.btnJoin.Name = "btnJoin";
-            this.btnJoin.Size = new System.Drawing.Size(286, 48);
+            this.btnJoin.Size = new System.Drawing.Size(250, 38);
             this.btnJoin.TabIndex = 3;
             this.btnJoin.Text = "회원가입";
             this.btnJoin.UseVisualStyleBackColor = true;
@@ -81,15 +78,15 @@
             // 
             // LoginForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.Controls.Add(this.btnJoin);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.label1);
             this.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "LoginForm";
             this.Size = new System.Drawing.Size(600, 700);
             this.ResumeLayout(false);

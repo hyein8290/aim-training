@@ -37,7 +37,7 @@
             this.lblExceptRest.AutoSize = true;
             this.lblExceptRest.Dock = System.Windows.Forms.DockStyle.Left;
             this.lblExceptRest.Font = new System.Drawing.Font("나눔고딕", 12F);
-            this.lblExceptRest.Location = new System.Drawing.Point(20, 0);
+            this.lblExceptRest.Location = new System.Drawing.Point(18, 0);
             this.lblExceptRest.Name = "lblExceptRest";
             this.lblExceptRest.Size = new System.Drawing.Size(55, 19);
             this.lblExceptRest.TabIndex = 3;
@@ -48,8 +48,9 @@
             this.btnCancelExcept.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnCancelExcept.Font = new System.Drawing.Font("나눔고딕", 8F);
             this.btnCancelExcept.Location = new System.Drawing.Point(0, 0);
+            this.btnCancelExcept.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCancelExcept.Name = "btnCancelExcept";
-            this.btnCancelExcept.Size = new System.Drawing.Size(20, 25);
+            this.btnCancelExcept.Size = new System.Drawing.Size(18, 20);
             this.btnCancelExcept.TabIndex = 2;
             this.btnCancelExcept.Text = "x";
             this.btnCancelExcept.UseVisualStyleBackColor = true;
@@ -57,13 +58,14 @@
             // 
             // ExceptRestControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.Controls.Add(this.lblExceptRest);
             this.Controls.Add(this.btnCancelExcept);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ExceptRestControl";
-            this.Size = new System.Drawing.Size(150, 25);
+            this.Size = new System.Drawing.Size(131, 20);
             this.ResumeLayout(false);
             this.PerformLayout();
 

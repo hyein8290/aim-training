@@ -37,6 +37,7 @@
     <Reference Include="Infragistics4.Win.DataVisualization.UltraDataChart.v14.2, Version=14.2.20142.2168, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.Misc.v14.2, Version=14.2.20142.2168, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.Portable.Core.v14.2, Version=14.2.20142.2168, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
+    <Reference Include="Infragistics4.Win.UltraWinEditors.v14.2, Version=14.2.20142.2168, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.UltraWinGrid.v14.2, Version=14.2.20142.2168, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.v14.2, Version=14.2.20142.2168, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
     <Reference Include="Microsoft.VisualBasic" />
@@ -58,8 +59,24 @@
   <ItemGroup>
     <Compile Include="Common\DbUtil.cs" />
     <Compile Include="Common\TYPE_PAGE.cs" />
+    <Compile Include="DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CurrentUser.cs" />
     <Compile Include="Data\Restaurant.cs" />
     <Compile Include="Data\User.cs" />
+    <Compile Include="dsRest.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsRest.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DsRestList.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -74,12 +91,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="View\btnHome.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="View\btnHome.Designer.cs">
-      <DependentUpon>btnHome.cs</DependentUpon>
     </Compile>
     <Compile Include="View\ExceptRestControl.cs">
       <SubType>UserControl</SubType>
@@ -141,9 +152,6 @@
     <Compile Include="View\RouletteForm.Designer.cs">
       <DependentUpon>RouletteForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="View\btnHome.resx">
-      <DependentUpon>btnHome.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="View\ExceptRestControl.resx">
       <DependentUpon>ExceptRestControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -181,6 +189,39 @@
       <DependentUpon>RouletteForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="DataSet1.xsc">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSet1.xss">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet2.xsc">
+      <DependentUpon>DataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSet2.xss">
+      <DependentUpon>DataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="dsRest.xsc">
+      <DependentUpon>dsRest.xsd</DependentUpon>
+    </None>
+    <None Include="dsRest.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsRest.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsRest.xss">
+      <DependentUpon>dsRest.xsd</DependentUpon>
+    </None>
     <None Include="DsRestList.xsc">
       <DependentUpon>DsRestList.xsd</DependentUpon>
     </None>
@@ -213,6 +254,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\signout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\home2.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\home.png" />

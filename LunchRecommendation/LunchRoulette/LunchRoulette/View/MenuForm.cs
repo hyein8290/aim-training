@@ -17,6 +17,7 @@ namespace LunchRoulette.View
         {
             InitializeComponent();
             this.mainForm = mainForm;
+            mainForm.ShowAllCommonButtons();
         }
 
         private void picRoulette_Click(object sender, EventArgs e)
@@ -28,5 +29,6 @@ namespace LunchRoulette.View
         {
             mainForm.ShowPage(TYPE_PAGE.REST_LIST_PAGE);
         }
+
     }
 }

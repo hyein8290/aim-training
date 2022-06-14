@@ -29,8 +29,9 @@ namespace LunchRoulette.View
 
             InitForm();
 
+            HideAllCommonButtons();
             ShowPage(TYPE_PAGE.LOGIN_PAGE);
-            DbUtil.ConnectDatabase();
+            DbUtil.Connect();
 
         }
 
@@ -39,7 +40,7 @@ namespace LunchRoulette.View
             loginForm = new LoginForm(this);
             joinForm = new JoinForm();
             menuForm = new MenuForm(this);
-            restListForm = new RestListForm();
+            restListForm = new RestListForm(this);
             restAddForm = new RestAddForm();
             restEditForm = new RestEditForm();
             rouletteForm = new RouletteForm();
@@ -48,9 +49,10 @@ namespace LunchRoulette.View
 
         public void ShowPage(TYPE_PAGE type)
         {
+            HideAllCommonButtons();
             HideAllPages();
 
-            if(type == TYPE_PAGE.LOGIN_PAGE)
+            if (type == TYPE_PAGE.LOGIN_PAGE)
             {
                 loginForm.Visible = true;
                 this.pnlMain.Controls.Add(loginForm);
@@ -63,31 +65,37 @@ namespace LunchRoulette.View
             else if(type == TYPE_PAGE.MENU_PAGE)
             {
                 menuForm.Visible = true;
+                picLogout.Visible = true;
                 this.pnlMain.Controls.Add(menuForm);
             }
             else if(type == TYPE_PAGE.REST_LIST_PAGE)
             {
                 restListForm.Visible = true;
+                ShowAllCommonButtons();
                 this.pnlMain.Controls.Add(restListForm);
             }
             else if(type == TYPE_PAGE.REST_ADD_PAGE)
             {
                 restAddForm.Visible = true;
+                ShowAllCommonButtons();
                 this.pnlMain.Controls.Add(restAddForm);
             }
             else if(type == TYPE_PAGE.REST_EDIT_PAGE)
             {
                 restEditForm.Visible = true;
+                ShowAllCommonButtons();
                 this.pnlMain.Controls.Add(restEditForm);
             }
             else if(type == TYPE_PAGE.ROULETTE_PAGE)
             {
                 rouletteForm.Visible = true;
+                ShowAllCommonButtons();
                 this.pnlMain.Controls.Add(rouletteForm);
             }
             else if(type == TYPE_PAGE.PICK_PAGE)
             {
                 pickForm.Visible = true;
+                ShowAllCommonButtons();
                 this.pnlMain.Controls.Add(pickForm);
             }
         }
@@ -104,7 +112,26 @@ namespace LunchRoulette.View
             pickForm.Visible = false;
         }
 
+        public void HideAllCommonButtons()
+        {
+            picLogout.Visible = false;
+            picHome.Visible = false;
+        }
 
+        public void ShowAllCommonButtons()
+        {
+            picLogout.Visible = true;
+            picHome.Visible = true;
+        }
 
+        private void picLogout_Click(object sender, EventArgs e)
+        {
+            ShowPage(TYPE_PAGE.LOGIN_PAGE);
+        }
+
+        private void picHome_Click(object sender, EventArgs e)
+        {
+            ShowPage(TYPE_PAGE.MENU_PAGE);
+        }
     }
 }

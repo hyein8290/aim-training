@@ -33,5 +33,17 @@ namespace LunchRoulette.Properties {
                 return ((string)(this["ConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LoginId {
+            get {
+                return ((string)(this["LoginId"]));
+            }
+            set {
+                this["LoginId"] = value;
+            }
+        }
     }
 }

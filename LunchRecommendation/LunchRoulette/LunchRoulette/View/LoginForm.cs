@@ -23,6 +23,7 @@ namespace LunchRoulette.View
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string userId = txtId.Text;
+            txtId.Text = "";
 
             if (ValidateId(userId))
             {
@@ -35,7 +36,7 @@ namespace LunchRoulette.View
             UserManager userManager = new UserManager();
             if (userManager.ExistsUserId(userId))
             {
-                userManager.AddConnLog(userId);
+                userManager.AddConnLog(userId, 'I');
                 mainForm.ShowPage(TYPE_PAGE.MENU_PAGE);
             }
             else
@@ -46,7 +47,7 @@ namespace LunchRoulette.View
 
         private void btnJoin_Click(object sender, EventArgs e)
         {
-
+            mainForm.ShowPage(TYPE_PAGE.JOIN_PAGE);
         }
 
         private Boolean ValidateId(string txtId)

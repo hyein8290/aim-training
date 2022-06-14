@@ -38,6 +38,8 @@
             this.tlpExceptRest = new System.Windows.Forms.TableLayoutPanel();
             this.btnRoulette = new System.Windows.Forms.Button();
             this.pnlRoulette = new System.Windows.Forms.Panel();
+            this.lblSignature = new System.Windows.Forms.Label();
+            this.lblRestName = new System.Windows.Forms.Label();
             this.picQuestion = new System.Windows.Forms.PictureBox();
             this.pnlRoulette.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picQuestion)).BeginInit();
@@ -55,17 +57,18 @@
             "일식",
             "양식",
             "기타"});
-            this.cblPrefer.Location = new System.Drawing.Point(243, 169);
+            this.cblPrefer.Location = new System.Drawing.Point(191, 132);
+            this.cblPrefer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cblPrefer.MultiColumn = true;
             this.cblPrefer.Name = "cblPrefer";
-            this.cblPrefer.Size = new System.Drawing.Size(400, 20);
+            this.cblPrefer.Size = new System.Drawing.Size(321, 20);
             this.cblPrefer.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.Location = new System.Drawing.Point(99, 169);
+            this.label1.Location = new System.Drawing.Point(65, 132);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(64, 17);
             this.label1.TabIndex = 2;
@@ -75,7 +78,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label2.Location = new System.Drawing.Point(99, 213);
+            this.label2.Location = new System.Drawing.Point(65, 167);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(64, 17);
             this.label2.TabIndex = 5;
@@ -93,10 +96,11 @@
             "일식",
             "양식",
             "기타"});
-            this.cblExcept.Location = new System.Drawing.Point(243, 213);
+            this.cblExcept.Location = new System.Drawing.Point(191, 167);
+            this.cblExcept.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cblExcept.MultiColumn = true;
             this.cblExcept.Name = "cblExcept";
-            this.cblExcept.Size = new System.Drawing.Size(400, 20);
+            this.cblExcept.Size = new System.Drawing.Size(321, 20);
             this.cblExcept.TabIndex = 4;
             this.cblExcept.SelectedIndexChanged += new System.EventHandler(this.cblExcept_SelectedIndexChanged);
             // 
@@ -104,7 +108,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label3.Location = new System.Drawing.Point(99, 257);
+            this.label3.Location = new System.Drawing.Point(65, 202);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(64, 17);
             this.label3.TabIndex = 6;
@@ -113,17 +117,19 @@
             // txtExceptRest
             // 
             this.txtExceptRest.Font = new System.Drawing.Font("나눔고딕", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtExceptRest.Location = new System.Drawing.Point(243, 249);
+            this.txtExceptRest.Location = new System.Drawing.Point(191, 196);
+            this.txtExceptRest.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtExceptRest.Name = "txtExceptRest";
-            this.txtExceptRest.Size = new System.Drawing.Size(227, 25);
+            this.txtExceptRest.Size = new System.Drawing.Size(199, 25);
             this.txtExceptRest.TabIndex = 7;
             // 
             // btnExceptRest
             // 
             this.btnExceptRest.Font = new System.Drawing.Font("나눔고딕", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnExceptRest.Location = new System.Drawing.Point(476, 248);
+            this.btnExceptRest.Location = new System.Drawing.Point(395, 195);
+            this.btnExceptRest.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnExceptRest.Name = "btnExceptRest";
-            this.btnExceptRest.Size = new System.Drawing.Size(80, 30);
+            this.btnExceptRest.Size = new System.Drawing.Size(70, 24);
             this.btnExceptRest.TabIndex = 8;
             this.btnExceptRest.Text = "추가";
             this.btnExceptRest.UseVisualStyleBackColor = true;
@@ -134,20 +140,22 @@
             this.tlpExceptRest.ColumnCount = 2;
             this.tlpExceptRest.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpExceptRest.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpExceptRest.Location = new System.Drawing.Point(243, 282);
+            this.tlpExceptRest.Location = new System.Drawing.Point(191, 222);
+            this.tlpExceptRest.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tlpExceptRest.Name = "tlpExceptRest";
             this.tlpExceptRest.RowCount = 3;
-            this.tlpExceptRest.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tlpExceptRest.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tlpExceptRest.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tlpExceptRest.Size = new System.Drawing.Size(308, 94);
+            this.tlpExceptRest.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.tlpExceptRest.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.tlpExceptRest.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.tlpExceptRest.Size = new System.Drawing.Size(270, 75);
             this.tlpExceptRest.TabIndex = 0;
             // 
             // btnRoulette
             // 
-            this.btnRoulette.Location = new System.Drawing.Point(295, 571);
+            this.btnRoulette.Location = new System.Drawing.Point(236, 454);
+            this.btnRoulette.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRoulette.Name = "btnRoulette";
-            this.btnRoulette.Size = new System.Drawing.Size(75, 23);
+            this.btnRoulette.Size = new System.Drawing.Size(66, 25);
             this.btnRoulette.TabIndex = 12;
             this.btnRoulette.Text = "추천";
             this.btnRoulette.UseVisualStyleBackColor = true;
@@ -156,25 +164,53 @@
             // pnlRoulette
             // 
             this.pnlRoulette.BackColor = System.Drawing.Color.Gray;
+            this.pnlRoulette.Controls.Add(this.lblSignature);
+            this.pnlRoulette.Controls.Add(this.lblRestName);
             this.pnlRoulette.Controls.Add(this.picQuestion);
-            this.pnlRoulette.Location = new System.Drawing.Point(102, 382);
+            this.pnlRoulette.Location = new System.Drawing.Point(67, 302);
+            this.pnlRoulette.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlRoulette.Name = "pnlRoulette";
-            this.pnlRoulette.Size = new System.Drawing.Size(449, 172);
+            this.pnlRoulette.Size = new System.Drawing.Size(393, 138);
             this.pnlRoulette.TabIndex = 14;
+            // 
+            // lblSignature
+            // 
+            this.lblSignature.AutoSize = true;
+            this.lblSignature.Font = new System.Drawing.Font("나눔고딕", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblSignature.Location = new System.Drawing.Point(147, 73);
+            this.lblSignature.Name = "lblSignature";
+            this.lblSignature.Size = new System.Drawing.Size(104, 28);
+            this.lblSignature.TabIndex = 2;
+            this.lblSignature.Text = "시그니처";
+            this.lblSignature.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblSignature.Visible = false;
+            // 
+            // lblRestName
+            // 
+            this.lblRestName.AutoSize = true;
+            this.lblRestName.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRestName.Location = new System.Drawing.Point(135, 37);
+            this.lblRestName.Name = "lblRestName";
+            this.lblRestName.Size = new System.Drawing.Size(135, 36);
+            this.lblRestName.TabIndex = 1;
+            this.lblRestName.Text = "식당이름";
+            this.lblRestName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblRestName.Visible = false;
             // 
             // picQuestion
             // 
             this.picQuestion.Image = global::LunchRoulette.Properties.Resources.question_sign;
-            this.picQuestion.Location = new System.Drawing.Point(177, 33);
+            this.picQuestion.Location = new System.Drawing.Point(155, 26);
+            this.picQuestion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.picQuestion.Name = "picQuestion";
-            this.picQuestion.Size = new System.Drawing.Size(100, 100);
+            this.picQuestion.Size = new System.Drawing.Size(88, 80);
             this.picQuestion.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picQuestion.TabIndex = 0;
             this.picQuestion.TabStop = false;
             // 
             // RouletteForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.Controls.Add(this.pnlRoulette);
@@ -187,10 +223,12 @@
             this.Controls.Add(this.cblExcept);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cblPrefer);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "RouletteForm";
-            this.Size = new System.Drawing.Size(600, 700);
+            this.Size = new System.Drawing.Size(525, 560);
             this.Load += new System.EventHandler(this.RouletteForm_Load);
             this.pnlRoulette.ResumeLayout(false);
+            this.pnlRoulette.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picQuestion)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -210,5 +248,7 @@
         private System.Windows.Forms.Button btnRoulette;
         private System.Windows.Forms.Panel pnlRoulette;
         private System.Windows.Forms.PictureBox picQuestion;
+        private System.Windows.Forms.Label lblRestName;
+        private System.Windows.Forms.Label lblSignature;
     }
 }

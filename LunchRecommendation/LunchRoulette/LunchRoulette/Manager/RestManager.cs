@@ -65,7 +65,7 @@ namespace LunchRoulette.Manager
             OleDbCommand command = DbUtil.connection.CreateCommand();
             
             StringBuilder query = new StringBuilder();
-            query.Append("select * from vwrestlist where category in (");
+            query.Append("select * from vwrestlist where 카테고리 in (");
             for(int i = 0; i < categories.Count; i++)
             {
                 if(i < categories.Count - 1) 
@@ -75,9 +75,9 @@ namespace LunchRoulette.Manager
             }
             if(userName != "")
             {
-                query.Append("and username = '" + userName + "' ");
+                query.Append("and 추천사용자 = '" + userName + "' ");
             }
-            query.Append("and lastdate between '" + startDate + "' and '" + endDate + "'");
+            query.Append("and 선정시간 between '" + startDate + "' and '" + endDate + "'");
             
             command.CommandText = query.ToString();
 
