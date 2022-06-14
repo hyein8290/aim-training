@@ -47,5 +47,15 @@ namespace LunchRoulette.Manager
             command.CommandText = query.InsertQuery("tblConnLog", columns, values);
             command.ExecuteNonQuery();
         }
+
+        public int JoinUser(string id, string name, string rank)
+        {
+            //DatabaseQuery query = new DatabaseQuery();
+            OleDbCommand command = DbUtil.connection.CreateCommand();
+
+            //command.CommandText = query.InsertQuery("tblUser", )
+            command.CommandText = String.Format("insert into tblUser values ('{0}', '{1}', '{2}')", id, name, rank);
+            return command.ExecuteNonQuery();
+        }
     }
 }

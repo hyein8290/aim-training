@@ -37,6 +37,8 @@ namespace LunchRoulette.View
             if (userManager.ExistsUserId(userId))
             {
                 userManager.AddConnLog(userId, 'I');
+                Properties.Settings.Default.LoginId = userId;
+                //Properties.Settings.Default.Save();
                 mainForm.ShowPage(TYPE_PAGE.MENU_PAGE);
             }
             else

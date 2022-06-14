@@ -30,7 +30,6 @@ namespace LunchRoulette.View
         {
             RestManager restManager = new RestManager();
             DataSet ds = restManager.GetRestDataSet();
-            //DsRestList ds = (DsRestList)restManager.GetRestDataSet();
             dgvRestList.DataSource = ds.Tables[0];
         }
 

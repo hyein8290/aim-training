@@ -1,4 +1,5 @@
 ﻿using LunchRoulette.Common;
+using LunchRoulette.Manager;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -38,7 +39,7 @@ namespace LunchRoulette.View
         public void InitForm()
         {
             loginForm = new LoginForm(this);
-            joinForm = new JoinForm();
+            joinForm = new JoinForm(this);
             menuForm = new MenuForm(this);
             restListForm = new RestListForm(this);
             restAddForm = new RestAddForm();
@@ -126,12 +127,23 @@ namespace LunchRoulette.View
 
         private void picLogout_Click(object sender, EventArgs e)
         {
+            Logout();
             ShowPage(TYPE_PAGE.LOGIN_PAGE);
         }
 
         private void picHome_Click(object sender, EventArgs e)
         {
             ShowPage(TYPE_PAGE.MENU_PAGE);
+        }
+
+        private void Logout()
+        {
+            string userId = Properties.Settings.Default.LoginId;
+
+            UserManager userManager = new UserManager();
+            userManager.AddConnLog(userId, 'O');
+
+            Properties.Settings.Default.Reset();
         }
     }
 }
