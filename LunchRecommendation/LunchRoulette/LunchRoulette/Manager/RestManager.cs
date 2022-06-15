@@ -65,7 +65,7 @@ namespace LunchRoulette.Manager
             OleDbCommand command = DbUtil.connection.CreateCommand();
             
             StringBuilder query = new StringBuilder();
-            query.Append("select * from vwrestlist where 카테고리 in (");
+            query.Append("select * from vwrestlist where category in (");
             for(int i = 0; i < categories.Count; i++)
             {
                 if(i < categories.Count - 1) 
@@ -75,9 +75,9 @@ namespace LunchRoulette.Manager
             }
             if(userName != "")
             {
-                query.Append("and 추천사용자 = '" + userName + "' ");
+                query.Append("and username = '" + userName + "' ");
             }
-            query.Append("and 선정시간 between '" + startDate + "' and '" + endDate + "'");
+            query.Append("and lastpickdate between '" + startDate + "' and '" + endDate + "'");
             
             command.CommandText = query.ToString();
 
@@ -99,6 +99,19 @@ namespace LunchRoulette.Manager
 
             command.CommandText = query.InsertQuery("tblConnLog", columns, values);
             command.ExecuteNonQuery();
+        }
+
+        public int AddRest(string name, string category, string signature) 
+        {
+            DatabaseQuery query = new DatabaseQuery();
+            OleDbCommand command = DbUtil.connection.CreateCommand();
+
+            //string[] columns = { "id", "name", "category", "signature"};
+            //string[] values = { "seqRestaurant.nextVal", name, category, signature };
+
+            //command.CommandText = query.InsertQuery("tblRestaurant", columns, values);
+            command.CommandText = String.Format("INSERT INTO tblRestaurant(id, name, category, signature) VALUES (seqRestaurant.nextVal, '{0}', '{1}', '{2}')", name, category, signature);
+            return command.ExecuteNonQuery();
         }
     }
 }

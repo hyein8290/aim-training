@@ -50,6 +50,7 @@ namespace LunchRoulette.Manager
 
         public int JoinUser(string id, string name, string rank)
         {
+            // TODO 쿼리 관리 
             //DatabaseQuery query = new DatabaseQuery();
             OleDbCommand command = DbUtil.connection.CreateCommand();
 

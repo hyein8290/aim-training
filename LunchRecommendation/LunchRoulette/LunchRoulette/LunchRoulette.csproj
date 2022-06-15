@@ -69,7 +69,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet2.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Data\CurrentUser.cs" />
     <Compile Include="Data\Restaurant.cs" />
     <Compile Include="Data\User.cs" />
     <Compile Include="dsRest.Designer.cs">

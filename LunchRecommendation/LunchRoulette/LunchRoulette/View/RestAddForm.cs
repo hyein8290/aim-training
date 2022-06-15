@@ -28,37 +28,44 @@ namespace LunchRoulette.View
         private void btnAdd_Click(object sender, EventArgs e)
         {
             string restName = txtRestName.Text;
+            string category = GetCategory();
             string signature = txtSignature.Text;
 
             if(ValidateRestName(restName) && ValidateSignature(signature))
             {
-                AddRest();
+                AddRest(restName, category, signature);
             }
         }
 
-        private void AddRest()
+        private void AddRest(string restName, string category, string signature)
         {
             RestManager restManager = new RestManager();
 
             
-            if (restManager.AddRest() > 0)
+            if (restManager.AddRest(restName, category, signature) > 0)
             {
-                MessageBox.Show("회원가입에 성공했습니다");
-                this.mainForm.ShowPage(TYPE_PAGE.LOGIN_PAGE);
+                MessageBox.Show(String.Format("'{0}'을(를) 추가했습니다.", restName));
+                this.mainForm.ShowPage(TYPE_PAGE.REST_LIST_PAGE);
             }
             else
             {
-                MessageBox.Show("회원가입에 실패했습니다.");
+                MessageBox.Show("식당을 추가에 실패했습니다.");
             }
         }
 
-        private Boolean ValidateCategory()
+        // 메소드 이름 고민,,
+        // GetCategory vs ValidateCategory
+        private string GetCategory()
         {
-            foreach(Control radio in pnlCategory.Controls)
+            foreach(RadioButton radio in pnlCategory.Controls)
             {
-                
+                if (radio.Checked)
+                {
+                    return radio.Text;
+                }
             }
-            return true;
+
+            return null;
         }
 
         private Boolean ValidateRestName(string restName)

@@ -145,5 +145,13 @@ namespace LunchRoulette.View
 
             Properties.Settings.Default.Reset();
         }
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if(Properties.Settings.Default.LoginId != "")
+            {
+                Logout();
+            }
+        }
     }
 }

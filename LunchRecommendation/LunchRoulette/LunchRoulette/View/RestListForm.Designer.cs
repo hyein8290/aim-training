@@ -44,16 +44,16 @@
             this.dtpStart = new System.Windows.Forms.DateTimePicker();
             this.btnSearch = new System.Windows.Forms.Button();
             this.dgvRestList = new System.Windows.Forms.DataGridView();
-            this.vWRESTLISTBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataSet2 = new LunchRoulette.DataSet2();
-            this.btnAddRest = new System.Windows.Forms.Button();
-            this.vWRESTLISTTableAdapter = new LunchRoulette.DataSet2TableAdapters.VWRESTLISTTableAdapter();
             this.식당이름DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.시그니처DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.카테고리DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.추천사용자DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.선정시간DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.추천수DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vWRESTLISTBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataSet2 = new LunchRoulette.DataSet2();
+            this.btnAddRest = new System.Windows.Forms.Button();
+            this.vWRESTLISTTableAdapter = new LunchRoulette.DataSet2TableAdapters.VWRESTLISTTableAdapter();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -257,31 +257,6 @@
             this.dgvRestList.TabIndex = 2;
             this.dgvRestList.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvRestList_CellMouseClick);
             // 
-            // vWRESTLISTBindingSource
-            // 
-            this.vWRESTLISTBindingSource.DataMember = "VWRESTLIST";
-            this.vWRESTLISTBindingSource.DataSource = this.dataSet2;
-            // 
-            // dataSet2
-            // 
-            this.dataSet2.DataSetName = "DataSet2";
-            this.dataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // btnAddRest
-            // 
-            this.btnAddRest.Location = new System.Drawing.Point(478, 228);
-            this.btnAddRest.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnAddRest.Name = "btnAddRest";
-            this.btnAddRest.Size = new System.Drawing.Size(66, 18);
-            this.btnAddRest.TabIndex = 3;
-            this.btnAddRest.Text = "추가";
-            this.btnAddRest.UseVisualStyleBackColor = true;
-            this.btnAddRest.Click += new System.EventHandler(this.btnAddRest_Click);
-            // 
-            // vWRESTLISTTableAdapter
-            // 
-            this.vWRESTLISTTableAdapter.ClearBeforeFill = true;
-            // 
             // 식당이름DataGridViewTextBoxColumn
             // 
             this.식당이름DataGridViewTextBoxColumn.DataPropertyName = "식당이름";
@@ -323,6 +298,31 @@
             this.추천수DataGridViewTextBoxColumn.HeaderText = "추천수";
             this.추천수DataGridViewTextBoxColumn.Name = "추천수DataGridViewTextBoxColumn";
             this.추천수DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // vWRESTLISTBindingSource
+            // 
+            this.vWRESTLISTBindingSource.DataMember = "VWRESTLIST";
+            this.vWRESTLISTBindingSource.DataSource = this.dataSet2;
+            // 
+            // dataSet2
+            // 
+            this.dataSet2.DataSetName = "DataSet2";
+            this.dataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // btnAddRest
+            // 
+            this.btnAddRest.Location = new System.Drawing.Point(478, 228);
+            this.btnAddRest.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAddRest.Name = "btnAddRest";
+            this.btnAddRest.Size = new System.Drawing.Size(66, 18);
+            this.btnAddRest.TabIndex = 3;
+            this.btnAddRest.Text = "추가";
+            this.btnAddRest.UseVisualStyleBackColor = true;
+            this.btnAddRest.Click += new System.EventHandler(this.btnAddRest_Click);
+            // 
+            // vWRESTLISTTableAdapter
+            // 
+            this.vWRESTLISTTableAdapter.ClearBeforeFill = true;
             // 
             // RestListForm
             // 
