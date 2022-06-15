@@ -14,7 +14,8 @@ namespace LunchRoulette.View
 {
     public partial class MainForm : Form
     {
-
+        // 폼이 백만개면 백만개 다 선언할 수 없잖아. 이 방법은 아니야....
+        // TODO 화면전환 방식 바꾸기
         private LoginForm loginForm;
         private JoinForm joinForm;
         private MenuForm menuForm;
@@ -23,6 +24,8 @@ namespace LunchRoulette.View
         private RestEditForm restEditForm;
         private RouletteForm rouletteForm;
         private PickForm pickForm;
+
+        public RestEditForm RestEditForm { get => restEditForm; set => restEditForm = value; }
 
         public MainForm()
         {
@@ -43,7 +46,7 @@ namespace LunchRoulette.View
             menuForm = new MenuForm(this);
             restListForm = new RestListForm(this);
             restAddForm = new RestAddForm(this);
-            restEditForm = new RestEditForm();
+            restEditForm = new RestEditForm(this);
             rouletteForm = new RouletteForm();
             pickForm = new PickForm();
         }
@@ -72,6 +75,8 @@ namespace LunchRoulette.View
             else if(type == TYPE_PAGE.REST_LIST_PAGE)
             {
                 restListForm.Visible = true;
+                //restListForm.Show();
+
                 ShowAllCommonButtons();
                 this.pnlMain.Controls.Add(restListForm);
             }
@@ -81,13 +86,13 @@ namespace LunchRoulette.View
                 ShowAllCommonButtons();
                 this.pnlMain.Controls.Add(restAddForm);
             }
-            else if(type == TYPE_PAGE.REST_EDIT_PAGE)
+            else if (type == TYPE_PAGE.REST_EDIT_PAGE)
             {
                 restEditForm.Visible = true;
                 ShowAllCommonButtons();
                 this.pnlMain.Controls.Add(restEditForm);
             }
-            else if(type == TYPE_PAGE.ROULETTE_PAGE)
+            else if (type == TYPE_PAGE.ROULETTE_PAGE)
             {
                 rouletteForm.Visible = true;
                 ShowAllCommonButtons();
@@ -106,7 +111,9 @@ namespace LunchRoulette.View
             loginForm.Visible = false;
             joinForm.Visible = false;
             menuForm.Visible = false;
+
             restListForm.Visible = false;
+            //this.pnlMain.Controls.Remove(restListForm);
             restAddForm.Visible = false;
             restEditForm.Visible = false;
             rouletteForm.Visible = false;

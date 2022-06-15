@@ -20,9 +20,9 @@ namespace LunchRoulette {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("DataSet1")]
+    [global::System.Xml.Serialization.XmlRootAttribute("dsRestaurant")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class DataSet1 : global::System.Data.DataSet {
+    public partial class dsRestaurant : global::System.Data.DataSet {
         
         private VWRESTLISTDataTable tableVWRESTLIST;
         
@@ -30,7 +30,7 @@ namespace LunchRoulette {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public DataSet1() {
+        public dsRestaurant() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace LunchRoulette {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        protected DataSet1(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected dsRestaurant(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -127,7 +127,7 @@ namespace LunchRoulette {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            DataSet1 cln = ((DataSet1)(base.Clone()));
+            dsRestaurant cln = ((dsRestaurant)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -199,9 +199,9 @@ namespace LunchRoulette {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "DataSet1";
+            this.DataSetName = "dsRestaurant";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/DataSet1.xsd";
+            this.Namespace = "http://tempuri.org/dsRestaurant.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableVWRESTLIST = new VWRESTLISTDataTable();
@@ -225,7 +225,7 @@ namespace LunchRoulette {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            DataSet1 ds = new DataSet1();
+            dsRestaurant ds = new dsRestaurant();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -279,17 +279,17 @@ namespace LunchRoulette {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class VWRESTLISTDataTable : global::System.Data.TypedTableBase<VWRESTLISTRow> {
             
-            private global::System.Data.DataColumn column식당이름;
+            private global::System.Data.DataColumn columnRESTNAME;
             
-            private global::System.Data.DataColumn column시그니처;
+            private global::System.Data.DataColumn columnSIGNATURE;
             
-            private global::System.Data.DataColumn column카테고리;
+            private global::System.Data.DataColumn columnCATEGORY;
             
-            private global::System.Data.DataColumn column사용자;
+            private global::System.Data.DataColumn columnUSERNAME;
             
-            private global::System.Data.DataColumn column선정시간;
+            private global::System.Data.DataColumn columnLASTPICKDATE;
             
-            private global::System.Data.DataColumn column추천수;
+            private global::System.Data.DataColumn columnPICKCOUNT;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -326,49 +326,49 @@ namespace LunchRoulette {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn 식당이름Column {
+            public global::System.Data.DataColumn RESTNAMEColumn {
                 get {
-                    return this.column식당이름;
+                    return this.columnRESTNAME;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn 시그니처Column {
+            public global::System.Data.DataColumn SIGNATUREColumn {
                 get {
-                    return this.column시그니처;
+                    return this.columnSIGNATURE;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn 카테고리Column {
+            public global::System.Data.DataColumn CATEGORYColumn {
                 get {
-                    return this.column카테고리;
+                    return this.columnCATEGORY;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn 사용자Column {
+            public global::System.Data.DataColumn USERNAMEColumn {
                 get {
-                    return this.column사용자;
+                    return this.columnUSERNAME;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn 선정시간Column {
+            public global::System.Data.DataColumn LASTPICKDATEColumn {
                 get {
-                    return this.column선정시간;
+                    return this.columnLASTPICKDATE;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn 추천수Column {
+            public global::System.Data.DataColumn PICKCOUNTColumn {
                 get {
-                    return this.column추천수;
+                    return this.columnPICKCOUNT;
                 }
             }
             
@@ -409,15 +409,15 @@ namespace LunchRoulette {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public VWRESTLISTRow AddVWRESTLISTRow(string 식당이름, string 시그니처, string 카테고리, string 사용자, string 선정시간, decimal 추천수) {
+            public VWRESTLISTRow AddVWRESTLISTRow(string RESTNAME, string SIGNATURE, string CATEGORY, string USERNAME, string LASTPICKDATE, decimal PICKCOUNT) {
                 VWRESTLISTRow rowVWRESTLISTRow = ((VWRESTLISTRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        식당이름,
-                        시그니처,
-                        카테고리,
-                        사용자,
-                        선정시간,
-                        추천수};
+                        RESTNAME,
+                        SIGNATURE,
+                        CATEGORY,
+                        USERNAME,
+                        LASTPICKDATE,
+                        PICKCOUNT};
                 rowVWRESTLISTRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowVWRESTLISTRow);
                 return rowVWRESTLISTRow;
@@ -440,34 +440,34 @@ namespace LunchRoulette {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
-                this.column식당이름 = base.Columns["식당이름"];
-                this.column시그니처 = base.Columns["시그니처"];
-                this.column카테고리 = base.Columns["카테고리"];
-                this.column사용자 = base.Columns["사용자"];
-                this.column선정시간 = base.Columns["선정시간"];
-                this.column추천수 = base.Columns["추천수"];
+                this.columnRESTNAME = base.Columns["RESTNAME"];
+                this.columnSIGNATURE = base.Columns["SIGNATURE"];
+                this.columnCATEGORY = base.Columns["CATEGORY"];
+                this.columnUSERNAME = base.Columns["USERNAME"];
+                this.columnLASTPICKDATE = base.Columns["LASTPICKDATE"];
+                this.columnPICKCOUNT = base.Columns["PICKCOUNT"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
-                this.column식당이름 = new global::System.Data.DataColumn("식당이름", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.column식당이름);
-                this.column시그니처 = new global::System.Data.DataColumn("시그니처", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.column시그니처);
-                this.column카테고리 = new global::System.Data.DataColumn("카테고리", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.column카테고리);
-                this.column사용자 = new global::System.Data.DataColumn("사용자", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.column사용자);
-                this.column선정시간 = new global::System.Data.DataColumn("선정시간", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.column선정시간);
-                this.column추천수 = new global::System.Data.DataColumn("추천수", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.column추천수);
-                this.column식당이름.MaxLength = 200;
-                this.column시그니처.MaxLength = 300;
-                this.column카테고리.MaxLength = 10;
-                this.column사용자.MaxLength = 100;
-                this.column선정시간.MaxLength = 10;
+                this.columnRESTNAME = new global::System.Data.DataColumn("RESTNAME", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRESTNAME);
+                this.columnSIGNATURE = new global::System.Data.DataColumn("SIGNATURE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSIGNATURE);
+                this.columnCATEGORY = new global::System.Data.DataColumn("CATEGORY", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCATEGORY);
+                this.columnUSERNAME = new global::System.Data.DataColumn("USERNAME", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUSERNAME);
+                this.columnLASTPICKDATE = new global::System.Data.DataColumn("LASTPICKDATE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLASTPICKDATE);
+                this.columnPICKCOUNT = new global::System.Data.DataColumn("PICKCOUNT", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPICKCOUNT);
+                this.columnRESTNAME.MaxLength = 200;
+                this.columnSIGNATURE.MaxLength = 300;
+                this.columnCATEGORY.MaxLength = 10;
+                this.columnUSERNAME.MaxLength = 100;
+                this.columnLASTPICKDATE.MaxLength = 10;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -535,7 +535,7 @@ namespace LunchRoulette {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSet1 ds = new DataSet1();
+                dsRestaurant ds = new dsRestaurant();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -610,170 +610,170 @@ namespace LunchRoulette {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string 식당이름 {
+            public string RESTNAME {
                 get {
                     try {
-                        return ((string)(this[this.tableVWRESTLIST.식당이름Column]));
+                        return ((string)(this[this.tableVWRESTLIST.RESTNAMEColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("\'VWRESTLIST\' 테이블의 \'식당이름\' 열의 값이 DBNull입니다.", e);
+                        throw new global::System.Data.StrongTypingException("\'VWRESTLIST\' 테이블의 \'RESTNAME\' 열의 값이 DBNull입니다.", e);
                     }
                 }
                 set {
-                    this[this.tableVWRESTLIST.식당이름Column] = value;
+                    this[this.tableVWRESTLIST.RESTNAMEColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string 시그니처 {
+            public string SIGNATURE {
                 get {
                     try {
-                        return ((string)(this[this.tableVWRESTLIST.시그니처Column]));
+                        return ((string)(this[this.tableVWRESTLIST.SIGNATUREColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("\'VWRESTLIST\' 테이블의 \'시그니처\' 열의 값이 DBNull입니다.", e);
+                        throw new global::System.Data.StrongTypingException("\'VWRESTLIST\' 테이블의 \'SIGNATURE\' 열의 값이 DBNull입니다.", e);
                     }
                 }
                 set {
-                    this[this.tableVWRESTLIST.시그니처Column] = value;
+                    this[this.tableVWRESTLIST.SIGNATUREColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string 카테고리 {
+            public string CATEGORY {
                 get {
                     try {
-                        return ((string)(this[this.tableVWRESTLIST.카테고리Column]));
+                        return ((string)(this[this.tableVWRESTLIST.CATEGORYColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("\'VWRESTLIST\' 테이블의 \'카테고리\' 열의 값이 DBNull입니다.", e);
+                        throw new global::System.Data.StrongTypingException("\'VWRESTLIST\' 테이블의 \'CATEGORY\' 열의 값이 DBNull입니다.", e);
                     }
                 }
                 set {
-                    this[this.tableVWRESTLIST.카테고리Column] = value;
+                    this[this.tableVWRESTLIST.CATEGORYColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string 사용자 {
+            public string USERNAME {
                 get {
                     try {
-                        return ((string)(this[this.tableVWRESTLIST.사용자Column]));
+                        return ((string)(this[this.tableVWRESTLIST.USERNAMEColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("\'VWRESTLIST\' 테이블의 \'사용자\' 열의 값이 DBNull입니다.", e);
+                        throw new global::System.Data.StrongTypingException("\'VWRESTLIST\' 테이블의 \'USERNAME\' 열의 값이 DBNull입니다.", e);
                     }
                 }
                 set {
-                    this[this.tableVWRESTLIST.사용자Column] = value;
+                    this[this.tableVWRESTLIST.USERNAMEColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string 선정시간 {
+            public string LASTPICKDATE {
                 get {
                     try {
-                        return ((string)(this[this.tableVWRESTLIST.선정시간Column]));
+                        return ((string)(this[this.tableVWRESTLIST.LASTPICKDATEColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("\'VWRESTLIST\' 테이블의 \'선정시간\' 열의 값이 DBNull입니다.", e);
+                        throw new global::System.Data.StrongTypingException("\'VWRESTLIST\' 테이블의 \'LASTPICKDATE\' 열의 값이 DBNull입니다.", e);
                     }
                 }
                 set {
-                    this[this.tableVWRESTLIST.선정시간Column] = value;
+                    this[this.tableVWRESTLIST.LASTPICKDATEColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal 추천수 {
+            public decimal PICKCOUNT {
                 get {
                     try {
-                        return ((decimal)(this[this.tableVWRESTLIST.추천수Column]));
+                        return ((decimal)(this[this.tableVWRESTLIST.PICKCOUNTColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("\'VWRESTLIST\' 테이블의 \'추천수\' 열의 값이 DBNull입니다.", e);
+                        throw new global::System.Data.StrongTypingException("\'VWRESTLIST\' 테이블의 \'PICKCOUNT\' 열의 값이 DBNull입니다.", e);
                     }
                 }
                 set {
-                    this[this.tableVWRESTLIST.추천수Column] = value;
+                    this[this.tableVWRESTLIST.PICKCOUNTColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool Is식당이름Null() {
-                return this.IsNull(this.tableVWRESTLIST.식당이름Column);
+            public bool IsRESTNAMENull() {
+                return this.IsNull(this.tableVWRESTLIST.RESTNAMEColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void Set식당이름Null() {
-                this[this.tableVWRESTLIST.식당이름Column] = global::System.Convert.DBNull;
+            public void SetRESTNAMENull() {
+                this[this.tableVWRESTLIST.RESTNAMEColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool Is시그니처Null() {
-                return this.IsNull(this.tableVWRESTLIST.시그니처Column);
+            public bool IsSIGNATURENull() {
+                return this.IsNull(this.tableVWRESTLIST.SIGNATUREColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void Set시그니처Null() {
-                this[this.tableVWRESTLIST.시그니처Column] = global::System.Convert.DBNull;
+            public void SetSIGNATURENull() {
+                this[this.tableVWRESTLIST.SIGNATUREColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool Is카테고리Null() {
-                return this.IsNull(this.tableVWRESTLIST.카테고리Column);
+            public bool IsCATEGORYNull() {
+                return this.IsNull(this.tableVWRESTLIST.CATEGORYColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void Set카테고리Null() {
-                this[this.tableVWRESTLIST.카테고리Column] = global::System.Convert.DBNull;
+            public void SetCATEGORYNull() {
+                this[this.tableVWRESTLIST.CATEGORYColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool Is사용자Null() {
-                return this.IsNull(this.tableVWRESTLIST.사용자Column);
+            public bool IsUSERNAMENull() {
+                return this.IsNull(this.tableVWRESTLIST.USERNAMEColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void Set사용자Null() {
-                this[this.tableVWRESTLIST.사용자Column] = global::System.Convert.DBNull;
+            public void SetUSERNAMENull() {
+                this[this.tableVWRESTLIST.USERNAMEColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool Is선정시간Null() {
-                return this.IsNull(this.tableVWRESTLIST.선정시간Column);
+            public bool IsLASTPICKDATENull() {
+                return this.IsNull(this.tableVWRESTLIST.LASTPICKDATEColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void Set선정시간Null() {
-                this[this.tableVWRESTLIST.선정시간Column] = global::System.Convert.DBNull;
+            public void SetLASTPICKDATENull() {
+                this[this.tableVWRESTLIST.LASTPICKDATEColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool Is추천수Null() {
-                return this.IsNull(this.tableVWRESTLIST.추천수Column);
+            public bool IsPICKCOUNTNull() {
+                return this.IsNull(this.tableVWRESTLIST.PICKCOUNTColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void Set추천수Null() {
-                this[this.tableVWRESTLIST.추천수Column] = global::System.Convert.DBNull;
+            public void SetPICKCOUNTNull() {
+                this[this.tableVWRESTLIST.PICKCOUNTColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -812,7 +812,7 @@ namespace LunchRoulette {
         }
     }
 }
-namespace LunchRoulette.DataSet1TableAdapters {
+namespace LunchRoulette.dsRestaurantTableAdapters {
     
     
     /// <summary>
@@ -936,12 +936,12 @@ namespace LunchRoulette.DataSet1TableAdapters {
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "VWRESTLIST";
-            tableMapping.ColumnMappings.Add("식당이름", "식당이름");
-            tableMapping.ColumnMappings.Add("시그니처", "시그니처");
-            tableMapping.ColumnMappings.Add("카테고리", "카테고리");
-            tableMapping.ColumnMappings.Add("사용자", "사용자");
-            tableMapping.ColumnMappings.Add("선정시간", "선정시간");
-            tableMapping.ColumnMappings.Add("추천수", "추천수");
+            tableMapping.ColumnMappings.Add("RESTNAME", "RESTNAME");
+            tableMapping.ColumnMappings.Add("SIGNATURE", "SIGNATURE");
+            tableMapping.ColumnMappings.Add("CATEGORY", "CATEGORY");
+            tableMapping.ColumnMappings.Add("USERNAME", "USERNAME");
+            tableMapping.ColumnMappings.Add("LASTPICKDATE", "LASTPICKDATE");
+            tableMapping.ColumnMappings.Add("PICKCOUNT", "PICKCOUNT");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -958,7 +958,8 @@ namespace LunchRoulette.DataSet1TableAdapters {
             this._commandCollection = new global::System.Data.OracleClient.OracleCommand[1];
             this._commandCollection[0] = new global::System.Data.OracleClient.OracleCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT \"식당이름\", \"시그니처\", \"카테고리\", \"사용자\", \"선정시간\", \"추천수\" FROM LUNCH.VWRESTLIST";
+            this._commandCollection[0].CommandText = "SELECT RESTNAME, SIGNATURE, CATEGORY, USERNAME, LASTPICKDATE, PICKCOUNT FROM LUNC" +
+                "H.VWRESTLIST";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -966,7 +967,7 @@ namespace LunchRoulette.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSet1.VWRESTLISTDataTable dataTable) {
+        public virtual int Fill(dsRestaurant.VWRESTLISTDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -979,9 +980,9 @@ namespace LunchRoulette.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSet1.VWRESTLISTDataTable GetData() {
+        public virtual dsRestaurant.VWRESTLISTDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSet1.VWRESTLISTDataTable dataTable = new DataSet1.VWRESTLISTDataTable();
+            dsRestaurant.VWRESTLISTDataTable dataTable = new dsRestaurant.VWRESTLISTDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -1055,7 +1056,7 @@ namespace LunchRoulette.DataSet1TableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private int UpdateUpdatedRows(DataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(dsRestaurant dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             return result;
         }
@@ -1065,7 +1066,7 @@ namespace LunchRoulette.DataSet1TableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private int UpdateInsertedRows(DataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(dsRestaurant dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             return result;
         }
@@ -1075,7 +1076,7 @@ namespace LunchRoulette.DataSet1TableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private int UpdateDeletedRows(DataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(dsRestaurant dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
             return result;
         }
@@ -1109,7 +1110,7 @@ namespace LunchRoulette.DataSet1TableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public virtual int UpdateAll(DataSet1 dataSet) {
+        public virtual int UpdateAll(dsRestaurant dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }

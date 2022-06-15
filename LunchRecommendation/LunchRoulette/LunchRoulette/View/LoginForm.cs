@@ -25,6 +25,10 @@ namespace LunchRoulette.View
             string userId = txtId.Text;
             txtId.Text = "";
 
+            //List<string> names = new List<string>() { "Ross", "Joey", "Chandler" };
+            //string joinedNames = "'" + String.Join("', '", names.ToArray()) + "'";
+            //MessageBox.Show(joinedNames);
+
             if (ValidateId(userId))
             {
                 LoginById(userId);

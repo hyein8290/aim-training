@@ -59,22 +59,18 @@
   <ItemGroup>
     <Compile Include="Common\DbUtil.cs" />
     <Compile Include="Common\TYPE_PAGE.cs" />
-    <Compile Include="DataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataSet1.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet2.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataSet2.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Data\Restaurant.cs" />
     <Compile Include="Data\User.cs" />
-    <Compile Include="dsRest.Designer.cs">
+    <Compile Include="dsRestaurant.cs">
+      <DependentUpon>dsRestaurant.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsRestaurant.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>dsRest.xsd</DependentUpon>
+      <DependentUpon>dsRestaurant.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DsRestList.cs">
+      <DependentUpon>DsRestList.xsd</DependentUpon>
     </Compile>
     <Compile Include="DsRestList.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -188,38 +184,16 @@
       <DependentUpon>RouletteForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
-    <None Include="DataSet1.xsc">
-      <DependentUpon>DataSet1.xsd</DependentUpon>
+    <None Include="dsRestaurant.xsc">
+      <DependentUpon>dsRestaurant.xsd</DependentUpon>
     </None>
-    <None Include="DataSet1.xsd">
+    <None Include="dsRestaurant.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
+      <LastGenOutput>dsRestaurant.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="DataSet1.xss">
-      <DependentUpon>DataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="DataSet2.xsc">
-      <DependentUpon>DataSet2.xsd</DependentUpon>
-    </None>
-    <None Include="DataSet2.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSet2.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="DataSet2.xss">
-      <DependentUpon>DataSet2.xsd</DependentUpon>
-    </None>
-    <None Include="dsRest.xsc">
-      <DependentUpon>dsRest.xsd</DependentUpon>
-    </None>
-    <None Include="dsRest.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>dsRest.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="dsRest.xss">
-      <DependentUpon>dsRest.xsd</DependentUpon>
+    <None Include="dsRestaurant.xss">
+      <DependentUpon>dsRestaurant.xsd</DependentUpon>
     </None>
     <None Include="DsRestList.xsc">
       <DependentUpon>DsRestList.xsd</DependentUpon>
@@ -259,6 +233,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bin.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

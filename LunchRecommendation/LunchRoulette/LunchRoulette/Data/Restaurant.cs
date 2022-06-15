@@ -6,7 +6,7 @@ using System.Text;
 namespace LunchRoulette.Data
 {
     //r.name as restname, r.signature, r.category, u.name as username, t1.lastdate, t1.cnt
-    internal class Restaurant
+    public class Restaurant
     {
         private int id;
         private string name;

@@ -1,4 +1,6 @@
-﻿using LunchRoulette.Manager;
+﻿using LunchRoulette.Common;
+using LunchRoulette.Data;
+using LunchRoulette.Manager;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,11 +14,14 @@ namespace LunchRoulette.View
 {
     public partial class RouletteForm : UserControl
     {
+        private MainForm mainForm;
+
         public List<string> exceptRests = new List<string>();
 
-        public RouletteForm()
+        public RouletteForm(MainForm mainForm)
         {
             InitializeComponent();
+            this.mainForm = mainForm;
         }
 
         private void RouletteForm_Load(object sender, EventArgs e)
@@ -50,24 +55,53 @@ namespace LunchRoulette.View
 
         private void btnRoulette_Click(object sender, EventArgs e)
         {
-            //1. 물음표 없애기
-            //2. 식당 추천해주기
+            //1. 물음표 없애기 O 
+            //2. 식당 추천해주기 O
             //3. 추천 버튼 이름 재추천으로 변경
             //4. 선택 버튼 추가
             picQuestion.Hide();
-            //Label lblRouletteRest = new Label();
-            //lblRouletteRest.Text = "사카나";
-            //pnlRoulette.Controls.Add(lblRouletteRest);
-            lblRestName.Text = "사카나";
-            lblSignature.Text = "만천원초밥";
+
+            // TODO 수정!!
+            GetOptions();
+        }
+
+        private void GetOptions()
+        {
+            List<string> preferCategory = new List<string>();
+            List<string> exceptCategory = new List<string>();
+
+
+            foreach (string c in cblPrefer.CheckedItems)
+            {
+                preferCategory.Add(c);
+            }
+
+            foreach (string c in cblExcept.CheckedItems)
+            {
+                exceptCategory.Add(c);
+            }
+
+            string strPreferCategory = "'" + String.Join("', '", preferCategory.ToArray()) + "'";
+            string strExceptCategory = "'" + String.Join("', '", exceptCategory.ToArray()) + "'";
+            string strExceptRestName = "'" + String.Join("', '", exceptRests.ToArray()) + "'";
+
+            PlayRoulette(strPreferCategory, strExceptCategory, strExceptRestName);
+        }
+
+        private void PlayRoulette(string preferCategory, string exceptCategory, string exceptRestName)
+        {
+            RestManager restManager = new RestManager();
+            Restaurant restaurant = restManager.GetRecomRestaurant(preferCategory, exceptCategory, exceptRestName, 1);
+            lblRestName.Text = restaurant.Name;
+            lblSignature.Text = restaurant.Signature;
+
             lblRestName.Visible = true;
             lblSignature.Visible = true;
 
-        }
+            btnReroulette.Visible = true;
+            btnPick.Visible = true;
 
-        private void PlayRoulette()
-        {
-            
+            btnRoulette.Visible = false;
         }
 
         private void cblExcept_SelectedIndexChanged(object sender, EventArgs e)
@@ -77,6 +111,16 @@ namespace LunchRoulette.View
                 MessageBox.Show("제외음식을 5개 미만으로 선택해주세요");
                 cblExcept.SetItemChecked(cblExcept.SelectedIndex, false);
             }
+        }
+
+        private void btnReroulette_Click(object sender, EventArgs e)
+        {
+            GetOptions();
+        }
+
+        private void btnPick_Click(object sender, EventArgs e)
+        {
+            mainForm.ShowPage(TYPE_PAGE.PICK_PAGE);
         }
     }
 }

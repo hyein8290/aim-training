@@ -30,6 +30,7 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtSignature = new System.Windows.Forms.TextBox();
             this.pnlCategory = new System.Windows.Forms.Panel();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
@@ -38,11 +39,10 @@
             this.rdoCategory1 = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtRestName = new System.Windows.Forms.TextBox();
-            this.txtSignature = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.txtRestName = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.pnlCategory.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -54,12 +54,12 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.txtSignature, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.pnlCategory, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.txtRestName, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.txtSignature, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.txtRestName, 1, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(50, 194);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
@@ -80,6 +80,13 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "카테고리";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtSignature
+            // 
+            this.txtSignature.Location = new System.Drawing.Point(153, 103);
+            this.txtSignature.Name = "txtSignature";
+            this.txtSignature.Size = new System.Drawing.Size(300, 21);
+            this.txtSignature.TabIndex = 5;
             // 
             // pnlCategory
             // 
@@ -176,24 +183,10 @@
             this.label3.Text = "시그니처 메뉴";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // txtRestName
-            // 
-            this.txtRestName.Location = new System.Drawing.Point(153, 103);
-            this.txtRestName.Name = "txtRestName";
-            this.txtRestName.Size = new System.Drawing.Size(300, 21);
-            this.txtRestName.TabIndex = 3;
-            // 
-            // txtSignature
-            // 
-            this.txtSignature.Location = new System.Drawing.Point(153, 53);
-            this.txtSignature.Name = "txtSignature";
-            this.txtSignature.Size = new System.Drawing.Size(300, 21);
-            this.txtSignature.TabIndex = 5;
-            // 
             // panel1
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.panel1, 2);
-            this.panel1.Controls.Add(this.btnAdd);
+            this.panel1.Controls.Add(this.btnEdit);
             this.panel1.Controls.Add(this.btnCancel);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 153);
@@ -201,14 +194,14 @@
             this.panel1.Size = new System.Drawing.Size(494, 44);
             this.panel1.TabIndex = 6;
             // 
-            // btnAdd
+            // btnEdit
             // 
-            this.btnAdd.Location = new System.Drawing.Point(262, 10);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 1;
-            this.btnAdd.Text = "추가";
-            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnEdit.Location = new System.Drawing.Point(262, 10);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(75, 23);
+            this.btnEdit.TabIndex = 1;
+            this.btnEdit.Text = "편집";
+            this.btnEdit.UseVisualStyleBackColor = true;
             // 
             // btnCancel
             // 
@@ -219,6 +212,13 @@
             this.btnCancel.Text = "취소";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
+            // txtRestName
+            // 
+            this.txtRestName.Location = new System.Drawing.Point(153, 53);
+            this.txtRestName.Name = "txtRestName";
+            this.txtRestName.Size = new System.Drawing.Size(300, 21);
+            this.txtRestName.TabIndex = 3;
+            // 
             // RestEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -227,6 +227,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "RestEditForm";
             this.Size = new System.Drawing.Size(600, 700);
+            this.Load += new System.EventHandler(this.RestEditForm_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.pnlCategory.ResumeLayout(false);
@@ -251,7 +252,7 @@
         private System.Windows.Forms.TextBox txtRestName;
         private System.Windows.Forms.TextBox txtSignature;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnCancel;
     }
 }

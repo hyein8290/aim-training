@@ -1,4 +1,5 @@
 ﻿using LunchRoulette.Common;
+using LunchRoulette.Data;
 using LunchRoulette.Manager;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,8 @@ using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LunchRoulette.View
@@ -22,8 +25,19 @@ namespace LunchRoulette.View
         }
         private void RestListForm_Load(object sender, EventArgs e)
         {
+            //Task task = new Task(delegate
+            //{
+            //    NewMethod();
+            //});
+            //task.Start();
+
+            //Thread cThread = new Thread(NewMethod);
+            //cThread.Start();
+
             LoadRestList();
             CheckAll(cblCategory);
+
+
         }
 
         private void LoadRestList()
@@ -31,6 +45,20 @@ namespace LunchRoulette.View
             RestManager restManager = new RestManager();
             DataSet ds = restManager.GetRestDataSet();
             dgvRestList.DataSource = ds.Tables[0];
+
+            //NewMethod();
+
+        }
+
+        private void NewMethod()
+        {
+            string query = "select * from vwrestlist";
+            OleDbDataAdapter da = new OleDbDataAdapter(query, DbUtil.connection);
+            OleDbCommandBuilder cmd = new OleDbCommandBuilder(da);
+
+            da.Update(dsRestaurant.Tables[0]);
+            this.dsRestaurant.Tables[0].Clear();
+            da.Fill(dsRestaurant.Tables[0]);
         }
 
         private void chkAll_CheckedChanged(object sender, EventArgs e)
@@ -129,18 +157,65 @@ namespace LunchRoulette.View
             }
         }
 
-        private void dgvRestList_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Right)
-            {
-                //dgvRestList;
-            }
-        }
-
         private void btnAddRest_Click(object sender, EventArgs e)
         {
             mainForm.ShowPage(TYPE_PAGE.REST_ADD_PAGE);
         }
 
+        private void dgvRestList_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == colEdit.Index)
+            {
+                //string name = dgvRestList.Rows[e.RowIndex].Cells["식당이름"].Value.ToString();
+                //string name = dgvRestList.Rows[e.RowIndex].Cells["RESTNAME"].Value.ToString();
+                EditRestaurant(e);
+            }
+            else if (e.ColumnIndex == colDelete.Index)
+            {
+                ShowDeleteMessage(e);
+            }
+        }
+
+        private void ShowDeleteMessage(DataGridViewCellEventArgs e)
+        {
+            string name = dgvRestList.Rows[e.RowIndex].Cells[0].Value.ToString();
+
+            string message = String.Format("'{0}'을(를) 삭제하시겠습니까?", name);
+
+            DialogResult result = MessageBox.Show(message, "삭제", MessageBoxButtons.YesNo);
+
+            if(result == DialogResult.Yes)
+            {
+                RemoveRestaurant(name);
+            }
+        }
+
+        private void RemoveRestaurant(string name)
+        {
+            RestManager restManager = new RestManager();
+            if(restManager.DeleteRestByName(name) > 0)
+            {
+                MessageBox.Show(String.Format("'{0}'을(를) 삭제했습니다.", name));
+            }
+            else
+            {
+                MessageBox.Show("삭제를 실패했습니다.");
+            }
+        }
+
+        private void EditRestaurant(DataGridViewCellEventArgs e)
+        {
+            string name = dgvRestList.Rows[e.RowIndex].Cells[0].Value.ToString();
+            string signature = dgvRestList.Rows[e.RowIndex].Cells[1].Value.ToString();
+            string category = dgvRestList.Rows[e.RowIndex].Cells[2].Value.ToString();
+
+            Restaurant restaurant = new Restaurant();
+            restaurant.Name = name;
+            restaurant.Signature = signature;
+            restaurant.Category = category;
+
+            mainForm.RestEditForm.SetRestaurant(restaurant);
+            mainForm.ShowPage(TYPE_PAGE.REST_EDIT_PAGE);
+        }
     }
 }
