@@ -92,29 +92,184 @@ namespace LunchRoulette.Manager
 
         }
 
-        public void AddConnLog(string id)
+        //public int AddRest(string name, string category, string signature) 
+        //{
+        //    DatabaseQuery query = new DatabaseQuery();
+        //    OleDbCommand command = DbUtil.connection.CreateCommand();
+            
+
+        //    //string[] columns = { "id", "name", "category", "signature"};
+        //    //string[] values = { "seqRestaurant.nextVal", name, category, signature };
+
+        //    //command.CommandText = query.InsertQuery("tblRestaurant", columns, values);
+        //    //command.CommandText = String.Format("INSERT INTO tblRestaurant(id, name, category, signature) VALUES (seqRestaurant.nextVal, '{0}', '{1}', '{2}')", name, category, signature);
+        //    command.CommandText = $"INSERT INTO tblRestaurant(id, name, category, signature) VALUES (seqRestaurant.nextVal, '{name}', '{category}', '{signature}')";
+        //    return command.ExecuteNonQuery();
+        //}
+
+        public bool AddRest(string name, string category, string signature)
         {
             DatabaseQuery query = new DatabaseQuery();
             OleDbCommand command = DbUtil.connection.CreateCommand();
+            OleDbTransaction transaction = null;
 
-            string[] columns = { "id", "userId", "type", "connDate" };
-            string[] values = { "seqConnLog.nextVal", id, "'I'", "sysdate" };
+            string userId = Properties.Settings.Default.LoginId;
 
-            command.CommandText = query.InsertQuery("tblConnLog", columns, values);
+            try
+            {
+                transaction = DbUtil.connection.BeginTransaction();
+                command.Transaction = transaction;
+
+                command.CommandText = $"INSERT INTO tblRestaurant(id, name, category, signature) VALUES (seqRestaurant.nextVal, '{name}', '{category}', '{signature}')";
+                command.ExecuteNonQuery();
+
+                command.CommandText = $"insert into tblRestEditLog(id, userId, restId, type, editdate) values (seqRestEditLog.nextVal, {userId}, seqRestaurant.currVal, 'C', sysdate)";
+                command.ExecuteNonQuery();
+
+                transaction.Commit();
+                return true;
+            }
+            catch
+            {
+                transaction.Rollback();
+                return false;
+            }
+        }
+
+        public bool InsertRest(string name, string category, string signature)
+        {
+            DatabaseQuery query = new DatabaseQuery();
+            OleDbCommand command = DbUtil.connection.CreateCommand();
+            OleDbTransaction transaction = null;
+
+            string userId = Properties.Settings.Default.LoginId;
+
+            try
+            {
+                transaction = DbUtil.connection.BeginTransaction();
+                command.Transaction = transaction;
+
+                command.CommandText = $"INSERT INTO tblRestaurant(id, name, category, signature) VALUES (seqRestaurant.nextVal, '{name}', '{category}', '{signature}')";
+                command.ExecuteNonQuery();
+
+                command.CommandText = $"insert into tblRestEditLog(id, userId, restId, type, editdate) values (seqRestEditLog.nextVal, {userId}, seqRestaurant.currVal, 'C', sysdate)";
+                command.ExecuteNonQuery();
+
+                transaction.Commit();
+                return true;
+            }
+            catch
+            {
+                transaction.Rollback();
+                return false;
+            }
+        }
+        public bool UpdateRest(string orgRestName, string name, string category, string signature)
+        {
+            DatabaseQuery query = new DatabaseQuery();
+            OleDbCommand command = DbUtil.connection.CreateCommand();
+            OleDbTransaction transaction = null;
+
+            string userId = Properties.Settings.Default.LoginId;
+            string restId = GetRestId(orgRestName);
+
+            try
+            {
+                transaction = DbUtil.connection.BeginTransaction();
+                command.Transaction = transaction;
+
+                command.CommandText = $"UPDATE tblRestaurant SET name = '{name}', category = '{category}', signature = '{signature}' WHERE id = {restId}";
+                command.ExecuteNonQuery();
+
+                command.CommandText = $"insert into tblRestEditLog(id, userId, restId, type, editdate) values (seqRestEditLog.nextVal, {userId}, {restId}, 'U', sysdate)";
+                command.ExecuteNonQuery();
+
+                transaction.Commit();
+                return true;
+            }
+            catch
+            {
+                transaction.Rollback();
+                return false;
+            }
+        }
+
+        public bool DeleteRest(string restName)
+        {
+            DatabaseQuery query = new DatabaseQuery();
+            OleDbCommand command = DbUtil.connection.CreateCommand();
+            OleDbTransaction transaction = null;
+
+            string userId = Properties.Settings.Default.LoginId;
+            string restId = GetRestId(restName);
+
+            try
+            {
+                transaction = DbUtil.connection.BeginTransaction();
+                command.Transaction = transaction;
+
+                command.CommandText = $"DELETE FROM tblRestaurant WHERE id = {restId}";
+                command.ExecuteNonQuery();
+
+                command.CommandText = $"insert into tblRestEditLog(id, userId, restId, type, editdate) values (seqRestEditLog.nextVal, {userId}, {restId}, 'D', sysdate)";
+                command.ExecuteNonQuery();
+
+                transaction.Commit();
+                return true;
+            }
+            catch
+            {
+                transaction.Rollback();
+                return false;
+            }
+        }
+
+        private string GetEditRestQuery()
+        {
+            //1. 추가
+            // INSERT INTO tblRestaurant(id, name, category, signature) VALUES (seqRestaurant.nextVal, '{name}', '{category}', '{signature}')
+            //2. 수정
+            // UPDATE tblRestaurant SET name = '{name}', category = '{category}', signature = '{signature}' WHERE name = 'orgRestName'
+            //3. 삭제
+            // DELETE FROM tblRestaurant WHERE name = {name}
+            return null;
+        }
+
+
+        public void AddPickLog(string restName)
+        {
+            OleDbCommand command = DbUtil.connection.CreateCommand();
+
+            string userId = Properties.Settings.Default.LoginId;
+            string restId = GetRestId(restName);
+
+            command.CommandText = $"insert into tblPickLog(id, userId, restId, pickdate) values(seqPickLog.nextVal, {userId}, {restId}, sysdate)";
             command.ExecuteNonQuery();
         }
 
-        public int AddRest(string name, string category, string signature) 
+        public void AddEditLog(string restName, string type)
         {
-            DatabaseQuery query = new DatabaseQuery();
             OleDbCommand command = DbUtil.connection.CreateCommand();
 
-            //string[] columns = { "id", "name", "category", "signature"};
-            //string[] values = { "seqRestaurant.nextVal", name, category, signature };
+            string userId = Properties.Settings.Default.LoginId;
+            string restId = GetRestId(restName);
 
-            //command.CommandText = query.InsertQuery("tblRestaurant", columns, values);
-            command.CommandText = String.Format("INSERT INTO tblRestaurant(id, name, category, signature) VALUES (seqRestaurant.nextVal, '{0}', '{1}', '{2}')", name, category, signature);
-            return command.ExecuteNonQuery();
+            command.CommandText = $"insert into tblRestEditLog(id, userId, restId, type, editdate) values (seqRestEditLog, {userId}, {restId}, '{type}', sysdate)";
+        }
+       
+
+        public string GetRestId(string restName)
+        {
+            OleDbCommand command = DbUtil.connection.CreateCommand();
+            command.CommandText = $"select id from tblRestaurant where name = '{restName}'";
+            OleDbDataReader reader = command.ExecuteReader();
+
+            if (reader.Read())
+            {
+                return reader[0].ToString();
+            }
+
+            return null;
         }
 
         public int DeleteRestByName(string name)
@@ -127,13 +282,34 @@ namespace LunchRoulette.Manager
             return command.ExecuteNonQuery();
         }
 
+        // TODO 수정이 필요해
         public Restaurant GetRecomRestaurant(string preferCategory, string exceptCategory, string exceptRestName, int rnum)
         {
+            string userId = Properties.Settings.Default.LoginId;
+            string exceptQuery;
+
             Restaurant restaurant = new Restaurant();
 
             OleDbCommand command = DbUtil.connection.CreateCommand();
-            //string exceptQuery = $@"select * from tblRestaurant where name not in ({exceptRestaurant}) and category not in ({exceptCategory})";
-            string userId = Properties.Settings.Default.LoginId;
+
+            // TODO 수정이 필요해
+            if (exceptCategory == "''" && exceptRestName == "''")
+            {
+                exceptQuery = "tblRestaurant";
+            }
+            else if (exceptCategory == "''")
+            {
+                exceptQuery = $@"(select * from tblRestaurant where name not in ({exceptRestName}))";
+            }
+            else if (exceptRestName == "''")
+            {
+                exceptQuery = $@"(select * from tblRestaurant where category not in ({exceptCategory}))";
+            }
+            else
+            {
+                exceptQuery = $@"(select * from tblRestaurant where name not in ({exceptRestName}) and category not in ({exceptCategory}))";
+            }
+
 
             string query = $@"select b.id
                                 from (select rownum as rnum, a.*
@@ -148,10 +324,10 @@ namespace LunchRoulette.Manager
                                             end as isPrefer,
                                             count(p.id) as pickCount,
                                             round(dbms_random.value() * 1000) as rnd
-                                            from (select * from tblRestaurant where name not in ({exceptRestName}) and category not in ({exceptCategory})) r
+                                            from {exceptQuery} r
                                             left outer join tblPickLog p on p.restid = r.id
                                             group by r.id, r.name, r.category
-                                            order by isrecent asc, isprefer desc, pickCount desc, rnd desc) a) b
+                                            order by isRecent asc, isprefer desc, pickCount desc, rnd desc) a) b
                                 where rnum = {rnum}";
             command.CommandText = query;
 
@@ -166,8 +342,8 @@ namespace LunchRoulette.Manager
                 return null;
             }
 
-            
-
+            // TODO 변수명 수정
+            // 따로 메서드 뺄까
             string query2 = $"select name, signature from tblRestaurant where id = {restaurant.Id}";
 
             OleDbCommand command2 = DbUtil.connection.CreateCommand();

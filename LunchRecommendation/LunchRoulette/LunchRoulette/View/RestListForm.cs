@@ -40,11 +40,11 @@ namespace LunchRoulette.View
 
         }
 
-        private void LoadRestList()
+        public void LoadRestList()
         {
             RestManager restManager = new RestManager();
             DataSet ds = restManager.GetRestDataSet();
-            dgvRestList.DataSource = ds.Tables[0];
+            dgvRestList.DataSource = ds.Tables[0].DefaultView;
 
             //NewMethod();
 
@@ -85,12 +85,18 @@ namespace LunchRoulette.View
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            //ValidateCondition();
+            ValidateCondition();
 
+            LoadRestListView();
+
+        }
+
+        private void LoadRestListView()
+        {
             List<string> categories = new List<string>();
-            for(int i = 0; i < cblCategory.Items.Count; i++)
+            for (int i = 0; i < cblCategory.Items.Count; i++)
             {
-                if(cblCategory.GetItemChecked(i) == true)
+                if (cblCategory.GetItemChecked(i) == true)
                 {
                     categories.Add(cblCategory.Items[i].ToString());
                 }
@@ -104,7 +110,6 @@ namespace LunchRoulette.View
             RestManager restManager = new RestManager();
             DataSet ds = restManager.GetRestDataSet(categories, userName, startDate, endDate);
             dgvRestList.DataSource = ds.Tables[0].DefaultView;
-
         }
 
         private void ValidateCondition()
@@ -159,7 +164,7 @@ namespace LunchRoulette.View
 
         private void btnAddRest_Click(object sender, EventArgs e)
         {
-            mainForm.ShowPage(TYPE_PAGE.REST_ADD_PAGE);
+            mainForm.ShowPage(TYPE_PAGE.REST_ADD_PAGE);   
         }
 
         private void dgvRestList_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -188,14 +193,16 @@ namespace LunchRoulette.View
             {
                 RemoveRestaurant(name);
             }
+
+            LoadRestList();
         }
 
         private void RemoveRestaurant(string name)
         {
             RestManager restManager = new RestManager();
-            if(restManager.DeleteRestByName(name) > 0)
+            if(restManager.DeleteRest(name))
             {
-                MessageBox.Show(String.Format("'{0}'을(를) 삭제했습니다.", name));
+                MessageBox.Show($"'{name}'을(를) 삭제했습니다.");
             }
             else
             {
@@ -214,8 +221,14 @@ namespace LunchRoulette.View
             restaurant.Signature = signature;
             restaurant.Category = category;
 
+            LoadRestList();
+
             mainForm.RestEditForm.SetRestaurant(restaurant);
             mainForm.ShowPage(TYPE_PAGE.REST_EDIT_PAGE);
+
+            //LoadRestList();
+
         }
+
     }
 }

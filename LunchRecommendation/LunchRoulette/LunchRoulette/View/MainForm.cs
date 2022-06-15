@@ -75,9 +75,8 @@ namespace LunchRoulette.View
             }
             else if(type == TYPE_PAGE.REST_LIST_PAGE)
             {
+                restListForm.LoadRestList();
                 restListForm.Visible = true;
-                //restListForm.Show();
-
                 ShowAllCommonButtons();
                 this.pnlMain.Controls.Add(restListForm);
             }
@@ -159,6 +158,17 @@ namespace LunchRoulette.View
             if(Properties.Settings.Default.LoginId != "")
             {
                 Logout();
+            }
+        }
+
+        private void ResetControls(UserControl userControl)
+        {
+            foreach(Control control in userControl.Controls)
+            {
+                if(control is TextBox)
+                {
+                    control.Text = "";
+                }
             }
         }
     }

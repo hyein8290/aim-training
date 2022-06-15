@@ -92,8 +92,11 @@ namespace LunchRoulette.View
         {
             RestManager restManager = new RestManager();
             Restaurant restaurant = restManager.GetRecomRestaurant(preferCategory, exceptCategory, exceptRestName, 1);
-            lblRestName.Text = restaurant.Name;
-            lblSignature.Text = restaurant.Signature;
+            if(restaurant != null)
+            {
+                lblRestName.Text = restaurant.Name;
+                lblSignature.Text = restaurant.Signature;
+            }
 
             lblRestName.Visible = true;
             lblSignature.Visible = true;
@@ -120,7 +123,11 @@ namespace LunchRoulette.View
 
         private void btnPick_Click(object sender, EventArgs e)
         {
-            mainForm.PickForm.SetPickRest(lblRestName.Text);
+            string restName = lblRestName.Text;
+
+            RestManager restManager = new RestManager();
+            restManager.AddPickLog(restName);
+            mainForm.PickForm.SetPickRest(restName);
             mainForm.ShowPage(TYPE_PAGE.PICK_PAGE);
         }
     }

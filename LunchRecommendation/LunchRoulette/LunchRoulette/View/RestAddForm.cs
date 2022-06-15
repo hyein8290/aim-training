@@ -42,7 +42,8 @@ namespace LunchRoulette.View
             RestManager restManager = new RestManager();
 
             
-            if (restManager.AddRest(restName, category, signature) > 0)
+            //if (restManager.AddRest(restName, category, signature) > 0)
+            if (restManager.InsertRest(restName, category, signature))
             {
                 MessageBox.Show(String.Format("'{0}'을(를) 추가했습니다.", restName));
                 this.mainForm.ShowPage(TYPE_PAGE.REST_LIST_PAGE);
