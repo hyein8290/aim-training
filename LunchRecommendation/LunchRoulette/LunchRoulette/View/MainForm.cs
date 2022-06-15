@@ -26,6 +26,7 @@ namespace LunchRoulette.View
         private PickForm pickForm;
 
         public RestEditForm RestEditForm { get => restEditForm; set => restEditForm = value; }
+        public PickForm PickForm { get => pickForm; set => pickForm = value; }
 
         public MainForm()
         {
@@ -47,8 +48,8 @@ namespace LunchRoulette.View
             restListForm = new RestListForm(this);
             restAddForm = new RestAddForm(this);
             restEditForm = new RestEditForm(this);
-            rouletteForm = new RouletteForm();
-            pickForm = new PickForm();
+            rouletteForm = new RouletteForm(this);
+            pickForm = new PickForm(this);
         }
 
         public void ShowPage(TYPE_PAGE type)

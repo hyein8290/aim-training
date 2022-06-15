@@ -120,6 +120,7 @@ namespace LunchRoulette.View
 
         private void btnPick_Click(object sender, EventArgs e)
         {
+            mainForm.PickForm.SetPickRest(lblRestName.Text);
             mainForm.ShowPage(TYPE_PAGE.PICK_PAGE);
         }
     }
