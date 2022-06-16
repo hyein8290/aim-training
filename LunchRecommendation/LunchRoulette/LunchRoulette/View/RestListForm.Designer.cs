@@ -44,12 +44,6 @@
             this.dtpStart = new System.Windows.Forms.DateTimePicker();
             this.btnSearch = new System.Windows.Forms.Button();
             this.dgvRestList = new System.Windows.Forms.DataGridView();
-            this.vWRESTLISTBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dsRestaurant = new LunchRoulette.dsRestaurant();
-            this.btnAddRest = new System.Windows.Forms.Button();
-            this.vWRESTLISTTableAdapter = new LunchRoulette.dsRestaurantTableAdapters.VWRESTLISTTableAdapter();
-            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.rESTNAMEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sIGNATUREDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cATEGORYDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,6 +52,12 @@
             this.pICKCOUNTDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colEdit = new System.Windows.Forms.DataGridViewImageColumn();
             this.colDelete = new System.Windows.Forms.DataGridViewImageColumn();
+            this.vWRESTLISTBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsRestaurant = new LunchRoulette.dsRestaurant();
+            this.btnAddRest = new System.Windows.Forms.Button();
+            this.vWRESTLISTTableAdapter = new LunchRoulette.dsRestaurantTableAdapters.VWRESTLISTTableAdapter();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -266,47 +266,6 @@
             this.dgvRestList.TabIndex = 2;
             this.dgvRestList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRestList_CellClick);
             // 
-            // vWRESTLISTBindingSource
-            // 
-            this.vWRESTLISTBindingSource.DataMember = "VWRESTLIST";
-            this.vWRESTLISTBindingSource.DataSource = this.dsRestaurant;
-            // 
-            // dsRestaurant
-            // 
-            this.dsRestaurant.DataSetName = "dsRestaurant";
-            this.dsRestaurant.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // btnAddRest
-            // 
-            this.btnAddRest.Location = new System.Drawing.Point(478, 228);
-            this.btnAddRest.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnAddRest.Name = "btnAddRest";
-            this.btnAddRest.Size = new System.Drawing.Size(66, 18);
-            this.btnAddRest.TabIndex = 3;
-            this.btnAddRest.Text = "추가";
-            this.btnAddRest.UseVisualStyleBackColor = true;
-            this.btnAddRest.Click += new System.EventHandler(this.btnAddRest_Click);
-            // 
-            // vWRESTLISTTableAdapter
-            // 
-            this.vWRESTLISTTableAdapter.ClearBeforeFill = true;
-            // 
-            // dataGridViewImageColumn1
-            // 
-            this.dataGridViewImageColumn1.HeaderText = "편집";
-            this.dataGridViewImageColumn1.Image = global::LunchRoulette.Properties.Resources.edit;
-            this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            this.dataGridViewImageColumn1.Width = 57;
-            // 
-            // dataGridViewImageColumn2
-            // 
-            this.dataGridViewImageColumn2.HeaderText = "삭제";
-            this.dataGridViewImageColumn2.Image = global::LunchRoulette.Properties.Resources.bin;
-            this.dataGridViewImageColumn2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
-            this.dataGridViewImageColumn2.Width = 57;
-            // 
             // rESTNAMEDataGridViewTextBoxColumn
             // 
             this.rESTNAMEDataGridViewTextBoxColumn.DataPropertyName = "RESTNAME";
@@ -372,6 +331,47 @@
             this.colDelete.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.colDelete.Name = "colDelete";
             this.colDelete.ReadOnly = true;
+            // 
+            // vWRESTLISTBindingSource
+            // 
+            this.vWRESTLISTBindingSource.DataMember = "VWRESTLIST";
+            this.vWRESTLISTBindingSource.DataSource = this.dsRestaurant;
+            // 
+            // dsRestaurant
+            // 
+            this.dsRestaurant.DataSetName = "dsRestaurant";
+            this.dsRestaurant.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // btnAddRest
+            // 
+            this.btnAddRest.Location = new System.Drawing.Point(478, 228);
+            this.btnAddRest.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAddRest.Name = "btnAddRest";
+            this.btnAddRest.Size = new System.Drawing.Size(66, 18);
+            this.btnAddRest.TabIndex = 3;
+            this.btnAddRest.Text = "추가";
+            this.btnAddRest.UseVisualStyleBackColor = true;
+            this.btnAddRest.Click += new System.EventHandler(this.btnAddRest_Click);
+            // 
+            // vWRESTLISTTableAdapter
+            // 
+            this.vWRESTLISTTableAdapter.ClearBeforeFill = true;
+            // 
+            // dataGridViewImageColumn1
+            // 
+            this.dataGridViewImageColumn1.HeaderText = "편집";
+            this.dataGridViewImageColumn1.Image = global::LunchRoulette.Properties.Resources.edit;
+            this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            this.dataGridViewImageColumn1.Width = 57;
+            // 
+            // dataGridViewImageColumn2
+            // 
+            this.dataGridViewImageColumn2.HeaderText = "삭제";
+            this.dataGridViewImageColumn2.Image = global::LunchRoulette.Properties.Resources.bin;
+            this.dataGridViewImageColumn2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
+            this.dataGridViewImageColumn2.Width = 57;
             // 
             // RestListForm
             // 

@@ -61,12 +61,19 @@ namespace LunchRoulette.View
             da.Fill(dsRestaurant.Tables[0]);
         }
 
+        /*
+         * 전체 체크박스 클릭하면
+         * 카테고리 전부 체크/체크해제 되도록
+         */
         private void chkAll_CheckedChanged(object sender, EventArgs e)
         {
             if (chkAll.Checked == true) CheckAll(cblCategory);
             else UnCheckAll(cblCategory);
         }
 
+        /*
+         * 체크리스트박스에 있는 체크박스들 전부 체크
+         */
         private void CheckAll(CheckedListBox checkedListBox)
         {
             for (int i = 0; i < checkedListBox.Items.Count; i++)
@@ -75,6 +82,9 @@ namespace LunchRoulette.View
             }
         }
 
+        /*
+         * 체크리스트박스에 있는 체크박스들 전부 체크해제
+         */
         private void UnCheckAll(CheckedListBox checkedListBox)
         {
             for (int i = 0; i < checkedListBox.Items.Count; i++)
@@ -91,6 +101,9 @@ namespace LunchRoulette.View
 
         }
 
+        /*
+         * 조건에 맞는 식당 리스트들 불러오기
+         */
         private void LoadRestListView()
         {
             List<string> categories = new List<string>();
@@ -112,6 +125,7 @@ namespace LunchRoulette.View
             dgvRestList.DataSource = ds.Tables[0].DefaultView;
         }
 
+        
         private void ValidateCondition()
         {
             // TODO boolean으로 바꾸자
@@ -207,6 +221,7 @@ namespace LunchRoulette.View
             else
             {
                 MessageBox.Show("삭제를 실패했습니다.");
+                
             }
         }
 

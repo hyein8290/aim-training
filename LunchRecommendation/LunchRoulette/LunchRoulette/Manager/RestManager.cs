@@ -267,6 +267,7 @@ namespace LunchRoulette.Manager
             if (reader.Read())
             {
                 return reader[0].ToString();
+                //return reader.GetDecimal(0).ToString();
             }
 
             return null;
