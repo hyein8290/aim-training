@@ -3,6 +3,11 @@
 # 채팅 프로그램 추가
 ChattingProgram
 
+#인프라지스틱스
+LunchRecommendation/InfragisticsTest
+3rd Party
+점심식사 추천 프로그램
+
 # Created by https://www.toptal.com/developers/gitignore/api/java,eclipse
 # Edit at https://www.toptal.com/developers/gitignore?templates=java,eclipse
 
