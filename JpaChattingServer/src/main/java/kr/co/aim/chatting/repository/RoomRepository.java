@@ -1,10 +1,8 @@
-package kr.co.aim.jpaserver.repository;
-
-import java.util.Optional;
+package kr.co.aim.chatting.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import kr.co.aim.jpaserver.data.Room;
+import kr.co.aim.chatting.entity.Room;
 
 public interface RoomRepository extends JpaRepository<Room, Integer> {
 }

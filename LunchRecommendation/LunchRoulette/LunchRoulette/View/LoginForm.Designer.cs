@@ -36,7 +36,7 @@
             // 
             // label1
             // 
-            this.label1.Font = new System.Drawing.Font("나눔고딕", 50F);
+            this.label1.Font = new System.Drawing.Font("맑은 고딕", 50.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.Location = new System.Drawing.Point(0, 80);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(600, 141);

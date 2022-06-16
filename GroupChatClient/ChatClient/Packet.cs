@@ -20,12 +20,14 @@ namespace ChatClient
         }
 
         private NetworkStream stream;
+
+        private const int HEADER_LENGTH = 4;
+
         private byte[] typeBytes;
         private byte[] roomIdBytes;
         private byte[] lengthBytes;
         private byte[] bodyBytes;
 
-        private const int HEADER_LENGTH = 4;
 
         public NetworkStream Stream { get => stream; set => stream = value; }
         public byte[] TypeBytes { get => typeBytes; set => typeBytes = value; }
@@ -44,10 +46,10 @@ namespace ChatClient
         // 뭔가 잘못되어 가는 기분
         public Packet(NetworkStream stream)
         {
+            this.stream = stream;
             typeBytes = new byte[HEADER_LENGTH];
             roomIdBytes = new byte[HEADER_LENGTH];
             lengthBytes = new byte[HEADER_LENGTH];
-            this.stream = stream;
         }
 
         /*
@@ -90,7 +92,7 @@ namespace ChatClient
             typeBytes = IntToByteArray(type);
             roomIdBytes = IntToByteArray(roomId);
             bodyBytes = Encoding.UTF8.GetBytes(body);
-            lengthBytes = IntToByteArray(body.Length);
+            lengthBytes = IntToByteArray(bodyBytes.Length);
         }
 
         /*

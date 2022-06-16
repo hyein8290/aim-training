@@ -4,20 +4,21 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import com.google.common.primitives.Ints;
 
 import kr.co.aim.jpaserver.data.ChattingData;
 import kr.co.aim.jpaserver.data.Member;
+import kr.co.aim.jpaserver.data.Packet;
 import kr.co.aim.jpaserver.data.Room;
 import kr.co.aim.jpaserver.manager.ChattingDataManager;
 import kr.co.aim.jpaserver.manager.RoomManager;
 import kr.co.aim.jpaserver.proxy.parser.MessageParser;
 
-@Component
+
 public class ClientHandler implements Runnable {
 
 	@Autowired
@@ -34,15 +35,7 @@ public class ClientHandler implements Runnable {
 	private final DataOutputStream memberOutput;
 
 	private Member member;
-	
-	// 얘를 어디다가 둬야 하나,,
-	private enum Type {
-		MAKE_ROOM,
-		SELECT_ROOM,
-		SET_NAME,
-		SEND_MESSAGE;
-	}
-	
+
 	public ClientHandler(final Socket clientSock, final MessageParser messageParser, final MessageCallBack callBack) throws IOException {
 		this.clientSock = clientSock;
 		this.messageParser = messageParser;
@@ -67,17 +60,8 @@ public class ClientHandler implements Runnable {
 	public void run() {
 
 		try {
-			while (true) {	
-				int payload = memberInput.readInt();
-				byte[] bodyArray = new byte[payload];
-				memberInput.readFully(bodyArray);
-
-				String message = (String) this.messageParser.byteArrayToObject(bodyArray);
-				System.out.println(String.format("%s %s", this.member.getId(), message));
-
-				ChattingData chattingData = chattingDataManager.create(this.member, null, message);
-
-				this.callBack.onMessage(chattingData);
+			while (true) {
+				receive();
 			}
 		} catch (Exception ioe) {
 
@@ -86,27 +70,46 @@ public class ClientHandler implements Runnable {
 		}
 	}
 	
-	public void receive(Object object) throws IOException{
-		int type = memberInput.readInt();
-		byte[] bodyArray;
+	public void receive() throws Exception{
+		Packet receivePacket = new Packet(this.memberInput);
+		System.out.println("hi");
+		receivePacket.read();
+		int type = this.messageParser.byteArrayToInt(receivePacket.getTypeBytes());
 		
-		// switch로 바꾸고 싶음,,
-		if(Type.MAKE_ROOM.equals(type)) {
+		// TODO 코드 정리
+		if(Packet.Type.ROOM_LIST.equals(type)) {
+			List<Room> rooms = roomManager.findAllRoom();
 			
-		} else if(Type.SELECT_ROOM.equals(type)) {
+			Packet sendPacket = new Packet(1, rooms.size(), null);
 			
-		} else if(Type.SET_NAME.equals(type)) {
+			// TODO 추출
+			memberOutput.write(sendPacket.toByteArray());
+			memberOutput.flush();
 			
-		} else if(Type.SEND_MESSAGE.equals(type)) {
+			for(Room room : rooms) {
+				// sendPacket = new Packet(Packet.Type.ROOM_LIST, room.getId(), null);
+				sendPacket = new Packet(1, room.getId(), null);
+				memberOutput.write(sendPacket.toByteArray());
+				memberOutput.flush();
+			}
+		} else if(Packet.Type.MAKE_ROOM.equals(type)) {
+			Room room = roomManager.createRoom();
+			Packet sendPacket = new Packet(2, room.getId(), null);
+			memberOutput.write(sendPacket.toByteArray());
+			memberOutput.flush();
+		} else if(Packet.Type.ENTER_ROOM.equals(type)) {
+			int roomId = this.messageParser.byteArrayToInt(receivePacket.getRoomIdBytes());
+			// TODO 메시지 불러오기
+		} else if(Packet.Type.SET_NAME.equals(type)) {
+			// TODO 이름 설정하기
+		} else if(Packet.Type.SEND_MESSAGE.equals(type)) {
 			// TODO 메소드 추출하기
-			int roomId = memberInput.readInt();
+			int roomId = this.messageParser.byteArrayToInt(receivePacket.getRoomIdBytes());
 			Room room = roomManager.getRoom(roomId);
 			
-			int payload = memberInput.readInt();
-			bodyArray = new byte[payload];
-			memberInput.readFully(bodyArray);
+			byte[] bodyBytes = receivePacket.getBodyBytes();
 			
-			String message = (String) this.messageParser.byteArrayToObject(bodyArray);
+			String message = (String) this.messageParser.byteArrayToObject(bodyBytes);
 			System.out.printf("%s: %s\n", this.member.getName(), message);
 			
 			ChattingData chattingData = chattingDataManager.create(this.member, room, message);
@@ -114,6 +117,37 @@ public class ClientHandler implements Runnable {
 			this.callBack.onMessage(chattingData);
 		}
 	}
+	
+//	public void receive(Object object) throws IOException{
+//		int type = memberInput.readInt();
+//		byte[] bodyArray;
+//		
+//		// switch로 바꾸고 싶음,,
+//		if(Packet.Type.ROOM_LIST.equals(type)) {
+//			
+//		} else if(Packet.Type.MAKE_ROOM.equals(type)) {
+//			
+//		} else if(Packet.Type.ENTER_ROOM.equals(type)) {
+//			
+//		} else if(Packet.Type.SET_NAME.equals(type)) {
+//			
+//		} else if(Packet.Type.SEND_MESSAGE.equals(type)) {
+//			// TODO 메소드 추출하기
+//			int roomId = memberInput.readInt();
+//			Room room = roomManager.getRoom(roomId);
+//			
+//			int payload = memberInput.readInt();
+//			bodyArray = new byte[payload];
+//			memberInput.readFully(bodyArray);
+//			
+//			String message = (String) this.messageParser.byteArrayToObject(bodyArray);
+//			System.out.printf("%s: %s\n", this.member.getName(), message);
+//			
+//			ChattingData chattingData = chattingDataManager.create(this.member, room, message);
+//			
+//			this.callBack.onMessage(chattingData);
+//		}
+//	}
 
 	public void send(Object object) throws IOException {
 		byte[] bodyArray = this.messageParser.objectToByteArray(object);

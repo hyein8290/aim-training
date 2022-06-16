@@ -1,6 +1,7 @@
 package kr.co.aim.jpaserver.manager;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 
@@ -22,14 +23,14 @@ public class RoomManager {
 
 	// 1. 방 만들기
 	//		-> DB에 넣어줘야겠네(Room)
-	@PostConstruct
+	// @PostConstruct
 	private void init() {
 		for (int i = 0; i < this.capa; i++) {
 			this.createRoom();
 		}
 	}
 
-	private Room createRoom() {
+	public Room createRoom() {
 		Room room = new Room();
 		return roomRepository.save(room);
 	}
@@ -45,5 +46,9 @@ public class RoomManager {
 	public void removeRoom(int roomId) throws IOException {
 		roomRepository.deleteById(roomId);
 		// room.close();
+	}
+	
+	public List<Room> findAllRoom() {
+		return roomRepository.findAll();
 	}
 }

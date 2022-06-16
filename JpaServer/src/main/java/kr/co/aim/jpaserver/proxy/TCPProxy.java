@@ -32,7 +32,7 @@ public class TCPProxy implements MessageCallBack {
 	private ChattingService chattingService;
 
 	// 1. 서버 포트 열기
-	//@PostConstruct
+	@PostConstruct
 	private void Open() {
 		this.tcpInterface = new TCPInterface(PORT, memberManager, roomManager, inRoomManager, this);
 		this.tcpInterface.Open();

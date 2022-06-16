@@ -145,6 +145,7 @@
             this.btnMakeRoom.TabIndex = 6;
             this.btnMakeRoom.Text = "방 만들기";
             this.btnMakeRoom.UseVisualStyleBackColor = true;
+            this.btnMakeRoom.Click += new System.EventHandler(this.btnMakeRoom_Click);
             // 
             // RoomListForm
             // 

@@ -36,7 +36,8 @@ namespace ChatClient
          */
         private void btnMakeRoom_Click(object sender, EventArgs e)
         {
-            Packet sendPacket = new Packet((int)Packet.TYPE_PACKET.MAKE_ROOM);
+            client = Client.getInstance();
+            Packet sendPacket = new Packet((int)Packet.TYPE_PACKET.MAKE_ROOM, 0, "0");
             byte[] sendPacketBytes = sendPacket.ToByteArray();
             client.Writer.Write(sendPacketBytes, 0, sendPacketBytes.Length);
 
@@ -78,6 +79,10 @@ namespace ChatClient
          */
         private void GetRoomList()
         {
+            Packet sendPacket = new Packet((int)Packet.TYPE_PACKET.ROOM_LIST);
+            byte[] sendPacketBytes = sendPacket.ToByteArray();
+            client.Writer.Write(sendPacketBytes, 0, sendPacketBytes.Length);
+
             Packet receivePacket = new Packet(client.Reader);
             receivePacket.Read();
             int roomCount = BitConverter.ToInt32(receivePacket.RoomIdBytes, 0);
@@ -110,16 +115,16 @@ namespace ChatClient
             // body에 null 넘기면 안 되니까 우선 인사나 하자
             // 아니야 생성자 하나 더 만들자
             // 패킷 보내는 거 메소드 따로 빼는 게 좋지 않을까?
-            //Packet sendPacket = new Packet((int)Packet.TYPE_PACKET.ENTER_ROOM, roomId);
-            //byte[] sendPacketBytes = sendPacket.ToByteArray();
-            //client.Writer.Write(sendPacketBytes, 0, sendPacketBytes.Length);
+            Packet sendPacket = new Packet((int)Packet.TYPE_PACKET.ENTER_ROOM, roomId);
+            byte[] sendPacketBytes = sendPacket.ToByteArray();
+            client.Writer.Write(sendPacketBytes, 0, sendPacketBytes.Length);
 
             // 방 번호 넘겨야 되는데; 어떻게 넘기지,,,,,,,,,,,,,,
             // ShowPage에 매개변수로 넘기긴 싫은데,,,,
             // 망했다
             // 왜 괜히 컨트롤 붙였다 뗐다 했을까 
             // 바보다
-            ChatForm chatForm = new ChatForm(mainForm, roomId);
+            ChatRoom chatForm = new ChatRoom(mainForm, roomId);
             chatForm.Show();
             //mainForm.ShowPage(MainForm.TYPE_PAGE.CHAT_PAGE);
 
@@ -132,14 +137,14 @@ namespace ChatClient
 
         private void btnEnterRoom_Click(object sender, EventArgs e)
         {
-            //int roomId = 0;
+            int roomId = 0;
 
-            //if (lstRoom.SelectedItem != null)
-            //{
-            //    roomId = Int32.Parse(lstRoom.SelectedItem.ToString());
-            //}
+            if (lstRoom.SelectedItem != null)
+            {
+                roomId = Int32.Parse(lstRoom.SelectedItem.ToString());
+            }
 
-            EnterRoom(1);
+            EnterRoom(roomId);
         }
 
         // 여기서 돌리는 거 맞나........????

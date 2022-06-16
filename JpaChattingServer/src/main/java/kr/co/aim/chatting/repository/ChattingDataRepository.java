@@ -1,11 +1,10 @@
-package kr.co.aim.jpaserver.repository;
+package kr.co.aim.chatting.repository;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import kr.co.aim.jpaserver.data.ChattingData;
+import kr.co.aim.chatting.entity.ChattingData;
 
 public interface ChattingDataRepository extends JpaRepository<ChattingData, Integer> {
 	List<ChattingData> findByRoomId(int roomId);
