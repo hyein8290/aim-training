@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsRestList" targetNamespace="http://tempuri.org/dsRestList.xsd" xmlns:mstns="http://tempuri.org/dsRestList.xsd" xmlns="http://tempuri.org/dsRestList.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ConnectionString (Settings)" PropertyReference="ApplicationSettings.Lunch.Properties.Settings.GlobalReference.Default.ConnectionString" Provider="System.Data.OracleClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="VWRESTLISTTableAdapter" GeneratorDataComponentClassName="VWRESTLISTTableAdapter" Name="VWRESTLIST" UserDataComponentName="VWRESTLISTTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="ROULETTE.VWRESTLIST" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT RESTID, RESTNAME, SIGNATURE, "VALUE", USERNAME, LASTPICKDATE, PICKCOUNT FROM ROULETTE.VWRESTLIST</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="RESTID" DataSetColumn="RESTID" />
+              <Mapping SourceColumn="RESTNAME" DataSetColumn="RESTNAME" />
+              <Mapping SourceColumn="SIGNATURE" DataSetColumn="SIGNATURE" />
+              <Mapping SourceColumn="VALUE" DataSetColumn="VALUE" />
+              <Mapping SourceColumn="USERNAME" DataSetColumn="USERNAME" />
+              <Mapping SourceColumn="LASTPICKDATE" DataSetColumn="LASTPICKDATE" />
+              <Mapping SourceColumn="PICKCOUNT" DataSetColumn="PICKCOUNT" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsRestList" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_UserDSName="dsRestList" msprop:Generator_DataSetName="dsRestList">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="VWRESTLIST" msprop:Generator_RowEvHandlerName="VWRESTLISTRowChangeEventHandler" msprop:Generator_RowDeletedName="VWRESTLISTRowDeleted" msprop:Generator_RowDeletingName="VWRESTLISTRowDeleting" msprop:Generator_RowEvArgName="VWRESTLISTRowChangeEvent" msprop:Generator_TablePropName="VWRESTLIST" msprop:Generator_RowChangedName="VWRESTLISTRowChanged" msprop:Generator_RowChangingName="VWRESTLISTRowChanging" msprop:Generator_TableClassName="VWRESTLISTDataTable" msprop:Generator_RowClassName="VWRESTLISTRow" msprop:Generator_TableVarName="tableVWRESTLIST" msprop:Generator_UserTableName="VWRESTLIST">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="RESTID" msprop:Generator_ColumnPropNameInRow="RESTID" msprop:Generator_ColumnPropNameInTable="RESTIDColumn" msprop:Generator_ColumnVarNameInTable="columnRESTID" msprop:Generator_UserColumnName="RESTID" type="xs:decimal" />
+              <xs:element name="RESTNAME" msprop:Generator_ColumnPropNameInRow="RESTNAME" msprop:Generator_ColumnPropNameInTable="RESTNAMEColumn" msprop:Generator_ColumnVarNameInTable="columnRESTNAME" msprop:Generator_UserColumnName="RESTNAME">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SIGNATURE" msprop:Generator_ColumnPropNameInRow="SIGNATURE" msprop:Generator_ColumnPropNameInTable="SIGNATUREColumn" msprop:Generator_ColumnVarNameInTable="columnSIGNATURE" msprop:Generator_UserColumnName="SIGNATURE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="300" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="VALUE" msprop:Generator_ColumnPropNameInRow="VALUE" msprop:Generator_ColumnPropNameInTable="VALUEColumn" msprop:Generator_ColumnVarNameInTable="columnVALUE" msprop:Generator_UserColumnName="VALUE">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="USERNAME" msprop:Generator_ColumnPropNameInRow="USERNAME" msprop:Generator_ColumnPropNameInTable="USERNAMEColumn" msprop:Generator_ColumnVarNameInTable="columnUSERNAME" msprop:Generator_UserColumnName="USERNAME" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="LASTPICKDATE" msprop:Generator_ColumnPropNameInRow="LASTPICKDATE" msprop:Generator_ColumnPropNameInTable="LASTPICKDATEColumn" msprop:Generator_ColumnVarNameInTable="columnLASTPICKDATE" msprop:Generator_UserColumnName="LASTPICKDATE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PICKCOUNT" msprop:Generator_ColumnPropNameInRow="PICKCOUNT" msprop:Generator_ColumnPropNameInTable="PICKCOUNTColumn" msprop:Generator_ColumnVarNameInTable="columnPICKCOUNT" msprop:Generator_UserColumnName="PICKCOUNT" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
