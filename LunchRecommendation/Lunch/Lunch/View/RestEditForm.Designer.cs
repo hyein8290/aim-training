@@ -32,8 +32,11 @@
             this.btnHome = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.txtSignature = new System.Windows.Forms.TextBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.txtRestName = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pnlCategory = new System.Windows.Forms.Panel();
@@ -42,19 +45,16 @@
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.rdoCategory2 = new System.Windows.Forms.RadioButton();
             this.rdoCategory1 = new System.Windows.Forms.RadioButton();
-            this.txtRestName = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.pnlCategory.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -65,7 +65,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(584, 50);
-            this.panel1.TabIndex = 1;
+            this.panel1.TabIndex = 5;
             // 
             // btnHome
             // 
@@ -78,7 +78,7 @@
             this.btnHome.Location = new System.Drawing.Point(484, 0);
             this.btnHome.Name = "btnHome";
             this.btnHome.Size = new System.Drawing.Size(50, 50);
-            this.btnHome.TabIndex = 2;
+            this.btnHome.TabIndex = 8;
             this.btnHome.UseVisualStyleBackColor = false;
             this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
@@ -93,7 +93,7 @@
             this.btnLogout.Location = new System.Drawing.Point(534, 0);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(50, 50);
-            this.btnLogout.TabIndex = 1;
+            this.btnLogout.TabIndex = 9;
             this.btnLogout.UseVisualStyleBackColor = false;
             // 
             // tableLayoutPanel1
@@ -117,6 +117,40 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(500, 200);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.txtSignature);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(154, 70);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(342, 59);
+            this.panel4.TabIndex = 2;
+            // 
+            // txtSignature
+            // 
+            this.txtSignature.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSignature.Location = new System.Drawing.Point(4, 21);
+            this.txtSignature.Name = "txtSignature";
+            this.txtSignature.Size = new System.Drawing.Size(335, 21);
+            this.txtSignature.TabIndex = 4;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.txtRestName);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(154, 4);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(342, 59);
+            this.panel3.TabIndex = 1;
+            // 
+            // txtRestName
+            // 
+            this.txtRestName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtRestName.Location = new System.Drawing.Point(3, 21);
+            this.txtRestName.Name = "txtRestName";
+            this.txtRestName.Size = new System.Drawing.Size(335, 21);
+            this.txtRestName.TabIndex = 3;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -128,14 +162,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "식당이름";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtSignature
-            // 
-            this.txtSignature.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSignature.Location = new System.Drawing.Point(4, 21);
-            this.txtSignature.Name = "txtSignature";
-            this.txtSignature.Size = new System.Drawing.Size(335, 21);
-            this.txtSignature.TabIndex = 5;
             // 
             // label2
             // 
@@ -172,7 +198,8 @@
             this.pnlCategory.Location = new System.Drawing.Point(154, 136);
             this.pnlCategory.Name = "pnlCategory";
             this.pnlCategory.Size = new System.Drawing.Size(342, 60);
-            this.pnlCategory.TabIndex = 1;
+            this.pnlCategory.TabIndex = 3;
+            this.pnlCategory.TabStop = true;
             // 
             // radioButton3
             // 
@@ -184,6 +211,7 @@
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(46, 60);
             this.radioButton3.TabIndex = 4;
+            this.radioButton3.TabStop = true;
             this.radioButton3.Text = "기타";
             this.radioButton3.UseVisualStyleBackColor = true;
             // 
@@ -197,6 +225,7 @@
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(46, 60);
             this.radioButton2.TabIndex = 3;
+            this.radioButton2.TabStop = true;
             this.radioButton2.Text = "양식";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
@@ -210,6 +239,7 @@
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(46, 60);
             this.radioButton1.TabIndex = 2;
+            this.radioButton1.TabStop = true;
             this.radioButton1.Text = "일식";
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
@@ -223,6 +253,7 @@
             this.rdoCategory2.Name = "rdoCategory2";
             this.rdoCategory2.Size = new System.Drawing.Size(46, 60);
             this.rdoCategory2.TabIndex = 1;
+            this.rdoCategory2.TabStop = true;
             this.rdoCategory2.Text = "중식";
             this.rdoCategory2.UseVisualStyleBackColor = true;
             // 
@@ -236,16 +267,9 @@
             this.rdoCategory1.Name = "rdoCategory1";
             this.rdoCategory1.Size = new System.Drawing.Size(46, 60);
             this.rdoCategory1.TabIndex = 0;
+            this.rdoCategory1.TabStop = true;
             this.rdoCategory1.Text = "한식";
             this.rdoCategory1.UseVisualStyleBackColor = true;
-            // 
-            // txtRestName
-            // 
-            this.txtRestName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtRestName.Location = new System.Drawing.Point(3, 21);
-            this.txtRestName.Name = "txtRestName";
-            this.txtRestName.Size = new System.Drawing.Size(335, 21);
-            this.txtRestName.TabIndex = 3;
             // 
             // panel2
             // 
@@ -254,30 +278,36 @@
             this.panel2.Location = new System.Drawing.Point(56, 405);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(492, 45);
-            this.panel2.TabIndex = 6;
+            this.panel2.TabIndex = 4;
             // 
             // btnEdit
             // 
+            this.btnEdit.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnEdit.FlatAppearance.BorderSize = 0;
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnEdit.Location = new System.Drawing.Point(262, 10);
+            this.btnEdit.ForeColor = System.Drawing.Color.White;
+            this.btnEdit.Location = new System.Drawing.Point(249, 10);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(75, 30);
-            this.btnEdit.TabIndex = 1;
+            this.btnEdit.Size = new System.Drawing.Size(120, 30);
+            this.btnEdit.TabIndex = 7;
             this.btnEdit.Text = "편집";
-            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.UseVisualStyleBackColor = false;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnCancel
             // 
+            this.btnCancel.BackColor = System.Drawing.Color.LightGray;
+            this.btnCancel.FlatAppearance.BorderSize = 0;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnCancel.Location = new System.Drawing.Point(181, 10);
+            this.btnCancel.ForeColor = System.Drawing.Color.DimGray;
+            this.btnCancel.Location = new System.Drawing.Point(119, 10);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 30);
-            this.btnCancel.TabIndex = 0;
+            this.btnCancel.Size = new System.Drawing.Size(120, 30);
+            this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "취소";
-            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // label5
@@ -288,26 +318,8 @@
             this.label5.Location = new System.Drawing.Point(157, 53);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(285, 77);
-            this.label5.TabIndex = 11;
+            this.label5.TabIndex = 0;
             this.label5.Text = "식당편집";
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.txtRestName);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(154, 4);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(342, 59);
-            this.panel3.TabIndex = 12;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.txtSignature);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(154, 70);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(342, 59);
-            this.panel4.TabIndex = 13;
             // 
             // RestEditForm
             // 
@@ -323,18 +335,17 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "오늘 뭐 먹지?";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.RestEditForm_FormClosed);
             this.Load += new System.EventHandler(this.RestEditForm_Load);
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.pnlCategory.ResumeLayout(false);
             this.pnlCategory.PerformLayout();
             this.panel2.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

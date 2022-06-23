@@ -61,6 +61,7 @@
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(50, 50);
             this.btnLogout.TabIndex = 0;
+            this.btnLogout.TabStop = false;
             this.btnLogout.UseVisualStyleBackColor = false;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
@@ -108,8 +109,11 @@
             this.btnRoulette.Name = "btnRoulette";
             this.btnRoulette.Size = new System.Drawing.Size(150, 150);
             this.btnRoulette.TabIndex = 3;
+            this.btnRoulette.TabStop = false;
             this.btnRoulette.UseVisualStyleBackColor = false;
             this.btnRoulette.Click += new System.EventHandler(this.btnRoulette_Click);
+            this.btnRoulette.MouseEnter += new System.EventHandler(this.btnRoulette_MouseEnter);
+            this.btnRoulette.MouseLeave += new System.EventHandler(this.btnRoulette_MouseLeave);
             // 
             // btnRestList
             // 
@@ -122,8 +126,11 @@
             this.btnRestList.Name = "btnRestList";
             this.btnRestList.Size = new System.Drawing.Size(150, 150);
             this.btnRestList.TabIndex = 2;
+            this.btnRestList.TabStop = false;
             this.btnRestList.UseVisualStyleBackColor = false;
             this.btnRestList.Click += new System.EventHandler(this.btnRestList_Click);
+            this.btnRestList.MouseEnter += new System.EventHandler(this.btnRestList_MouseEnter);
+            this.btnRestList.MouseLeave += new System.EventHandler(this.btnRestList_MouseLeave);
             // 
             // label1
             // 
@@ -148,7 +155,6 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "오늘 뭐 먹지?";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MenuForm_FormClosed);
             this.pnlCommon.ResumeLayout(false);
             this.pnlMenu.ResumeLayout(false);
             this.pnlMenu.PerformLayout();

@@ -246,6 +246,7 @@
             this.dgvRestList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvRestList.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgvRestList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvRestList.ColumnHeadersHeight = 29;
             this.dgvRestList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.rESTNAMEDataGridViewTextBoxColumn,
             this.sIGNATUREDataGridViewTextBoxColumn,
@@ -261,6 +262,7 @@
             this.dgvRestList.Name = "dgvRestList";
             this.dgvRestList.ReadOnly = true;
             this.dgvRestList.RowHeadersVisible = false;
+            this.dgvRestList.RowHeadersWidth = 51;
             this.dgvRestList.RowTemplate.Height = 27;
             this.dgvRestList.Size = new System.Drawing.Size(494, 299);
             this.dgvRestList.TabIndex = 2;
@@ -271,6 +273,7 @@
             this.rESTNAMEDataGridViewTextBoxColumn.DataPropertyName = "RESTNAME";
             this.rESTNAMEDataGridViewTextBoxColumn.FillWeight = 111.4779F;
             this.rESTNAMEDataGridViewTextBoxColumn.HeaderText = "식당이름";
+            this.rESTNAMEDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.rESTNAMEDataGridViewTextBoxColumn.Name = "rESTNAMEDataGridViewTextBoxColumn";
             this.rESTNAMEDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -279,6 +282,7 @@
             this.sIGNATUREDataGridViewTextBoxColumn.DataPropertyName = "SIGNATURE";
             this.sIGNATUREDataGridViewTextBoxColumn.FillWeight = 111.4779F;
             this.sIGNATUREDataGridViewTextBoxColumn.HeaderText = "시그니처";
+            this.sIGNATUREDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.sIGNATUREDataGridViewTextBoxColumn.Name = "sIGNATUREDataGridViewTextBoxColumn";
             this.sIGNATUREDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -287,6 +291,7 @@
             this.cATEGORYDataGridViewTextBoxColumn.DataPropertyName = "CATEGORY";
             this.cATEGORYDataGridViewTextBoxColumn.FillWeight = 111.4779F;
             this.cATEGORYDataGridViewTextBoxColumn.HeaderText = "카테고리";
+            this.cATEGORYDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.cATEGORYDataGridViewTextBoxColumn.Name = "cATEGORYDataGridViewTextBoxColumn";
             this.cATEGORYDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -295,6 +300,7 @@
             this.uSERNAMEDataGridViewTextBoxColumn.DataPropertyName = "USERNAME";
             this.uSERNAMEDataGridViewTextBoxColumn.FillWeight = 121.8274F;
             this.uSERNAMEDataGridViewTextBoxColumn.HeaderText = "추천사용자";
+            this.uSERNAMEDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.uSERNAMEDataGridViewTextBoxColumn.Name = "uSERNAMEDataGridViewTextBoxColumn";
             this.uSERNAMEDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -303,6 +309,7 @@
             this.lASTPICKDATEDataGridViewTextBoxColumn.DataPropertyName = "LASTPICKDATE";
             this.lASTPICKDATEDataGridViewTextBoxColumn.FillWeight = 111.4779F;
             this.lASTPICKDATEDataGridViewTextBoxColumn.HeaderText = "선정시간";
+            this.lASTPICKDATEDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.lASTPICKDATEDataGridViewTextBoxColumn.Name = "lASTPICKDATEDataGridViewTextBoxColumn";
             this.lASTPICKDATEDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -311,6 +318,7 @@
             this.pICKCOUNTDataGridViewTextBoxColumn.DataPropertyName = "PICKCOUNT";
             this.pICKCOUNTDataGridViewTextBoxColumn.FillWeight = 111.4779F;
             this.pICKCOUNTDataGridViewTextBoxColumn.HeaderText = "추천수";
+            this.pICKCOUNTDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.pICKCOUNTDataGridViewTextBoxColumn.Name = "pICKCOUNTDataGridViewTextBoxColumn";
             this.pICKCOUNTDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -320,6 +328,7 @@
             this.colEdit.HeaderText = "편집";
             this.colEdit.Image = global::LunchRoulette.Properties.Resources.edit;
             this.colEdit.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.colEdit.MinimumWidth = 6;
             this.colEdit.Name = "colEdit";
             this.colEdit.ReadOnly = true;
             // 
@@ -329,6 +338,7 @@
             this.colDelete.HeaderText = "삭제";
             this.colDelete.Image = global::LunchRoulette.Properties.Resources.bin;
             this.colDelete.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.colDelete.MinimumWidth = 6;
             this.colDelete.Name = "colDelete";
             this.colDelete.ReadOnly = true;
             // 
@@ -362,6 +372,7 @@
             this.dataGridViewImageColumn1.HeaderText = "편집";
             this.dataGridViewImageColumn1.Image = global::LunchRoulette.Properties.Resources.edit;
             this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dataGridViewImageColumn1.MinimumWidth = 6;
             this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
             this.dataGridViewImageColumn1.Width = 57;
             // 
@@ -370,6 +381,7 @@
             this.dataGridViewImageColumn2.HeaderText = "삭제";
             this.dataGridViewImageColumn2.Image = global::LunchRoulette.Properties.Resources.bin;
             this.dataGridViewImageColumn2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dataGridViewImageColumn2.MinimumWidth = 6;
             this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
             this.dataGridViewImageColumn2.Width = 57;
             // 

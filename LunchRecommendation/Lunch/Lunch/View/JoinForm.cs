@@ -63,7 +63,7 @@ namespace Lunch.View
         {
             // TODO: 이 코드는 데이터를 'dsPosition.ENUM' 테이블에 로드합니다. 필요 시 이 코드를 이동하거나 제거할 수 있습니다.
             //this.eNUMTableAdapter.Fill(this.dsPosition.ENUM);
-            //this.cboPosition.Text = "직급";
+            this.cboPosition.SelectedIndex = 0;
         }
 
         private void cboPosition_Enter(object sender, EventArgs e)
@@ -115,7 +115,7 @@ namespace Lunch.View
 
         private bool ValidateUserName(string memberName)
         {
-            if (string.IsNullOrEmpty(memberName))
+            if (memberName.Equals("이름"))
             {
                 MessageBox.Show("이름을 입력해주세요");
                 return false;
@@ -126,7 +126,7 @@ namespace Lunch.View
 
         private bool ValidateUserId(string memberId)
         {
-            if (string.IsNullOrEmpty(memberId))
+            if (memberId.Equals("아이디"))
             {
                 MessageBox.Show("아이디를 입력해주세요");
                 return false;

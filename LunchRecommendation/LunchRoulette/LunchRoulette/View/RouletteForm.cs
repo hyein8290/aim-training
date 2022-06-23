@@ -15,6 +15,7 @@ namespace LunchRoulette.View
     public partial class RouletteForm : UserControl
     {
         private MainForm mainForm;
+        private int rnum = 1;
 
         public List<string> exceptRests = new List<string>();
 
@@ -91,7 +92,7 @@ namespace LunchRoulette.View
         private void PlayRoulette(string preferCategory, string exceptCategory, string exceptRestName)
         {
             RestManager restManager = new RestManager();
-            Restaurant restaurant = restManager.GetRecomRestaurant(preferCategory, exceptCategory, exceptRestName, 1);
+            Restaurant restaurant = restManager.GetRecomRestaurant(preferCategory, exceptCategory, exceptRestName, rnum++%5);
             if(restaurant != null)
             {
                 lblRestName.Text = restaurant.Name;

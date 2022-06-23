@@ -42,7 +42,7 @@ namespace Lunch.View
             CheckAll(cblCategory);
             this.dtpStart.Value = DateTime.Now.AddYears(-1);
             dgvRestList.CurrentCell = null;
-            dgvRestList.ClearSelection();
+            //dgvRestList.ClearSelection();
         }
 
         private void chkAll_Click(object sender, EventArgs e)
@@ -69,7 +69,8 @@ namespace Lunch.View
 
         private void cblCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cblCategory.CheckedItems.Count == 5)
+            cblCategory.ClearSelected();
+            if (cblCategory.CheckedItems.Count == 5)
             {
                 chkAll.Checked = true;
             }
@@ -126,8 +127,11 @@ namespace Lunch.View
 
         private void dgvRestList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.RowIndex != -1)
+
+            if (e.RowIndex != -1)
             {
+                SelectCell(e);
+                
                 if (e.ColumnIndex == colEdit.Index)
                 {
                     EditRestaurant(e);
@@ -137,6 +141,13 @@ namespace Lunch.View
                     ShowDeleteMessage(e);
                 }
             }
+        }
+
+        private void SelectCell(DataGridViewCellEventArgs e)
+        {
+            dgvRestList.Rows[e.RowIndex].Selected = true;
+            dgvRestList.Rows[e.RowIndex].Cells[colEdit.Index].Selected = false;
+            dgvRestList.Rows[e.RowIndex].Cells[colDelete.Index].Selected = false;
         }
 
         private void EditRestaurant(DataGridViewCellEventArgs e)
@@ -239,7 +250,18 @@ namespace Lunch.View
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
+            ResetOptions();
             LoadRestList();
+            dgvRestList.ClearSelection();
+        }
+
+        private void ResetOptions()
+        {
+            this.chkAll.Checked = true;
+            CheckAll(cblCategory);
+            this.txtUserName.ResetText();
+            this.dtpStart.Value = DateTime.Now.AddYears(-1);
+            this.dtpEnd.ResetText();
         }
 
     }

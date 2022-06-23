@@ -118,11 +118,5 @@ namespace Lunch.View
             }
         }
 
-        private void RestAddForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            ConnectManager connectManager = new ConnectManager();
-            string memberId = Properties.Settings.Default.LoginId;
-            connectManager.AddConnLog(memberId, 'O');
-        }
     }
 }

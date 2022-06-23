@@ -170,7 +170,6 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "오늘 뭐 먹지?";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.PickForm_FormClosed);
             this.Load += new System.EventHandler(this.PickForm_Load);
             this.panel1.ResumeLayout(false);
             this.pnlPickInfo.ResumeLayout(false);

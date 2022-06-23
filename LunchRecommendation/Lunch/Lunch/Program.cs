@@ -20,13 +20,26 @@ namespace Lunch
             //Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);
 
-            DbUtil.Connect();
+            //DbUtil.Connect();
+
             //new LoginForm().Show();
             //Application.Run();
 
             ac.MainForm = new LoginForm();
             Application.Run(ac);
 
+            if (Properties.Settings.Default.LoginId != null)
+            {
+                Logout();
+            }
+        }
+
+        private static void Logout()
+        {
+            ConnectManager connectManager = new ConnectManager();
+            string memberId = Properties.Settings.Default.LoginId;
+            connectManager.AddConnLog(memberId, 'O');
+            Properties.Settings.Default.LoginId = null;
         }
     }
 }

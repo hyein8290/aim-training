@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pnlCommon = new System.Windows.Forms.Panel();
             this.picHome = new System.Windows.Forms.PictureBox();
             this.picLogout = new System.Windows.Forms.PictureBox();
             this.pnlMain = new System.Windows.Forms.Panel();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.pnlCommon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picHome)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picLogout)).BeginInit();
@@ -58,6 +60,7 @@
             this.picHome.TabIndex = 1;
             this.picHome.TabStop = false;
             this.picHome.Click += new System.EventHandler(this.picHome_Click);
+            this.picHome.MouseHover += new System.EventHandler(this.picHome_MouseHover);
             // 
             // picLogout
             // 
@@ -79,12 +82,16 @@
             this.pnlMain.Size = new System.Drawing.Size(600, 700);
             this.pnlMain.TabIndex = 1;
             // 
+            // toolTip1
+            // 
+            this.toolTip1.BackColor = System.Drawing.Color.Maroon;
+            // 
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(600, 750);
+            this.ClientSize = new System.Drawing.Size(600, 749);
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.pnlCommon);
             this.Name = "MainForm";
@@ -105,5 +112,6 @@
         private System.Windows.Forms.Panel pnlMain;
         private System.Windows.Forms.PictureBox picLogout;
         private System.Windows.Forms.PictureBox picHome;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

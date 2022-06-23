@@ -154,11 +154,11 @@
             // 
             this.lblRestName.AutoSize = true;
             this.lblRestName.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblRestName.Location = new System.Drawing.Point(133, 44);
+            this.lblRestName.Location = new System.Drawing.Point(18, 44);
             this.lblRestName.Name = "lblRestName";
-            this.lblRestName.Size = new System.Drawing.Size(135, 36);
+            this.lblRestName.Size = new System.Drawing.Size(363, 36);
             this.lblRestName.TabIndex = 3;
-            this.lblRestName.Text = "식당이름";
+            this.lblRestName.Text = "존재하는 식당이 없습니다";
             this.lblRestName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblRestName.Visible = false;
             // 

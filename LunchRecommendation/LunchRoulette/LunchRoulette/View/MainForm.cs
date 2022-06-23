@@ -143,6 +143,12 @@ namespace LunchRoulette.View
             ShowPage(TYPE_PAGE.MENU_PAGE);
         }
 
+        private void picHome_MouseHover(object sender, EventArgs e)
+        {
+            this.toolTip1.IsBalloon = true;
+            this.toolTip1.SetToolTip(this.picHome, "Button");
+        }
+
         private void Logout()
         {
             string userId = Properties.Settings.Default.LoginId;

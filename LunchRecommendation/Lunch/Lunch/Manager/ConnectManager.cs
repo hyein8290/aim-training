@@ -9,11 +9,29 @@ namespace Lunch.Manager
 {
     internal class ConnectManager
     {
+        //public void AddConnLog(string memberId, char type)
+        //{
+        //    DbUtil.Connect();
+        //    OleDbCommand command = DbUtil.connection.CreateCommand();
+        //    command.CommandText = $"insert into connlog values(seqConnLog.nextVal, '{memberId}', '{type}', sysdate)";
+        //    command.ExecuteNonQuery();
+
+        //    DbUtil.Close();
+        //    command.Dispose();
+        //}
+
         public void AddConnLog(string memberId, char type)
         {
-            OleDbCommand command = DbUtil.connection.CreateCommand();
-            command.CommandText = $"insert into connlog values(seqConnLog.nextVal, '{memberId}', '{type}', sysdate)";
-            command.ExecuteNonQuery();
+            using (var connection = DbUtil.GetConnection())
+            using (var command = new OleDbCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = $"insert into connlog values(seqConnLog.nextVal, '{memberId}', '{type}', sysdate)";
+                command.ExecuteNonQuery();
+            }
         }
+
+
     }
 }

@@ -52,11 +52,5 @@ namespace Lunch.View
             lblRestName.Location = new Point((this.pnlPickInfo.Width - lblRestName.Width) / 2, 37); 
         }
 
-        private void PickForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            ConnectManager connectManager = new ConnectManager();
-            string memberId = Properties.Settings.Default.LoginId;
-            connectManager.AddConnLog(memberId, 'O');
-        }
     }
 }

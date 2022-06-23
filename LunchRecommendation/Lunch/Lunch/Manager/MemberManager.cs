@@ -10,45 +10,57 @@ namespace Lunch.Manager
 {
     internal class MemberManager
     {
-        public Boolean ExistsMemberId(string memberId)
+        public bool ExistsMemberId(string memberId)
         {
-            OleDbCommand command = DbUtil.connection.CreateCommand();
-            command.CommandText = $"select * from member where memberId = '{memberId}'";
-
-            using (OleDbDataReader reader = command.ExecuteReader())
+            using (var connection = DbUtil.GetConnection())
+            using (var command = new OleDbCommand())
             {
-                if (reader.HasRows)
-                    return true;
-                else
-                    return false;
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = $"select * from member where memberId = '{memberId}'";
+                using (var reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                        return true;
+                    else
+                        return false;
+                }
             }
         }
 
         public int AddMember(string memberId, string memberName, string position)
         {
-            OleDbCommand command = DbUtil.connection.CreateCommand();
-            
-            command.CommandText = $"insert into member values ('{memberId}', '{memberName}', '{position}')";
-            return command.ExecuteNonQuery();
+            using (var connection = DbUtil.GetConnection())
+            using (var command = new OleDbCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = $"insert into member values ('{memberId}', '{memberName}', '{position}')";
+                return command.ExecuteNonQuery();
+            }
         }
 
         public bool isLogin(string memberId)
         {
-            OleDbCommand command = DbUtil.connection.CreateCommand();
-            command.CommandText = $@"select eventName from connlog where memberid = '{memberId}' and eventTime = (select max(eventTime) from connlog where memberid = '{memberId}')";
-
-            using (OleDbDataReader reader = command.ExecuteReader())
+            using (var connection = DbUtil.GetConnection())
+            using (var command = new OleDbCommand())
             {
-                if (reader.Read())
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = $@"select eventName from connlog where memberid = '{memberId}' and eventTime = (select max(eventTime) from connlog where memberid = '{memberId}')";
+                using (OleDbDataReader reader = command.ExecuteReader())
                 {
-                    if (reader[0].ToString().Equals("I"))
-                        return true;
+                    if (reader.Read())
+                    {
+                        if (reader[0].ToString().Equals("I"))
+                            return true;
+                        else
+                            return false;
+                    }
                     else
+                    {
                         return false;
-                }
-                else
-                {
-                    return false;
+                    }
                 }
             }
 
@@ -56,13 +68,21 @@ namespace Lunch.Manager
 
         public bool ExistsUserName(string name)
         {
-            OleDbCommand command = DbUtil.connection.CreateCommand();
-            command.CommandText = $"select * from member where membername = '{name}'";
-            OleDbDataReader reader = command.ExecuteReader();
-            if (reader.Read())
-                return true;
-            else
-                return false;
+            using (var connection = DbUtil.GetConnection())
+            using (var command = new OleDbCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = $"select memberId from member where membername = '{name}'";
+                using (var reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                        return true;
+                    else
+                        return false;
+                }
+            }
         }
+
     }
 }

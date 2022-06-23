@@ -11,14 +11,19 @@ namespace Lunch.Manager
     {
         public string GetEnumId(string type, string value)
         {
-            OleDbCommand command = DbUtil.connection.CreateCommand();
-            command.CommandText = $"select enumId from enum where type = '{type}' and value = '{value}'";
-            using (OleDbDataReader reader = command.ExecuteReader())
+            using (var connection = DbUtil.GetConnection())
+            using (var command = new OleDbCommand())
             {
-                if (reader.Read())
-                    return reader[0].ToString();
-                else
-                    return null;
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = $"select enumId from enum where type = '{type}' and value = '{value}'";
+                using (var reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                        return reader[0].ToString();
+                    else
+                        return null;
+                }
             }
         }
     }

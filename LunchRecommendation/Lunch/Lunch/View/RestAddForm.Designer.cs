@@ -67,7 +67,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(584, 50);
-            this.panel1.TabIndex = 2;
+            this.panel1.TabIndex = 3;
             // 
             // btnHome
             // 
@@ -80,7 +80,7 @@
             this.btnHome.Location = new System.Drawing.Point(484, 0);
             this.btnHome.Name = "btnHome";
             this.btnHome.Size = new System.Drawing.Size(50, 50);
-            this.btnHome.TabIndex = 2;
+            this.btnHome.TabIndex = 6;
             this.btnHome.UseVisualStyleBackColor = false;
             this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
@@ -95,7 +95,7 @@
             this.btnLogout.Location = new System.Drawing.Point(534, 0);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(50, 50);
-            this.btnLogout.TabIndex = 1;
+            this.btnLogout.TabIndex = 7;
             this.btnLogout.UseVisualStyleBackColor = false;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
@@ -108,7 +108,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 50);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(584, 611);
-            this.panel2.TabIndex = 3;
+            this.panel2.TabIndex = 2;
             // 
             // label5
             // 
@@ -140,7 +140,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(500, 200);
-            this.tableLayoutPanel1.TabIndex = 3;
+            this.tableLayoutPanel1.TabIndex = 1;
             // 
             // panel4
             // 
@@ -149,7 +149,8 @@
             this.panel4.Location = new System.Drawing.Point(154, 70);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(342, 59);
-            this.panel4.TabIndex = 11;
+            this.panel4.TabIndex = 2;
+            this.panel4.TabStop = true;
             // 
             // txtSignature
             // 
@@ -158,7 +159,7 @@
             this.txtSignature.Location = new System.Drawing.Point(3, 20);
             this.txtSignature.Name = "txtSignature";
             this.txtSignature.Size = new System.Drawing.Size(335, 21);
-            this.txtSignature.TabIndex = 5;
+            this.txtSignature.TabIndex = 4;
             // 
             // label1
             // 
@@ -208,7 +209,8 @@
             this.pnlCategory.Margin = new System.Windows.Forms.Padding(5, 3, 3, 3);
             this.pnlCategory.Name = "pnlCategory";
             this.pnlCategory.Size = new System.Drawing.Size(340, 60);
-            this.pnlCategory.TabIndex = 1;
+            this.pnlCategory.TabIndex = 3;
+            this.pnlCategory.TabStop = true;
             // 
             // radioButton3
             // 
@@ -219,7 +221,8 @@
             this.radioButton3.Location = new System.Drawing.Point(184, 0);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(46, 60);
-            this.radioButton3.TabIndex = 4;
+            this.radioButton3.TabIndex = 5;
+            this.radioButton3.TabStop = true;
             this.radioButton3.Text = "기타";
             this.radioButton3.UseVisualStyleBackColor = true;
             // 
@@ -232,7 +235,8 @@
             this.radioButton2.Location = new System.Drawing.Point(138, 0);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(46, 60);
-            this.radioButton2.TabIndex = 3;
+            this.radioButton2.TabIndex = 4;
+            this.radioButton2.TabStop = true;
             this.radioButton2.Text = "양식";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
@@ -245,7 +249,8 @@
             this.radioButton1.Location = new System.Drawing.Point(92, 0);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(46, 60);
-            this.radioButton1.TabIndex = 2;
+            this.radioButton1.TabIndex = 3;
+            this.radioButton1.TabStop = true;
             this.radioButton1.Text = "일식";
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
@@ -258,7 +263,8 @@
             this.rdoCategory2.Location = new System.Drawing.Point(46, 0);
             this.rdoCategory2.Name = "rdoCategory2";
             this.rdoCategory2.Size = new System.Drawing.Size(46, 60);
-            this.rdoCategory2.TabIndex = 1;
+            this.rdoCategory2.TabIndex = 2;
+            this.rdoCategory2.TabStop = true;
             this.rdoCategory2.Text = "중식";
             this.rdoCategory2.UseVisualStyleBackColor = true;
             // 
@@ -271,7 +277,8 @@
             this.rdoCategory1.Location = new System.Drawing.Point(0, 0);
             this.rdoCategory1.Name = "rdoCategory1";
             this.rdoCategory1.Size = new System.Drawing.Size(46, 60);
-            this.rdoCategory1.TabIndex = 0;
+            this.rdoCategory1.TabIndex = 1;
+            this.rdoCategory1.TabStop = true;
             this.rdoCategory1.Text = "한식";
             this.rdoCategory1.UseVisualStyleBackColor = true;
             // 
@@ -282,7 +289,8 @@
             this.panel5.Location = new System.Drawing.Point(154, 4);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(342, 59);
-            this.panel5.TabIndex = 12;
+            this.panel5.TabIndex = 1;
+            this.panel5.TabStop = true;
             // 
             // txtRestName
             // 
@@ -297,7 +305,7 @@
             // 
             this.panel3.Controls.Add(this.btnAdd);
             this.panel3.Controls.Add(this.btnCancel);
-            this.panel3.Location = new System.Drawing.Point(56, 352);
+            this.panel3.Location = new System.Drawing.Point(56, 353);
             this.panel3.Margin = new System.Windows.Forms.Padding(0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(492, 45);
@@ -305,26 +313,31 @@
             // 
             // btnAdd
             // 
+            this.btnAdd.BackColor = System.Drawing.Color.LightSteelBlue;
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnAdd.Location = new System.Drawing.Point(262, 7);
+            this.btnAdd.ForeColor = System.Drawing.Color.White;
+            this.btnAdd.Location = new System.Drawing.Point(250, 7);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 30);
-            this.btnAdd.TabIndex = 1;
+            this.btnAdd.Size = new System.Drawing.Size(120, 30);
+            this.btnAdd.TabIndex = 5;
             this.btnAdd.Text = "추가";
-            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnCancel
             // 
+            this.btnCancel.BackColor = System.Drawing.Color.LightGray;
+            this.btnCancel.FlatAppearance.BorderSize = 0;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnCancel.Location = new System.Drawing.Point(181, 7);
+            this.btnCancel.ForeColor = System.Drawing.Color.DimGray;
+            this.btnCancel.Location = new System.Drawing.Point(124, 7);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 30);
-            this.btnCancel.TabIndex = 0;
+            this.btnCancel.Size = new System.Drawing.Size(120, 30);
+            this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "취소";
-            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // RestAddForm
@@ -339,7 +352,6 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "오늘 뭐 먹지?";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.RestAddForm_FormClosed);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();

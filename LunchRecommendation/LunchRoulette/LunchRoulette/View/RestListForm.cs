@@ -95,9 +95,18 @@ namespace LunchRoulette.View
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            ValidateCondition();
 
-            LoadRestListView();
+            try
+            {
+                if (ValidateCondition())
+                {
+                    LoadRestListView();
+                };
+            }
+            catch
+            {
+                //
+            }
 
         }
 
@@ -126,12 +135,12 @@ namespace LunchRoulette.View
         }
 
         
-        private void ValidateCondition()
+        private bool ValidateCondition()
         {
             // TODO boolean으로 바꾸자
             ValidateCategoryCondition();
             ValidateUserCondition();
-            ValidateDateCondition();
+            return ValidateDateCondition();
         }
 
         private void ValidateCategoryCondition()
@@ -155,7 +164,12 @@ namespace LunchRoulette.View
         private void ValidateUserCondition()
         {
             // TODO 변수명 고민
+
             string userName = txtUserName.Text;
+
+            if (string.IsNullOrWhiteSpace(userName))
+                return;
+
             UserManager userManager = new UserManager();
             if (!userManager.ExistsUserName(userName))
             {
@@ -163,7 +177,7 @@ namespace LunchRoulette.View
             }
         }
 
-        private void ValidateDateCondition()
+        private bool ValidateDateCondition()
         {
             DateTime startTime = dtpStart.Value;
             DateTime endTime = dtpEnd.Value;
@@ -173,7 +187,10 @@ namespace LunchRoulette.View
             if (diff.Ticks < 0)
             {
                 MessageBox.Show("날짜를 다시 선택해주세요.");
+                return false;
             }
+
+            return true;
         }
 
         private void btnAddRest_Click(object sender, EventArgs e)

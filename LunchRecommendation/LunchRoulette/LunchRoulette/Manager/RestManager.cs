@@ -76,11 +76,13 @@ namespace LunchRoulette.Manager
                 else
                     query.Append("'" + categories[i] + "') ");
             }
-            if(userName != "")
+            //if(userName != "")
+            if (!string.IsNullOrWhiteSpace(userName))
             {
-                query.Append("and username = '" + userName + "' ");
+                query.Append("and username like '%" + userName + "%' ");
             }
-            query.Append("and lastpickdate between '" + startDate + "' and '" + endDate + "'");
+            query.Append("and (lastpickdate between '" + startDate + "' and '" + endDate + "'");
+            query.Append("or lastpickdate = '없음')");
             
             command.CommandText = query.ToString();
 
@@ -323,8 +325,7 @@ namespace LunchRoulette.Manager
                                                 when r.category in ({preferCategory}) then 1
                                                 else 0
                                             end as isPrefer,
-                                            count(p.id) as pickCount,
-                                            round(dbms_random.value() * 1000) as rnd
+                                            count(p.id) as pickCount
                                             from {exceptQuery} r
                                             left outer join tblPickLog p on p.restid = r.id
                                             group by r.id, r.name, r.category

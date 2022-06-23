@@ -67,7 +67,7 @@ namespace Lunch.View
         {
             RestaurantManager restManager = new RestaurantManager();
 
-            string modName = txtRestName.Text;
+            string modRestName = txtRestName.Text;
             string modSignature = txtSignature.Text;
             string modCategory = null;
 
@@ -80,7 +80,13 @@ namespace Lunch.View
                 }
             }
 
-            if (restManager.UpdateRestaurant(restId, modName, modCategory, modSignature))
+            if(orgRestName.Equals(modRestName) && orgSignature.Equals(modSignature) && orgCategory.Equals(modCategory))
+            {
+                MessageBox.Show("변경된 값이 없습니다.");
+                return;
+            }
+
+            if (restManager.UpdateRestaurant(restId, modRestName, modCategory, modSignature))
             {
                 MessageBox.Show($"'{orgRestName}'을(를) 편집했습니다.");
                 FormUtil.SwitchForm(this, new RestListForm());
@@ -89,13 +95,6 @@ namespace Lunch.View
             {
                 MessageBox.Show($"'{orgRestName}'을(를) 편집하지 못했습니다.");
             }
-        }
-
-        private void RestEditForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            ConnectManager connectManager = new ConnectManager();
-            string memberId = Properties.Settings.Default.LoginId;
-            connectManager.AddConnLog(memberId, 'O');
         }
     }
 }

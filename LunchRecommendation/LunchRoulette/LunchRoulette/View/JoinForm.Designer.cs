@@ -86,7 +86,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(294, 50);
             this.label2.TabIndex = 0;
-            this.label2.Text = "사번";
+            this.label2.Text = "아이디";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtUserId
