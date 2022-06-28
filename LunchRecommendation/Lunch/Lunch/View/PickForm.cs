@@ -26,6 +26,7 @@ namespace Lunch.View
             ConnectManager connectManager = new ConnectManager();
             string memberId = Properties.Settings.Default.LoginId;
             connectManager.AddConnLog(memberId, 'O');
+            Properties.Settings.Default.LoginId = null;
 
             FormUtil.SwitchForm(this, new LoginForm());
         }
@@ -48,8 +49,13 @@ namespace Lunch.View
         private void PickForm_Load(object sender, EventArgs e)
         {
             lblRestName.Text = $"{restName}을(를) 선택하셨습니다.";
+            
+            while(lblRestName.Width > pnlPickInfo.Width)
+            {
+                lblRestName.Font = new Font("나눔고딕 ExtraBold", lblRestName.Font.Size - 1 , FontStyle.Bold);
+            }
 
-            lblRestName.Location = new Point((this.pnlPickInfo.Width - lblRestName.Width) / 2, 37); 
+            lblRestName.Location = new Point((this.pnlPickInfo.Width - lblRestName.Width) / 2, 37);
         }
 
     }

@@ -40,19 +40,19 @@ namespace Lunch.Manager
             }
         }
 
-        public bool isLogin(string memberId)
+        public bool isLoggedin(string memberId)
         {
             using (var connection = DbUtil.GetConnection())
             using (var command = new OleDbCommand())
             {
                 connection.Open();
                 command.Connection = connection;
-                command.CommandText = $@"select eventName from connlog where memberid = '{memberId}' and eventTime = (select max(eventTime) from connlog where memberid = '{memberId}')";
+                command.CommandText = $@"SELECT eventName FROM (SELECT eventName FROM connlog WHERE memberId = '{memberId}' ORDER BY eventTime DESC) WHERE rownum = 1";
                 using (OleDbDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        if (reader[0].ToString().Equals("I"))
+                        if (reader["eventName"].ToString().Equals("I"))
                             return true;
                         else
                             return false;
@@ -61,9 +61,15 @@ namespace Lunch.Manager
                     {
                         return false;
                     }
+
+                    //if (!reader.Read())
+                    //    return false;
+                    //else if (reader["eventName"].ToString().Equals("O"))
+                    //    return false;
+                    //else
+                    //    return true;
                 }
             }
-
         }
 
         public bool ExistsUserName(string name)

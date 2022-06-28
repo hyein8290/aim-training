@@ -21,7 +21,7 @@ namespace Lunch.View
             { 
                 btnRoulette.FlatAppearance.MouseOverBackColor = btnRoulette.BackColor;
                 btnRoulette.FlatAppearance.MouseDownBackColor = btnRoulette.BackColor;
-                
+
             };
 
             btnRestList.BackColorChanged += (s, e) => 
@@ -46,6 +46,7 @@ namespace Lunch.View
             ConnectManager connectManager = new ConnectManager();
             string memberId = Properties.Settings.Default.LoginId;
             connectManager.AddConnLog(memberId, 'O');
+            Properties.Settings.Default.LoginId = null;
 
             FormUtil.SwitchForm(this, new LoginForm());
         }

@@ -28,8 +28,8 @@ namespace Lunch.View
         {
             ConnectManager connectManager = new ConnectManager();
             string memberId = Properties.Settings.Default.LoginId;
-            Properties.Settings.Default.LoginId = null;
             connectManager.AddConnLog(memberId, 'O');
+            Properties.Settings.Default.LoginId = null;
 
             FormUtil.SwitchForm(this, new LoginForm());
         }
@@ -41,6 +41,7 @@ namespace Lunch.View
 
         private void cblExcept_SelectedIndexChanged(object sender, EventArgs e)
         {
+            rnum = 0;
             cblPrefer.SetItemChecked(cblExcept.SelectedIndex, false);
 
             if (cblExcept.CheckedItems.Count == 5)
@@ -52,11 +53,13 @@ namespace Lunch.View
 
         private void cblPrefer_SelectedIndexChanged(object sender, EventArgs e)
         {
+            rnum = 0;
             cblExcept.SetItemChecked(cblPrefer.SelectedIndex, false);
         }
 
         private void btnExceptRest_Click(object sender, EventArgs e)
         {
+            rnum = 0;
             string restName = txtExceptRest.Text;
             if (!string.IsNullOrEmpty(restName))
             {
@@ -139,7 +142,12 @@ namespace Lunch.View
             RestaurantManager restManager = new RestaurantManager();
             Restaurant restaurant = restManager.GetRandomRestaurant(preferCategory, exceptCategory, exceptRestName, rnum++ % 5 + 1);
 
-            if (restaurant != null)
+            if (restaurant == null || rnum > 5)
+            {
+                rnum = 0;
+                MessageBox.Show("모든 추천이 끝났습니다");
+            }
+            else
             {
                 currentRestId = restaurant.RestId.ToString();
                 currentRestName = restaurant.RestName;
@@ -150,14 +158,9 @@ namespace Lunch.View
                 lblRestName.Location = new Point((this.pnlRoulette.Width - lblRestName.Width) / 2, 30);
                 lblSignature.Location = new Point((this.pnlRoulette.Width - lblSignature.Width) / 2, 80);
             }
-            else
-            {
-                rnum = 0;
-                MessageBox.Show("모든 추천이 끝났습니다");
-            }
 
             lblRestName.Visible = true;
-            lblSignature.Visible = true;
+            lblSignature.Visible = true;    
 
             btnReroulette.Visible = true;
             btnPick.Visible = true;

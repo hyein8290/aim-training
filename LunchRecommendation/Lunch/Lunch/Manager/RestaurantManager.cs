@@ -219,7 +219,7 @@ namespace Lunch.Manager
                 using (OleDbDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
-                        restId = Convert.ToInt32(reader[0].ToString());
+                        restId = Convert.ToInt32(reader["restId"].ToString());
                     else
                         return null;
                 }
@@ -243,8 +243,8 @@ namespace Lunch.Manager
                     if (reader.Read())
                     {
                         restaurant.RestId = restId;
-                        restaurant.RestName = reader[0].ToString();
-                        restaurant.Signature = reader[1].ToString();
+                        restaurant.RestName = reader["restname"].ToString();
+                        restaurant.Signature = reader["signature"].ToString();
                     }
                     else
                     {

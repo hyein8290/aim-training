@@ -51,11 +51,11 @@ namespace Lunch.View
             MemberManager memberManager = new MemberManager();
             ConnectManager connectManager = new ConnectManager();
 
-            //if (memberManager.isLogin(memberId))
-            //{
-            //    MessageBox.Show("이미 접속 중인 아이디입니다.");
-            //    return;
-            //}
+            if (memberManager.isLoggedin(memberId))
+            {
+                MessageBox.Show("이미 접속 중인 아이디입니다.");
+                return;
+            }
 
             if (memberManager.ExistsMemberId(memberId))
             {
@@ -67,7 +67,6 @@ namespace Lunch.View
             {
                 MessageBox.Show("존재하지 않는 회원입니다.");
             }
-
         }
 
         private void btnJoin_Click(object sender, EventArgs e)

@@ -25,6 +25,7 @@ namespace Lunch.View
             ConnectManager connectManager = new ConnectManager();
             string memberId = Properties.Settings.Default.LoginId;
             connectManager.AddConnLog(memberId, 'O');
+            Properties.Settings.Default.LoginId = null;
 
             FormUtil.SwitchForm(this, new LoginForm());
         }
@@ -82,7 +83,8 @@ namespace Lunch.View
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            LoadRestListView();
+            LoadRestListWithOptions();
+            dgvRestList.ClearSelection();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -90,14 +92,14 @@ namespace Lunch.View
             FormUtil.SwitchForm(this, new RestAddForm());
         }
 
-        private void LoadRestList()
+        private void LoadRestListAll()
         {
             RestaurantManager restManager = new RestaurantManager();
             DataSet ds = restManager.GetRestDataSet();
             dgvRestList.DataSource = ds.Tables[0].DefaultView;
         }
 
-        private void LoadRestListView()
+        private void LoadRestListWithOptions()
         {
             if (!ValidateCategoryCondition() || !ValidateUserCondition() || !ValidateDateCondition())
             {
@@ -113,7 +115,7 @@ namespace Lunch.View
                 }
             }
 
-            string joinedCategories = "'" + String.Join("', '", categoryIdList.ToArray()) + "'";
+            string strCategories = "'" + String.Join("', '", categoryIdList.ToArray()) + "'";
 
             string userName = txtUserName.Text;
 
@@ -121,13 +123,12 @@ namespace Lunch.View
             string endDate = dtpEnd.Value.ToString("yyyy/MM/dd").Replace('-', '/');
 
             RestaurantManager restManager = new RestaurantManager();
-            DataSet ds = restManager.GetRestDataSet(joinedCategories, userName, startDate, endDate);
+            DataSet ds = restManager.GetRestDataSet(strCategories, userName, startDate, endDate);
             dgvRestList.DataSource = ds.Tables[0].DefaultView;
         }
 
         private void dgvRestList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
             if (e.RowIndex != -1)
             {
                 SelectCell(e);
@@ -180,7 +181,7 @@ namespace Lunch.View
                 RemoveRestaurant(restId, restName);
             }
 
-            LoadRestList();
+            RefreshForm();
         }
 
         private void RemoveRestaurant(string restId, string restName)
@@ -213,22 +214,35 @@ namespace Lunch.View
             return true;
         }
 
+        //private bool ValidateCategoryCondition()
+        //{
+        //    int count = 0;
+
+        //    for (int i = 0; i < cblCategory.Items.Count; i++)
+        //    {
+        //        if (cblCategory.GetItemChecked(i) == false)
+        //            count++;
+        //        else
+        //            return true;
+        //    }
+
+        //    if (count == cblCategory.Items.Count)
+        //    {
+        //        MessageBox.Show("카테고리를 하나 이상 선택해주세요");
+        //    }
+        //    return false;
+        //}
+
         private bool ValidateCategoryCondition()
         {
-            int count = 0;
-
             for (int i = 0; i < cblCategory.Items.Count; i++)
             {
-                if (cblCategory.GetItemChecked(i) == false)
-                    count++;
-                else
+                if (cblCategory.GetItemChecked(i) == true)
                     return true;
             }
 
-            if (count == cblCategory.Items.Count)
-            {
-                MessageBox.Show("카테고리를 하나 이상 선택해주세요");
-            }
+            MessageBox.Show("카테고리를 하나 이상 선택해주세요");
+
             return false;
         }
 
@@ -250,8 +264,13 @@ namespace Lunch.View
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
+            RefreshForm();
+        }
+
+        private void RefreshForm()
+        {
             ResetOptions();
-            LoadRestList();
+            LoadRestListAll();
             dgvRestList.ClearSelection();
         }
 

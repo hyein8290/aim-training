@@ -23,6 +23,7 @@ namespace Lunch.View
             ConnectManager connectManager = new ConnectManager();
             string memberId = Properties.Settings.Default.LoginId;
             connectManager.AddConnLog(memberId, 'O');
+            Properties.Settings.Default.LoginId = null;
 
             FormUtil.SwitchForm(this, new LoginForm());
         }
